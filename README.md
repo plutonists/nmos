@@ -10,7 +10,7 @@
 
 # NMOS Digital Garden
 
-Welcome to my public digital garden. I am an electrical engineering student utilizing this space to document my coursework in embedded systems, circuit design, and networking, alongside my personal digital design projects. This repository serves as a living, interconnected notebook that grows and evolves over time.
+Welcome to my public digital garden. I am an electrical engineering student utilizing this space to document anything that I like on the interwebs. Please feel free to recommend anything!
 
 **Core Architecture**
 
