@@ -1,0 +1,23 @@
+{%if settings.dgHomeLink === true%}
+    <nav class="navbar">
+        <div class="navbar-inner">
+            <a href="/" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;">
+                {% if meta.siteLogoPath %}
+                    <img class="site-logo" src="{{meta.siteLogoPath}}" alt="Logo" style="max-width: 60px; height: auto;">
+                    <span style="font-size: 1.15rem; font-weight: 700; color: var(--text-normal); text-align: center; text-decoration: none;">Notes, Media, & Other Stuff</span>
+                {% else %}
+                    <h1 style="margin: 15px !important;">Notes, Media, & Other Stuff</h1>
+                {% endif %}
+            </a>
+        </div>
+        {% if settings.dgEnableSearch === true%}
+            {% include "components/searchButton.njk" %}
+        {%endif%}
+    </nav>
+    {%else%}
+    <div class="empty-navbar" >
+        {% if settings.dgEnableSearch === true%}
+            {% include "components/searchButton.njk" %}
+        {%endif%}
+    </div>
+{%endif%}

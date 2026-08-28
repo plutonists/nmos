@@ -1,0 +1,25 @@
+<nav class="navbar">
+    <div class="navbar-inner">
+        <span style="font-size: 1.5rem; margin-right: 10px;" @click="showFilesMobile=!showFilesMobile"><i data-lucide="menu"></i></span>
+        {% for imp in dynamics.filetree.beforeTitle %}
+            {% include imp %}
+        {% endfor %}
+        {% if meta.siteLogoPath %}
+        <a href="/" style="text-decoration: none; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 10px 0;">
+            <img class="site-logo" src="{{meta.siteLogoPath}}" alt="Logo" style="max-width: 65px; height: auto;">
+            <span style="font-size: 1.15rem; font-weight: 700; color: var(--text-normal); text-align: center;">Notes, Media, & Other Stuff</span>
+        </a>
+        {% else %}
+        <a href="/" style="text-decoration: none; text-align: center;">
+            <h1 style="margin: 15px !important;">Notes, Media, & Other Stuff</h1>
+        </a>
+        {% endif %}
+        {% for imp in dynamics.filetree.afterTitle %}
+            {% include imp %}
+        {% endfor %}
+    </div>
+
+    {% if settings.dgEnableSearch === true%}
+        {% include "components/searchButton.njk" %}
+    {%endif%}
+</nav>

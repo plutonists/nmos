@@ -1,0 +1,40 @@
+{
+  "/": [
+    "About Me and this Website",
+    "Home",
+    "Website Resources"
+  ],
+  "/Home": [
+    "👤 Personal"
+  ],
+  "/Home/👤 Personal": [
+    "✍️ Blog",
+    "🎬 Films",
+    "🎮 Video Games"
+  ],
+  "/Home/👤 Personal/✍️ Blog": [
+    "EXCR1. My name is Pluto."
+  ],
+  "/Home/👤 Personal/🎬 Films": [
+    "Obsession (2026)",
+    "Whiplash (2014)"
+  ],
+  "/Home/👤 Personal/🎬 Films/Obsession (2026)": [
+    "Media Collage"
+  ],
+  "/Home/👤 Personal/🎬 Films/Whiplash (2014)": [
+    "Media Collage"
+  ],
+  "/Home/👤 Personal/🎮 Video Games": [
+    "Counter-Strike 2"
+  ],
+  "/Home/👤 Personal/🎮 Video Games/Counter-Strike 2": [
+    "Counter-Tips"
+  ],
+  "/Website Resources": [
+    "Templates"
+  ],
+  "/Website Resources/Templates": [
+    "New Garden Template"
+  ]
+}
