@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/site/img/user/1 Website Resources/nmos.png" alt="NMOS Wordmark and Logo" width="600">
+  <img src="src/site/img/user/1 Website Resources/nmos.png" alt="NMOS Wordmark and Logo" width="300">
 </div>
 
 <p align="center">
