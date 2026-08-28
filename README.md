@@ -8,7 +8,7 @@
   </a>
 </p>
 
-# NMOS Digital Garden
+# Notes, Media, & Other Stuff
 
 Welcome to my public digital garden. I am an electrical engineering student utilizing this space to document anything that I like on the interwebs. Please feel free to recommend anything!
 
