@@ -1,40 +1,27 @@
 {
   "/": [
+    "Notes",
+    "Media",
+    "Other Stuff",
     "About Me and this Website",
-    "Home",
-    "Website Resources"
+    "Note Testing"
   ],
-  "/Home": [
-    "👤 Personal"
+  "/Notes": [
+    "🧐 The Reviews"
   ],
-  "/Home/👤 Personal": [
-    "✍️ Blog",
-    "🎬 Films",
-    "🎮 Video Games"
+  "/Notes/🧐 The Reviews": [
+    "🎬 Films and Shows"
   ],
-  "/Home/👤 Personal/✍️ Blog": [
-    "EXCR1. My name is Pluto."
-  ],
-  "/Home/👤 Personal/🎬 Films": [
-    "Obsession (2026)",
+  "/Notes/🧐 The Reviews/🎬 Films and Shows": [
     "Whiplash (2014)"
   ],
-  "/Home/👤 Personal/🎬 Films/Obsession (2026)": [
-    "Media Collage"
+  "/Media": [
+    "🎬 Films and Shows"
   ],
-  "/Home/👤 Personal/🎬 Films/Whiplash (2014)": [
-    "Media Collage"
+  "/Media/🎬 Films and Shows": [
+    "Whiplash (2014)"
   ],
-  "/Home/👤 Personal/🎮 Video Games": [
-    "Counter-Strike 2"
-  ],
-  "/Home/👤 Personal/🎮 Video Games/Counter-Strike 2": [
-    "Counter-Tips"
-  ],
-  "/Website Resources": [
-    "Templates"
-  ],
-  "/Website Resources/Templates": [
-    "New Garden Template"
+  "/Other Stuff": [
+    "Testing for now"
   ]
 }
