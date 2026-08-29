@@ -330,3 +330,35 @@ input[type="checkbox"]:checked {
 .markdown-rendered tr:hover td {
     background-color: rgba(255, 255, 255, 0.05);
 }
+
+/* =========================================
+   NMOS SECTIONS
+========================================= */
+/* 1. Force ONLY top-level folders to stay open */
+.nav-view > .folder-outer > .folder-inner,
+.nav-view > .folder-outer > [x-show="isOpen"] {
+    display: block !important;
+}
+
+/* 2. Turn ONLY top-level headers into static text */
+.nav-view > .folder-outer > .folder-header {
+    pointer-events: none; /* Disables clicking */
+    cursor: default;
+    margin-top: 1.5rem;
+    padding-left: 0 !important; 
+}
+
+/* 3. Hide the dropdown arrows ONLY on top-level folders */
+.nav-view > .folder-outer > .folder-header > svg,
+.nav-view > .folder-outer > .folder-header > .folder-icon {
+    display: none !important;
+}
+
+/* 4. Style the top-level text to match your neon aesthetic */
+.nav-view > .folder-outer > .folder-header .folder-name {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--text-normal);
+    letter-spacing: 1px;
+}
