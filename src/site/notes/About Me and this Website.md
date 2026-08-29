@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/about-me-and-this-website/","tags":["seed","gardenEntry"],"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-08-28T14:21:01.505+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
+{"dg-publish":true,"permalink":"/about-me-and-this-website/","tags":["seed","gardenEntry"],"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-08-29T07:32:34.564+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
@@ -22,9 +22,9 @@ For the record, I'm not that great at introducing myself, so bear with me as I t
 >- I have experience with Adobe Photoshop ([Photopea](https://www.photopea.com) is a nice webapp version), Premiere Pro, After Effects, Lightroom, Audition, and a teeny bit of Illustrator. I also like the **FREE** alternative to Photoshop and Illustrator: [Affinity](https://www.affinity.studio).
 >- I like photography, curating, watching films, and sometimes reading. Photography is my outlet when I'm feeling unwell. It's interesting to observe and admire the world while you try to forget your troubles.
 ## What's this website?
-Good question (not really)! This website is a personal stash of interests; movies, literature, software, videos, art, photos, you name it. I've been wanting to make a personal corner of mine on the internet so I can ~~<font color="#ec2e37">MARK MY TERRITORY</font>~~ have a place I can truly call home 🏠.
+Good question (not really)! This website is a personal stash of interests; movies, literature, software, videos, art, photos, you name it. I've been wanting to make a personal corner of mine on the internet so I can ~~<font color="#ec2e37">MARK MY TERRITORY</font>~~ have a place I can truly call home 🏠. 
 
-Home can mean a lot of things; a place where you can find comfort, a place where you can feel freely expressive, and do whatever you want! This is my corner, and pretty much anyone is welcome! In fact, let me [break it down for you](https://i.clouds.tf/siop/p5hs.gif). 
+Anyone is welcome here! ![smilethumb2.png\|24](/img/user/1%20Website%20Resources/emojis/Discord_Icons/smilethumb2.png)
 
 <div style="height: 50px;"></div>
 <h2 style="margin: 0; color: #ec2e37 !important; text-shadow: 0 0 12px rgba(236, 46, 55, 0.4), 0 0 25px rgba(236, 46, 55, 0.15);">Notes</h2>
