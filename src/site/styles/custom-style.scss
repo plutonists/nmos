@@ -334,49 +334,44 @@ input[type="checkbox"]:checked {
 /* =========================================
    NMOS SECTIONS
 ========================================= */
-/* 1. Force top-level folders to stay open */
-.sidebar-container > .folder > .folder-inner,
-.sidebar-container > .folder-outer > .folder-inner,
-.nav-view > .folder > .folder-inner,
-.nav-view > .folder-outer > .folder-inner,
-.filetree > .folder > .folder-inner,
-.filetree > .folder-outer > .folder-inner {
-    display: block !important;
-}
+/* Target all possible root-level folder variations */
+.filetree > .folder,
+.filetree > .folder-outer,
+.nav-view > .folder,
+.sidebar-container > .folder,
+.folder.level-1 {
+    
+    /* 1. Force open (Bypasses Alpine.js max-height and display states) */
+    > .folder-inner,
+    > ul,
+    > [x-show] {
+        display: block !important;
+        max-height: none !important;
+        height: auto !important;
+        overflow: visible !important;
+        visibility: visible !important;
+    }
 
-/* 2. Turn top-level headers into static text */
-.sidebar-container > .folder > .folder-header,
-.sidebar-container > .folder-outer > .folder-header,
-.nav-view > .folder > .folder-header,
-.nav-view > .folder-outer > .folder-header,
-.filetree > .folder > .folder-header,
-.filetree > .folder-outer > .folder-header {
-    pointer-events: none !important;
-    cursor: default !important;
-    margin-top: 1.5rem;
-    padding-left: 0 !important;
-}
+    /* 2. Turn the header into static text */
+    > .folder-header {
+        pointer-events: none !important;
+        cursor: default !important;
+        margin-top: 1.5rem !important;
+        padding-left: 0 !important;
 
-/* 3. Hide the top-level dropdown arrows */
-.sidebar-container > .folder > .folder-header .folder-icon,
-.sidebar-container > .folder-outer > .folder-header .folder-icon,
-.nav-view > .folder > .folder-header .folder-icon,
-.nav-view > .folder-outer > .folder-header .folder-icon,
-.filetree > .folder > .folder-header .folder-icon,
-.filetree > .folder-outer > .folder-header .folder-icon {
-    display: none !important;
-}
+        /* 3. Hide the arrows regardless of how the SVG is wrapped */
+        svg, 
+        .folder-icon {
+            display: none !important;
+        }
 
-/* 4. Style the top-level text */
-.sidebar-container > .folder > .folder-header .folder-name,
-.sidebar-container > .folder-outer > .folder-header .folder-name,
-.nav-view > .folder > .folder-header .folder-name,
-.nav-view > .folder-outer > .folder-header .folder-name,
-.filetree > .folder > .folder-header .folder-name,
-.filetree > .folder-outer > .folder-header .folder-name {
-    font-weight: 800;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    color: var(--text-normal);
-    letter-spacing: 1px;
+        /* 4. Your neon NMOS styling */
+        .folder-name {
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            font-size: 0.9rem !important;
+            color: var(--text-normal) !important;
+            letter-spacing: 1px !important;
+        }
+    }
 }
