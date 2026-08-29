@@ -504,3 +504,30 @@ input[type="checkbox"]:checked {
     opacity: 1 !important;
 }
 
+
+/* =========================================
+   SIDEBAR HOTFIXES (WRAPPING & CAPS)
+========================================= */
+
+/* 1. Force Notes and Media back to ALL CAPS to match OTHER STUFF */
+.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper,
+.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+}
+
+/* 2. Stop sub-folders from wrapping to a new line awkwardly */
+.filetree-sidebar .inner-folder > .foldername-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    white-space: nowrap !important; /* Forces the text to stay on one line */
+}
+
+/* 3. Overpower the default theme to make the Active Note text green */
+.filetree-sidebar .active-note a,
+.filetree-sidebar .active-note a.internal-link {
+    color: #17C555 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
+}
