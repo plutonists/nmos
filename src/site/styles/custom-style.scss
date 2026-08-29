@@ -524,7 +524,7 @@ input[type="checkbox"]:checked {
 .filetree-sidebar .inner-folder > .foldername-wrapper,
 .filetree-sidebar .notelink a {
     display: flex !important;
-    width: 100% !important; /* Kills the squished shrink-wrap bug */
+    width: calc(100% - 15px) !important; /* Kills the squished shrink-wrap bug */
     align-items: flex-start !important; /* Keeps icons pinned to the top line */
     white-space: normal !important; 
     line-height: 1.4 !important; /* Adds breathing room between wrapped lines */
