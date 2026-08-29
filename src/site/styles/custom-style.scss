@@ -374,32 +374,32 @@ input[type="checkbox"]:checked {
     }
 }
 /* =========================================
-   ROOT FOLDER COLORS & GLOWS (POSITIONAL)
+   ROOT FOLDER COLORS & GLOWS (FIXED WRAPPERS)
 ========================================= */
 
-/* 1. First Folder: NOTES (NMOS Red) */
-.filetree-sidebar .folder:not(.inner-folder .folder):nth-of-type(1) > .foldername-wrapper {
+/* 1. First Root Block: NOTES (NMOS Red) */
+.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
     color: #F82C66 !important;
     text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
                  0 0 25px rgba(248, 44, 102, 0.15) !important;
 }
 
-/* 2. Second Folder: MEDIA (NMOS Blue) */
-.filetree-sidebar .folder:not(.inner-folder .folder):nth-of-type(2) > .foldername-wrapper {
+/* 2. Second Root Block: MEDIA (NMOS Blue) */
+.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
     color: #3577F9 !important;
     text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
                  0 0 25px rgba(53, 119, 249, 0.15) !important;
 }
 
-/* 3. Third Folder: OTHER STUFF (NMOS Green/Yellow Split) */
-.filetree-sidebar .folder:not(.inner-folder .folder):nth-of-type(3) > .foldername-wrapper {
-    /* Hide the original white text */
+/* 3. Third Root Block: OTHER STUFF (NMOS Green/Yellow Split) */
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    /* Hide the original all-red text */
     font-size: 0 !important; 
     color: transparent !important;
     text-shadow: none !important;
 }
 
-.filetree-sidebar .folder:not(.inner-folder .folder):nth-of-type(3) > .foldername-wrapper::before {
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::before {
     /* Inject 'OTHER ' in NMOS Green */
     content: "OTHER ";
     font-size: 1rem !important;
@@ -408,7 +408,7 @@ input[type="checkbox"]:checked {
                  0 0 25px rgba(23, 197, 85, 0.15) !important;
 }
 
-.filetree-sidebar .folder:not(.inner-folder .folder):nth-of-type(3) > .foldername-wrapper::after {
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::after {
     /* Inject 'STUFF' in NMOS Yellow */
     content: "STUFF";
     font-size: 1rem !important;
