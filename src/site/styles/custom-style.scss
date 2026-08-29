@@ -332,37 +332,52 @@ input[type="checkbox"]:checked {
 }
 
 /* =========================================
-   STATIC NMOS SECTIONS (FIXED)
+   STATIC ROOT FOLDERS (NESTED OVERRIDE)
 ========================================= */
 
-/* Target the top-level folders within your specific sidebar structure */
-.filetree-sidebar > .folder,
-.filetree-sidebar > .filelist > .folder {
+/* 1. APPLY TO ALL FOLDERS (Forces them open and static) */
+.filetree-sidebar .folder {
     
-    /* 1. Force the inner file list to always display */
     > .filelist,
     > .inner-folder,
     > [x-show] {
         display: block !important;
         max-height: none !important;
-        height: auto !important;
-        visibility: visible !important;
-        opacity: 1 !important;
     }
 
-    /* 2. Disable clicking and hover states on the header */
     > .foldername-wrapper {
         pointer-events: none !important;
         cursor: default !important;
         margin-top: 1.5rem !important;
         
-        /* Cancel out your earlier hover background/padding shifts */
+        /* Removes the hover background from the static headers */
         background-color: transparent !important;
-        padding-left: 10px !important; 
-
-        /* 3. Hide the specific Lucide 'i' icon tags your theme uses */
+        
         i {
             display: none !important;
+        }
+    }
+}
+
+/* 2. REVERT NESTED FOLDERS (Restores "The Reviews" behavior) */
+.filetree-sidebar .folder .folder {
+    
+    /* Hook into Alpine.js inline styles to respect the closed state */
+    > .filelist[style*="display: none"],
+    > .inner-folder[style*="display: none"],
+    > [x-show][style*="display: none"] {
+        display: none !important;
+    }
+
+    /* Restore clicking mechanics */
+    > .foldername-wrapper {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        margin-top: 8px !important;
+        
+        /* Restore the chevron icons */
+        i {
+            display: inline-block !important;
         }
     }
 }
