@@ -449,3 +449,58 @@ input[type="checkbox"]:checked {
     margin-left: 0 !important;
 }
 
+
+/* =========================================
+   SIDEBAR POLISH & REFINEMENTS
+========================================= */
+
+/* 1. Demote Nested Folders to Title Case */
+.filetree-sidebar .inner-folder .foldername-wrapper {
+    text-transform: none !important; /* Removes the ALL-CAPS */
+    font-weight: 700 !important;
+    letter-spacing: normal !important;
+    color: #999 !important; /* Neutral gray to avoid competing with roots */
+    font-size: 0.85rem !important;
+}
+
+/* 2. Neutralize File Links and Add Hover Glow */
+.filetree-sidebar .notelink a {
+    color: #AAA !important; /* Strips the default blue */
+    font-weight: 500 !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+.filetree-sidebar .notelink:hover a {
+    color: #F82C66 !important; /* NMOS Red on hover */
+    text-shadow: 0 0 8px rgba(248, 44, 102, 0.4) !important;
+}
+
+/* 3. Clean up the Nested Guide Lines */
+.filetree-sidebar .filelist,
+.filetree-sidebar .inner-folder {
+    border-left: none !important; /* Removes the floating vertical lines */
+}
+
+/* 4. Chevron Breathing Room */
+.filetree-sidebar .foldername-wrapper i,
+.filetree-sidebar .foldername-wrapper svg {
+    margin-right: 8px !important;
+    opacity: 0.7 !important;
+}
+
+/* 5. Active State High-Contrast NMOS Green */
+.filetree-sidebar .active-note {
+    background-color: rgba(23, 197, 85, 0.15) !important;
+    border-left: 3px solid #17C555 !important;
+}
+.filetree-sidebar .active-note a {
+    color: #17C555 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
+}
+/* Ensure the document icon inside the active note also turns green */
+.filetree-sidebar .active-note svg,
+.filetree-sidebar .active-note i {
+    color: #17C555 !important; 
+    opacity: 1 !important;
+}
+
