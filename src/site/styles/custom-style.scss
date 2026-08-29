@@ -332,52 +332,32 @@ input[type="checkbox"]:checked {
 }
 
 /* =========================================
-   STATIC ROOT FOLDERS (NESTED OVERRIDE)
+   STATIC ROOT FOLDERS (THE BULLETPROOF WAY)
 ========================================= */
 
-/* 1. APPLY TO ALL FOLDERS (Forces them open and static) */
-.filetree-sidebar .folder {
+/* Target ONLY folders that are NOT inside another folder */
+.filetree-sidebar .folder:not(.folder .folder) {
     
+    /* 1. Force the contents to stay open */
     > .filelist,
     > .inner-folder,
     > [x-show] {
         display: block !important;
         max-height: none !important;
+        height: auto !important;
     }
 
+    /* 2. Disable clicking and hover effects on the header */
     > .foldername-wrapper {
         pointer-events: none !important;
         cursor: default !important;
         margin-top: 1.5rem !important;
-        
-        /* Removes the hover background from the static headers */
         background-color: transparent !important;
-        
+        padding-left: 10px !important; 
+
+        /* 3. Hide the chevron icons */
         i {
             display: none !important;
-        }
-    }
-}
-
-/* 2. REVERT NESTED FOLDERS (Restores "The Reviews" behavior) */
-.filetree-sidebar .folder .folder {
-    
-    /* Hook into Alpine.js inline styles to respect the closed state */
-    > .filelist[style*="display: none"],
-    > .inner-folder[style*="display: none"],
-    > [x-show][style*="display: none"] {
-        display: none !important;
-    }
-
-    /* Restore clicking mechanics */
-    > .foldername-wrapper {
-        pointer-events: auto !important;
-        cursor: pointer !important;
-        margin-top: 8px !important;
-        
-        /* Restore the chevron icons */
-        i {
-            display: inline-block !important;
         }
     }
 }
