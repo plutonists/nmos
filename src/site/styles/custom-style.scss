@@ -332,46 +332,37 @@ input[type="checkbox"]:checked {
 }
 
 /* =========================================
-   NMOS SECTIONS
+   STATIC NMOS SECTIONS (FIXED)
 ========================================= */
-/* Target all possible root-level folder variations */
-.filetree > .folder,
-.filetree > .folder-outer,
-.nav-view > .folder,
-.sidebar-container > .folder,
-.folder.level-1 {
+
+/* Target the top-level folders within your specific sidebar structure */
+.filetree-sidebar > .folder,
+.filetree-sidebar > .filelist > .folder {
     
-    /* 1. Force open (Bypasses Alpine.js max-height and display states) */
-    > .folder-inner,
-    > ul,
+    /* 1. Force the inner file list to always display */
+    > .filelist,
+    > .inner-folder,
     > [x-show] {
         display: block !important;
         max-height: none !important;
         height: auto !important;
-        overflow: visible !important;
         visibility: visible !important;
+        opacity: 1 !important;
     }
 
-    /* 2. Turn the header into static text */
-    > .folder-header {
+    /* 2. Disable clicking and hover states on the header */
+    > .foldername-wrapper {
         pointer-events: none !important;
         cursor: default !important;
         margin-top: 1.5rem !important;
-        padding-left: 0 !important;
+        
+        /* Cancel out your earlier hover background/padding shifts */
+        background-color: transparent !important;
+        padding-left: 10px !important; 
 
-        /* 3. Hide the arrows regardless of how the SVG is wrapped */
-        svg, 
-        .folder-icon {
+        /* 3. Hide the specific Lucide 'i' icon tags your theme uses */
+        i {
             display: none !important;
-        }
-
-        /* 4. Your neon NMOS styling */
-        .folder-name {
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            font-size: 0.9rem !important;
-            color: var(--text-normal) !important;
-            letter-spacing: 1px !important;
         }
     }
 }
