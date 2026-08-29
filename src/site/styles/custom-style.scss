@@ -397,11 +397,15 @@ input[type="checkbox"]:checked {
     font-size: 0 !important; 
     color: transparent !important;
     text-shadow: none !important;
+    
+    /* Override the flexbox spacing */
+    justify-content: flex-start !important;
+    gap: 0.35rem !important; 
 }
 
 .filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::before {
-    /* Inject 'OTHER ' in NMOS Green */
-    content: "OTHER ";
+    /* Inject 'OTHER' in NMOS Green */
+    content: "OTHER";
     font-size: 1rem !important;
     color: #17C555 !important;
     text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
