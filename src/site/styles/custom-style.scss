@@ -335,10 +335,10 @@ input[type="checkbox"]:checked {
    STATIC ROOT FOLDERS (THE BULLETPROOF WAY)
 ========================================= */
 
-/* Target ONLY folders that are NOT inside another folder */
-.filetree-sidebar .folder:not(.folder .folder) {
+/* Target folders ONLY if they are NOT inside an .inner-folder */
+.filetree-sidebar .folder:not(.inner-folder .folder) {
     
-    /* 1. Force the contents to stay open */
+    /* 1. Force the container to stay open permanently */
     > .filelist,
     > .inner-folder,
     > [x-show] {
@@ -347,15 +347,14 @@ input[type="checkbox"]:checked {
         height: auto !important;
     }
 
-    /* 2. Disable clicking and hover effects on the header */
+    /* 2. Strip hover and click mechanics from the root header */
     > .foldername-wrapper {
         pointer-events: none !important;
         cursor: default !important;
         margin-top: 1.5rem !important;
         background-color: transparent !important;
-        padding-left: 10px !important; 
-
-        /* 3. Hide the chevron icons */
+        
+        /* 3. Hide the chevron icon */
         i {
             display: none !important;
         }
