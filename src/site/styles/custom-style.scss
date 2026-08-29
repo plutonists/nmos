@@ -398,9 +398,6 @@ input[type="checkbox"]:checked {
     color: transparent !important;
     text-shadow: none !important;
     
-    /* Override the flexbox spacing */
-    justify-content: flex-start !important;
-    gap: 0.01rem !important; 
 }
 
 .filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::before {
@@ -420,3 +417,35 @@ input[type="checkbox"]:checked {
     text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
                  0 0 25px rgba(255, 186, 1, 0.15) !important;
 }
+
+
+/* =========================================
+   ALIGNMENT & GAP FIXES
+========================================= */
+
+/* 1. Nuke the hidden original text node causing the huge gap */
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper span,
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper .folder-name {
+    display: none !important;
+}
+
+/* 2. Force the root headers to snap to a strict left-aligned axis */
+.filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    padding-left: 20px !important; /* Sets the master left anchor line */
+}
+
+/* 3. Lock "OTHER" and "STUFF" tightly together */
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    gap: 0.4rem !important; 
+}
+
+/* 4. Align the nested files perfectly beneath their headers */
+.filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
+.filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
+    padding-left: 20px !important; 
+    margin-left: 0 !important;
+}
+
