@@ -373,3 +373,47 @@ input[type="checkbox"]:checked {
         letter-spacing: 2px !important;
     }
 }
+/* =========================================
+   ROOT FOLDER COLORS & GLOWS
+========================================= */
+
+/* Notes - NMOS Red */
+.filetree-sidebar .folder[data-name="Notes" i]:not(.inner-folder .folder) > .foldername-wrapper {
+    color: #F82C66 !important;
+    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
+                 0 0 25px rgba(248, 44, 102, 0.15) !important;
+}
+
+/* Media - NMOS Blue */
+.filetree-sidebar .folder[data-name="Media" i]:not(.inner-folder .folder) > .foldername-wrapper {
+    color: #3577F9 !important;
+    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
+                 0 0 25px rgba(53, 119, 249, 0.15) !important;
+}
+
+/* Other Stuff - Split Color & Glow Hack */
+.filetree-sidebar .folder[data-name="Other Stuff" i]:not(.inner-folder .folder) > .foldername-wrapper {
+    /* Hides the original single-colored text */
+    font-size: 0 !important; 
+    color: transparent !important;
+    text-shadow: none !important;
+}
+
+/* Inject "OTHER " in NMOS Green */
+.filetree-sidebar .folder[data-name="Other Stuff" i]:not(.inner-folder .folder) > .foldername-wrapper::before {
+    content: "OTHER ";
+    font-size: 1rem !important;
+    color: #17C555 !important;
+    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
+                 0 0 25px rgba(23, 197, 85, 0.15) !important;
+}
+
+/* Inject "STUFF" in NMOS Yellow */
+.filetree-sidebar .folder[data-name="Other Stuff" i]:not(.inner-folder .folder) > .foldername-wrapper::after {
+    content: "STUFF";
+    font-size: 1rem !important;
+    color: #FFBA01 !important;
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
+                 0 0 25px rgba(255, 186, 1, 0.15) !important;
+}
+
