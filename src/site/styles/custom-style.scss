@@ -516,18 +516,17 @@ input[type="checkbox"]:checked {
     letter-spacing: 2px !important;
 }
 
-/* 2. Stop sub-folders from wrapping to a new line awkwardly */
+/* 2. REVISED: Allow sub-folders to wrap safely without clipping text */
 .filetree-sidebar .inner-folder > .foldername-wrapper {
     display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    white-space: nowrap !important; /* Forces the text to stay on one line */
+    align-items: flex-start !important; /* Keeps icons aligned to the top line */
+    white-space: normal !important; /* Lets long names wrap to the next line */
+    padding-right: 15px !important; /* Adds breathing room on the right edge */
 }
 
-/* 3. Overpower the default theme to make the Active Note text green */
-.filetree-sidebar .active-note a,
-.filetree-sidebar .active-note a.internal-link {
-    color: #17C555 !important;
-    font-weight: 800 !important;
-    text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
+/* Prevent the chevron and emojis from shrinking when text wraps */
+.filetree-sidebar .inner-folder > .foldername-wrapper i,
+.filetree-sidebar .inner-folder > .foldername-wrapper svg {
+    flex-shrink: 0 !important; 
+    margin-top: 2px !important; /* Nudges icons down to center with the text */
 }
