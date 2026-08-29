@@ -520,15 +520,16 @@ input[type="checkbox"]:checked {
    SIDEBAR HOTFIX (ANTI-SQUISH & WIDTH FIX)
 ========================================= */
 
-/* 1. Force folders and files to take full width instead of shrink-wrapping */
+/* 1. Let flexbox dynamically fill the space (No scrollbars, no squishing) */
 .filetree-sidebar .inner-folder > .foldername-wrapper,
 .filetree-sidebar .notelink a {
     display: flex !important;
-    width: calc(100% - 15px) !important; /* Kills the squished shrink-wrap bug */
-    align-items: flex-start !important; /* Keeps icons pinned to the top line */
+    flex: 1 1 auto !important; /* Automatically stretches to fill available space safely */
+    width: auto !important; /* Overrides the percentage math causing the scrollbar */
+    align-items: flex-start !important; 
     white-space: normal !important; 
-    line-height: 1.4 !important; /* Adds breathing room between wrapped lines */
-    box-sizing: border-box !important;
+    line-height: 1.4 !important;
+    padding-right: 10px !important; /* Safe right-side breathing room */
 }
 
 /* 2. Lock icons on the left so text wraps cleanly beside them */
