@@ -541,7 +541,10 @@ input[type="checkbox"]:checked {
     margin-right: 8px !important;
 }
 
-/* Hide the horizontal scrollbar caused by padding math */
+/* Hide the horizontal scrollbar on all main sidebar wrappers */
+.sidebar,
+.sidebar-left,
+.sidebar-wrapper,
 .filetree-sidebar {
     overflow-x: hidden !important;
 }
