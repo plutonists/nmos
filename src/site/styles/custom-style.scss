@@ -332,31 +332,44 @@ input[type="checkbox"]:checked {
 }
 
 /* =========================================
-   STATIC ROOT FOLDERS (THE BULLETPROOF WAY)
+   STATIC ROOT FOLDERS (VISUAL OVERHAUL)
 ========================================= */
 
-/* Target folders ONLY if they are NOT inside an .inner-folder */
 .filetree-sidebar .folder:not(.inner-folder .folder) {
     
-    /* 1. Force the container to stay open permanently */
+    /* 1. Force open and remove the root vertical tree lines */
     > .filelist,
     > .inner-folder,
     > [x-show] {
         display: block !important;
         max-height: none !important;
         height: auto !important;
+        border-left: none !important; /* Removes the root | lines */
+        padding-left: 5px !important; /* Keeps a slight indent for files */
+        margin-left: 0 !important;
     }
 
-    /* 2. Strip hover and click mechanics from the root header */
+    /* 2. Hide the chevron (targeting the icon outside the wrapper) */
+    > i,
+    > svg,
+    > .foldername-wrapper i,
+    > .foldername-wrapper svg {
+        display: none !important;
+    }
+
+    /* 3. Transform the text into prominent section headers */
     > .foldername-wrapper {
         pointer-events: none !important;
         cursor: default !important;
-        margin-top: 1.5rem !important;
+        margin-top: 2rem !important; /* Space between categories */
+        margin-bottom: 0.5rem !important;
+        padding-left: 0 !important; 
         background-color: transparent !important;
         
-        /* 3. Hide the chevron icon */
-        i {
-            display: none !important;
-        }
+        /* Typography upgrades */
+        font-size: 1rem !important; 
+        font-weight: 900 !important; 
+        color: var(--text-normal) !important; /* Uses your theme's bright text color */
+        letter-spacing: 2px !important;
     }
 }
