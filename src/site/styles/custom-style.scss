@@ -516,17 +516,27 @@ input[type="checkbox"]:checked {
     letter-spacing: 2px !important;
 }
 
-/* 2. REVISED: Allow sub-folders to wrap safely without clipping text */
-.filetree-sidebar .inner-folder > .foldername-wrapper {
+/* =========================================
+   SIDEBAR HOTFIX (ANTI-SQUISH & WIDTH FIX)
+========================================= */
+
+/* 1. Force folders and files to take full width instead of shrink-wrapping */
+.filetree-sidebar .inner-folder > .foldername-wrapper,
+.filetree-sidebar .notelink a {
     display: flex !important;
-    align-items: flex-start !important; /* Keeps icons aligned to the top line */
-    white-space: normal !important; /* Lets long names wrap to the next line */
-    padding-right: 15px !important; /* Adds breathing room on the right edge */
+    width: 100% !important; /* Kills the squished shrink-wrap bug */
+    align-items: flex-start !important; /* Keeps icons pinned to the top line */
+    white-space: normal !important; 
+    line-height: 1.4 !important; /* Adds breathing room between wrapped lines */
+    box-sizing: border-box !important;
 }
 
-/* Prevent the chevron and emojis from shrinking when text wraps */
-.filetree-sidebar .inner-folder > .foldername-wrapper i,
-.filetree-sidebar .inner-folder > .foldername-wrapper svg {
-    flex-shrink: 0 !important; 
-    margin-top: 2px !important; /* Nudges icons down to center with the text */
+/* 2. Lock icons on the left so text wraps cleanly beside them */
+.filetree-sidebar .inner-folder > .foldername-wrapper > i,
+.filetree-sidebar .inner-folder > .foldername-wrapper > svg,
+.filetree-sidebar .notelink a > i,
+.filetree-sidebar .notelink a > svg {
+    flex-shrink: 0 !important; /* Prevents the icons from being crushed */
+    margin-top: 3px !important; /* Optically aligns icon with the first line of text */
+    margin-right: 8px !important;
 }
