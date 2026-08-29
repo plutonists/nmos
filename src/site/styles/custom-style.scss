@@ -334,28 +334,46 @@ input[type="checkbox"]:checked {
 /* =========================================
    NMOS SECTIONS
 ========================================= */
-/* 1. Force ONLY top-level folders to stay open */
+/* 1. Force top-level folders to stay open */
+.sidebar-container > .folder > .folder-inner,
+.sidebar-container > .folder-outer > .folder-inner,
+.nav-view > .folder > .folder-inner,
 .nav-view > .folder-outer > .folder-inner,
-.nav-view > .folder-outer > [x-show="isOpen"] {
+.filetree > .folder > .folder-inner,
+.filetree > .folder-outer > .folder-inner {
     display: block !important;
 }
 
-/* 2. Turn ONLY top-level headers into static text */
-.nav-view > .folder-outer > .folder-header {
-    pointer-events: none; /* Disables clicking */
-    cursor: default;
+/* 2. Turn top-level headers into static text */
+.sidebar-container > .folder > .folder-header,
+.sidebar-container > .folder-outer > .folder-header,
+.nav-view > .folder > .folder-header,
+.nav-view > .folder-outer > .folder-header,
+.filetree > .folder > .folder-header,
+.filetree > .folder-outer > .folder-header {
+    pointer-events: none !important;
+    cursor: default !important;
     margin-top: 1.5rem;
-    padding-left: 0 !important; 
+    padding-left: 0 !important;
 }
 
-/* 3. Hide the dropdown arrows ONLY on top-level folders */
-.nav-view > .folder-outer > .folder-header > svg,
-.nav-view > .folder-outer > .folder-header > .folder-icon {
+/* 3. Hide the top-level dropdown arrows */
+.sidebar-container > .folder > .folder-header .folder-icon,
+.sidebar-container > .folder-outer > .folder-header .folder-icon,
+.nav-view > .folder > .folder-header .folder-icon,
+.nav-view > .folder-outer > .folder-header .folder-icon,
+.filetree > .folder > .folder-header .folder-icon,
+.filetree > .folder-outer > .folder-header .folder-icon {
     display: none !important;
 }
 
-/* 4. Style the top-level text to match your neon aesthetic */
-.nav-view > .folder-outer > .folder-header .folder-name {
+/* 4. Style the top-level text */
+.sidebar-container > .folder > .folder-header .folder-name,
+.sidebar-container > .folder-outer > .folder-header .folder-name,
+.nav-view > .folder > .folder-header .folder-name,
+.nav-view > .folder-outer > .folder-header .folder-name,
+.filetree > .folder > .folder-header .folder-name,
+.filetree > .folder-outer > .folder-header .folder-name {
     font-weight: 800;
     text-transform: uppercase;
     font-size: 0.9rem;
