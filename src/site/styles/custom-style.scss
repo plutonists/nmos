@@ -2,26 +2,46 @@
    NMOS DIGITAL GARDEN THEME
 ========================================= */
 
+/* --- Solid NMOS Sidebar Logo Colors --- */
+.nmos-red { color: #F82C66 !important; }
+.nmos-blue { color: #3577F9 !important; }
+.nmos-green { color: #17C555 !important; }
+.nmos-yellow { color: #FFBA01 !important; }
+
+.site-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-normal);
+}
+
+/* =========================================
+   1. MOBILE NAVBAR (FULL WIDTH OVERRIDE)
+========================================= */
+
 /* Force a compact, fixed top-bar and prevent horizontal scrolling */
 .navbar {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
-    right: 0 !important; 
-    width: 100% !important;
+    width: 100vw !important; /* Forces it to stretch to the screen edges */
+    max-width: 100vw !important;
     height: 65px !important; /* Strict compact height */
     margin: 0 !important;
     padding: 0 20px !important;
     background-color: var(--background-primary, #161618) !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    z-index: 999997 !important;
+    z-index: 999999 !important;
     box-sizing: border-box !important;
 }
 
 /* Override the template's vertical stacking to put logo and text side-by-side */
 .navbar-inner {
     height: 100% !important;
+    width: 100% !important;
     position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .navbar-inner > a {
@@ -40,34 +60,14 @@
     left: 0 !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
+    z-index: 10 !important;
 }
 
-/* Scale down the logo and text to fit the compact bar */
-.navbar .site-logo {
-    width: 32px !important;
-    min-width: 32px !important;
-    height: auto !important;
-}
+/* =========================================
+   2. STRICT LOGO SIZING (DESKTOP VS MOBILE)
+========================================= */
 
-.navbar-inner > a span {
-    font-size: 1.05rem !important;
-    white-space: nowrap !important;
-}
-
-/* Push the main reading area down so it clears the 65px header */
-@media (max-width: 1000px) {
-    .content, .page-content, .markdown-rendered {
-        margin-top: 70px !important; 
-    }
-}
-
-.site-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: var(--text-normal);
-}
-
-/* 1. Mobile Navbar Logo (Tiny) */
+/* Mobile Header Logo (Tiny) */
 .navbar .site-logo {
     width: 32px !important;
     min-width: 32px !important;
@@ -76,27 +76,63 @@
     object-fit: contain !important;
 }
 
-/* 2. Desktop Sidebar Logo (Standard) */
+.navbar-inner > a span {
+    font-size: 1.05rem !important;
+    white-space: nowrap !important;
+}
+
+/* Desktop Sidebar Logo (Standard) */
 .filetree-sidebar .site-logo {
-    width: 40px !important;
-    min-width: 40px !important;
-    max-width: 40px !important; 
+    width: 45px !important;
+    min-width: 45px !important;
+    max-width: 45px !important; 
     height: auto !important;
     object-fit: contain !important;
 }
 
-/* --- Solid NMOS Sidebar Logo Colors --- */
-.nmos-red { color: #F82C66 !important; }
-.nmos-blue { color: #3577F9 !important; }
-.nmos-green { color: #17C555 !important; }
-.nmos-yellow { color: #FFBA01 !important; }
+/* Push the main reading area down so it clears the 65px floating header */
+@media (max-width: 1000px) {
+    .content, .page-content, .markdown-rendered {
+        margin-top: 70px !important; 
+    }
+}
 
+/* =========================================
+   3. MOBILE OVERLAY & ANIMATIONS
+========================================= */
+
+/* Create a dark dimming effect for the main page */
+.fullpage-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important; 
+    z-index: 999998 !important; 
+}
+
+/* Force the sidebar to be fully opaque and sit strictly above the dark overlay */
+.filetree-wrapper {
+    background-color: #161618 !important; /* Matches your dark theme */
+    z-index: 999999 !important;
+}
+
+.filetree-sidebar {
+    background-color: transparent !important;
+    z-index: 999999 !important;
+}
+
+/* Alpine.js Slide Animations */
+.menu-transition {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.menu-hidden {
+    transform: translateX(-100%) !important;
+}
+.menu-visible {
+    transform: translateX(0) !important;
+}
 
 /* =========================================
    MODERN SIDEBAR OVERHAUL
 ========================================= */
 
-/* 1. Style Folders as Interactive Category Headers */
 .filetree-sidebar .foldername-wrapper {
     text-transform: uppercase;
     font-size: 0.75rem;
@@ -105,21 +141,19 @@
     color: #888;
     padding: 10px 10px !important;
     margin-top: 8px;
-    cursor: pointer; /* Turns the cursor into a pointing hand */
+    cursor: pointer;
     display: flex;
     align-items: center;
     border-radius: 6px;
     transition: all 0.2s ease;
 }
 
-/* 2. Hover State for Folders (NMOS Blue) */
 .filetree-sidebar .foldername-wrapper:hover {
     color: #3577F9 !important; 
     background-color: rgba(53, 119, 249, 0.08) !important;
-    padding-left: 14px !important; /* Subtle indent effect when hovered */
+    padding-left: 14px !important; 
 }
 
-/* 3. Style the Chevron Icons */
 .filetree-sidebar .folder i {
     width: 16px;
     height: 16px;
@@ -128,18 +162,14 @@
     transition: color 0.2s ease;
 }
 
-/* 4. Open State Indicator (NMOS Yellow) */
-/* Targets the specific 'down' arrow when a folder is clicked open */
 .filetree-sidebar .folder i[data-lucide="chevron-down"] {
     color: #FFBA01 !important; 
 }
 
-/* Ensure the chevrons match the blue text when hovering over the row */
 .filetree-sidebar .foldername-wrapper:hover i {
     color: #3577F9 !important;
 }
 
-/* 5. Flatten the nesting and add a subtle connecting line */
 .filetree-sidebar .filelist {
     margin-left: 0 !important;
     padding-left: 10px !important;
@@ -149,26 +179,23 @@
     padding-left: 0 !important;
 }
 
-/* 6. Style note links as sleek menu items, allowing long text to wrap */
 .filetree-sidebar .notelink {
     padding: 6px 12px 6px 15px !important;
     margin: 2px 0;
     border-radius: 0 6px 6px 0;
     font-size: 0.9rem;
     position: relative;
-    left: -1px; /* Aligns the hover border precisely over the connecting line */
+    left: -1px; 
     transition: all 0.2s ease;
     white-space: normal !important;
     word-wrap: break-word !important;
 }
 
-/* 7. Hover state: Light background with NMOS Red accent */
 .filetree-sidebar .notelink:hover {
     border-left: 2px solid #F82C66 !important; 
     background-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* 8. Active state: High-visibility NMOS Green */
 .filetree-sidebar .active-note {
     border-left: 3px solid #17C555 !important;
     background-color: rgba(23, 197, 85, 0.1) !important;
@@ -183,7 +210,6 @@
    MAIN READING AREA ACCENTS
 ========================================= */
 
-/* Links: NMOS Blue to Red Hover */
 .markdown-rendered a,
 .markdown-rendered a.external-link,
 .markdown-rendered a.internal-link {
@@ -196,23 +222,19 @@
     color: #F82C66 !important;
 }
 
-/* Text Selection: Transparent NMOS Green */
 ::selection {
     background-color: rgba(23, 197, 85, 0.4) !important;
 }
 
-/* Checkboxes: NMOS Green */
 input[type="checkbox"]:checked {
     background-color: #17C555 !important;
     border-color: #17C555 !important;
 }
 
-/* Blockquotes: NMOS Yellow */
 .markdown-rendered blockquote {
     border-left: 3px solid #FFBA01 !important;
 }
 
-/* Glowing Dividers (HR): NMOS Yellow with Backlight Glow */
 .markdown-rendered hr {
     border-top: 2px solid #FFBA01 !important;
     box-shadow: 0 0 10px rgba(255, 186, 1, 0.4), 
@@ -220,57 +242,28 @@ input[type="checkbox"]:checked {
     opacity: 1 !important;
 }
 
-/* Tags: Glowing hardware aesthetic */
 .markdown-rendered .tag {
     color: #FFBA01 !important;
     border: 1px solid rgba(255, 186, 1, 0.4) !important;
     background-color: transparent !important;
 }
 
-/* Comprehensive Callouts Mapping */
-.callout[data-callout="note"],
-.callout[data-callout="info"],
-.callout[data-callout="todo"],
-.callout[data-callout="abstract"],
-.callout[data-callout="summary"],
-.callout[data-callout="tldr"] {
-    --callout-color: 53, 119, 249 !important; /* NMOS Blue */
+.callout[data-callout="note"], .callout[data-callout="info"], .callout[data-callout="todo"], .callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"] {
+    --callout-color: 53, 119, 249 !important; 
+}
+.callout[data-callout="tip"], .callout[data-callout="hint"], .callout[data-callout="important"], .callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"], .callout[data-callout="example"] {
+    --callout-color: 23, 197, 85 !important; 
+}
+.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"], .callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] {
+    --callout-color: 255, 186, 1 !important; 
+}
+.callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"], .callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="bug"] {
+    --callout-color: 248, 44, 102 !important; 
+}
+.callout[data-callout="quote"], .callout[data-callout="glyph"] {
+    --callout-color: 160, 160, 160 !important; 
 }
 
-.callout[data-callout="tip"],
-.callout[data-callout="hint"],
-.callout[data-callout="important"],
-.callout[data-callout="success"],
-.callout[data-callout="check"],
-.callout[data-callout="done"],
-.callout[data-callout="example"] {
-    --callout-color: 23, 197, 85 !important; /* NMOS Green */
-}
-
-.callout[data-callout="question"],
-.callout[data-callout="help"],
-.callout[data-callout="faq"],
-.callout[data-callout="warning"],
-.callout[data-callout="caution"],
-.callout[data-callout="attention"] {
-    --callout-color: 255, 186, 1 !important; /* NMOS Yellow */
-}
-
-.callout[data-callout="failure"],
-.callout[data-callout="fail"],
-.callout[data-callout="missing"],
-.callout[data-callout="danger"],
-.callout[data-callout="error"],
-.callout[data-callout="bug"] {
-    --callout-color: 248, 44, 102 !important; /* NMOS Red */
-}
-
-.callout[data-callout="quote"],
-.callout[data-callout="glyph"] {
-    --callout-color: 160, 160, 160 !important; /* Neutral Gray */
-}
-
-/* Inline Code: NMOS Pink/Red on dark background */
 .markdown-rendered code {
     color: #F82C66 !important; 
     background-color: rgba(248, 44, 102, 0.1) !important;
@@ -282,79 +275,61 @@ input[type="checkbox"]:checked {
     background-color: transparent !important;
 }
 
-
 /* =========================================
    MULTI-COLORED NMOS HEADERS & GLOWS
 ========================================= */
 
-/* H1: NMOS Yellow */
 .markdown-rendered h1 {
     color: #FFBA01 !important;
-    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
-                 0 0 25px rgba(255, 186, 1, 0.15);
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 0 0 25px rgba(255, 186, 1, 0.15);
     transition: text-shadow 0.3s ease;
 }
 .markdown-rendered h1:hover {
-    text-shadow: 0 0 18px rgba(255, 186, 1, 0.7), 
-                 0 0 35px rgba(255, 186, 1, 0.3);
+    text-shadow: 0 0 18px rgba(255, 186, 1, 0.7), 0 0 35px rgba(255, 186, 1, 0.3);
 }
 
-/* H2: NMOS Blue */
 .markdown-rendered h2 {
     color: #3577F9 !important;
-    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
-                 0 0 25px rgba(53, 119, 249, 0.15);
+    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 0 0 25px rgba(53, 119, 249, 0.15);
     transition: text-shadow 0.3s ease;
 }
 .markdown-rendered h2:hover {
-    text-shadow: 0 0 18px rgba(53, 119, 249, 0.7), 
-                 0 0 35px rgba(53, 119, 249, 0.3);
+    text-shadow: 0 0 18px rgba(53, 119, 249, 0.7), 0 0 35px rgba(53, 119, 249, 0.3);
 }
 
-/* H3: NMOS Green */
 .markdown-rendered h3 {
     color: #17C555 !important;
-    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
-                 0 0 25px rgba(23, 197, 85, 0.15);
+    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 0 0 25px rgba(23, 197, 85, 0.15);
     transition: text-shadow 0.3s ease;
 }
 .markdown-rendered h3:hover {
-    text-shadow: 0 0 18px rgba(23, 197, 85, 0.7), 
-                 0 0 35px rgba(23, 197, 85, 0.3);
+    text-shadow: 0 0 18px rgba(23, 197, 85, 0.7), 0 0 35px rgba(23, 197, 85, 0.3);
 }
 
-/* H4: NMOS Red */
 .markdown-rendered h4 {
     color: #F82C66 !important;
-    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
-                 0 0 25px rgba(248, 44, 102, 0.15);
+    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 0 0 25px rgba(248, 44, 102, 0.15);
     transition: text-shadow 0.3s ease;
 }
 .markdown-rendered h4:hover {
-    text-shadow: 0 0 18px rgba(248, 44, 102, 0.7), 
-                 0 0 35px rgba(248, 44, 102, 0.3);
+    text-shadow: 0 0 18px rgba(248, 44, 102, 0.7), 0 0 35px rgba(248, 44, 102, 0.3);
 }
 
 /* =========================================
    RIGHT SIDEBAR TABLE OF CONTENTS
 ========================================= */
 
-/* Add a subtle structural line to the left of the contents */
 .toc {
     border-left: 1px solid rgba(255, 255, 255, 0.1);
     padding-left: 15px !important;
     margin-top: 20px;
 }
-
-/* Base style for the contents links */
 .toc a {
     color: #888 !important;
     font-size: 0.85rem;
     text-decoration: none !important;
     transition: all 0.2s ease;
 }
-
-/* Hover effect: Glowing NMOS Yellow */
 .toc a:hover {
     color: #FFBA01 !important;
     text-shadow: 0 0 8px rgba(255, 186, 1, 0.5);
@@ -371,8 +346,6 @@ input[type="checkbox"]:checked {
     margin-bottom: 25px;
     background-color: rgba(255, 255, 255, 0.02);
 }
-
-/* NMOS Blue header background with a subtle glow */
 .markdown-rendered th {
     background-color: rgba(53, 119, 249, 0.15) !important;
     color: #3577F9 !important;
@@ -383,15 +356,11 @@ input[type="checkbox"]:checked {
     border-bottom: 2px solid #3577F9;
     text-shadow: 0 0 8px rgba(53, 119, 249, 0.3);
 }
-
-/* Clean cell padding and borders */
 .markdown-rendered td {
     padding: 10px 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     color: #CCC;
 }
-
-/* Subtle hover effect for table rows */
 .markdown-rendered tr:hover td {
     background-color: rgba(255, 255, 255, 0.05);
 }
@@ -400,40 +369,35 @@ input[type="checkbox"]:checked {
    STATIC ROOT FOLDERS (VISUAL OVERHAUL)
 ========================================= */
 
-/* 1. Force open root contents and clear root tree lines */
 .filetree-sidebar .level-0 > [x-show] {
     display: block !important;
 }
 .filetree-sidebar .level-0 {
     border-left: none !important;
-    /* Faint separator before each section */
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
     margin-top: 1.5rem !important;
     padding-top: 1rem !important;
 }
 
-/* Faint separator for the standalone notes block at the top */
 .root-notes-wrapper {
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
     margin-top: 1.5rem !important;
     padding-top: 1rem !important;
 }
 
-/* 2. Transform typography ONLY for root folders (Level 0) */
 .filetree-sidebar .level-0 > .foldername-wrapper,
 .filetree-sidebar .level-0 > .foldername-wrapper .foldername {
-    cursor: default !important; /* Allows hover effects to work again */
+    cursor: default !important; 
     margin-bottom: 0.5rem !important;
     padding-left: 0 !important; 
     background-color: transparent !important;
-    font-size: 1.25rem !important; /* Increased Size */
+    font-size: 1.25rem !important; 
     font-weight: 900 !important; 
     letter-spacing: 2px !important;
-    text-transform: uppercase !important; /* Forced Uppercase */
-    transition: text-shadow 0.3s ease !important; /* Smooth glow transition */
+    text-transform: uppercase !important; 
+    transition: text-shadow 0.3s ease !important; 
 }
 
-/* 3. Hide chevron ONLY for root folders */
 .filetree-sidebar .level-0 > .foldername-wrapper i,
 .filetree-sidebar .level-0 > .foldername-wrapper svg {
     display: none !important;
@@ -470,7 +434,7 @@ input[type="checkbox"]:checked {
 
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::before {
     content: "OTHER";
-    font-size: 1.25rem !important; /* Match new size */
+    font-size: 1.25rem !important; 
     color: #17C555 !important;
     text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
     transition: text-shadow 0.3s ease !important;
@@ -481,7 +445,7 @@ input[type="checkbox"]:checked {
 
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::after {
     content: "STUFF";
-    font-size: 1.25rem !important; /* Match new size */
+    font-size: 1.25rem !important; 
     color: #FFBA01 !important;
     text-shadow: 0 0 10px rgba(255, 186, 1, 0.3) !important;
     transition: text-shadow 0.3s ease !important;
@@ -490,11 +454,11 @@ input[type="checkbox"]:checked {
     text-shadow: 0 0 20px rgba(255, 186, 1, 0.9), 0 0 35px rgba(255, 186, 1, 0.6) !important;
 }
 
-/* Hide original text for OTHER STUFF */
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper span,
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper .folder-name {
     display: none !important;
 }
+
 /* =========================================
    MASTER SIDEBAR LAYOUT, SPACING & WRAP FIX
 ========================================= */
@@ -590,48 +554,4 @@ input[type="checkbox"]:checked {
 .sidebar-left::-webkit-scrollbar:horizontal {
     height: 0px !important;
     display: none !important;
-}
-
-
-/* Center mobile navbar logo and text */
-.navbar-inner {
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important;
-}
-
-/* Detach hamburger menu from flow to prevent pushing the logo */
-.navbar-inner > span:first-child {
-    position: absolute !important;
-    left: 15px !important;
-    margin-right: 0 !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
-}
-
-
-/* 1. Create a dark dimming effect for the main page */
-.fullpage-overlay {
-    background-color: rgba(0, 0, 0, 0.7) !important; 
-    z-index: 999998 !important; 
-}
-
-/* 2. Force the sidebar to be fully opaque and sit strictly above the dark overlay */
-.filetree-wrapper {
-    background-color: #161618 !important; /* Matches your dark theme */
-    z-index: 999999 !important;
-}
-
-.filetree-sidebar {
-    background-color: transparent !important;
-    z-index: 999999 !important;
-}
-
-/* 3. Keep the top mobile navigation bar bright and layered above the overlay */
-.navbar {
-    position: relative !important;
-    z-index: 999999 !important;
-    background-color: #161618 !important;
 }
