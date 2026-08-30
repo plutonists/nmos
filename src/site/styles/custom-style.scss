@@ -529,3 +529,34 @@ input[type="checkbox"]:checked {
     height: 0px !important;
     display: none !important;
 }
+
+
+/* Center mobile navbar logo and text */
+.navbar-inner {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+/* Detach hamburger menu from flow to prevent pushing the logo */
+.navbar-inner > span:first-child {
+    position: absolute !important;
+    left: 15px !important;
+    margin-right: 0 !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+}
+
+
+/* Force mobile sidebar to block background content */
+.filetree-sidebar {
+    background-color: var(--background-primary, #161618) !important;
+    z-index: 9999 !important;
+}
+
+/* Ensure overlay sits just beneath the sidebar but above page content */
+.fullpage-overlay {
+    z-index: 9998 !important;
+}
