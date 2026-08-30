@@ -106,21 +106,43 @@
    3. MOBILE OVERLAY & ANIMATIONS
 ========================================= */
 
-/* Create a dark dimming effect for the main page */
+/* Dimming effect and freeze background scrolling through the dark area */
 .fullpage-overlay {
     background-color: rgba(0, 0, 0, 0.7) !important; 
     z-index: 999998 !important; 
+    touch-action: none !important; /* Blocks scroll bleed when swiping the dim overlay */
 }
 
-/* Force the sidebar to be fully opaque and sit strictly above the dark overlay */
+/* Trap the scroll strictly inside this fixed container */
 .filetree-wrapper {
-    background-color: #161618 !important; /* Matches your dark theme */
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    height: 100vh !important;
+    height: 100dvh !important; /* Native mobile viewport height (accounts for address bar) */
+    background-color: #161618 !important;
     z-index: 999999 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
 }
 
+/* iOS Safari Hack: Force 1px scrollability to absorb touch events and stop bleed */
 .filetree-sidebar {
     background-color: transparent !important;
     z-index: 999999 !important;
+    min-height: calc(100vh + 1px) !important; 
+    min-height: calc(100dvh + 1px) !important;
+}
+
+/* Alpine.js Slide Animations (Keep these as they were) */
+.menu-transition {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.menu-hidden {
+    transform: translateX(-100%) !important;
+}
+.menu-visible {
+    transform: translateX(0) !important;
 }
 
 /* Alpine.js Slide Animations */
