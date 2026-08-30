@@ -1,1 +1,537 @@
+/* =========================================
+   NMOS DIGITAL GARDEN THEME
+========================================= */
 
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
+.site-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--text-normal);
+}
+
+.site-logo {
+    max-width: 100px; 
+    height: auto;
+}
+
+/* --- Solid NMOS Sidebar Logo Colors --- */
+.nmos-red { color: #F82C66 !important; }
+.nmos-blue { color: #3577F9 !important; }
+.nmos-green { color: #17C555 !important; }
+.nmos-yellow { color: #FFBA01 !important; }
+
+
+/* =========================================
+   MODERN SIDEBAR OVERHAUL
+========================================= */
+
+/* 1. Style Folders as Interactive Category Headers */
+.filetree-sidebar .foldername-wrapper {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    color: #888;
+    padding: 10px 10px !important;
+    margin-top: 8px;
+    cursor: pointer; /* Turns the cursor into a pointing hand */
+    display: flex;
+    align-items: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+/* 2. Hover State for Folders (NMOS Blue) */
+.filetree-sidebar .foldername-wrapper:hover {
+    color: #3577F9 !important; 
+    background-color: rgba(53, 119, 249, 0.08) !important;
+    padding-left: 14px !important; /* Subtle indent effect when hovered */
+}
+
+/* 3. Style the Chevron Icons */
+.filetree-sidebar .folder i {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+/* 4. Open State Indicator (NMOS Yellow) */
+/* Targets the specific 'down' arrow when a folder is clicked open */
+.filetree-sidebar .folder i[data-lucide="chevron-down"] {
+    color: #FFBA01 !important; 
+}
+
+/* Ensure the chevrons match the blue text when hovering over the row */
+.filetree-sidebar .foldername-wrapper:hover i {
+    color: #3577F9 !important;
+}
+
+/* 5. Flatten the nesting and add a subtle connecting line */
+.filetree-sidebar .filelist {
+    margin-left: 0 !important;
+    padding-left: 10px !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+.inner-folder {
+    padding-left: 0 !important;
+}
+
+/* 6. Style note links as sleek menu items, allowing long text to wrap */
+.filetree-sidebar .notelink {
+    padding: 6px 12px 6px 15px !important;
+    margin: 2px 0;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.9rem;
+    position: relative;
+    left: -1px; /* Aligns the hover border precisely over the connecting line */
+    transition: all 0.2s ease;
+    white-space: normal !important;
+    word-wrap: break-word !important;
+}
+
+/* 7. Hover state: Light background with NMOS Red accent */
+.filetree-sidebar .notelink:hover {
+    border-left: 2px solid #F82C66 !important; 
+    background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* 8. Active state: High-visibility NMOS Green */
+.filetree-sidebar .active-note {
+    border-left: 3px solid #17C555 !important;
+    background-color: rgba(23, 197, 85, 0.1) !important;
+}
+.filetree-sidebar .active-note a {
+    color: #17C555 !important;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   MAIN READING AREA ACCENTS
+========================================= */
+
+/* Links: NMOS Blue to Red Hover */
+.markdown-rendered a,
+.markdown-rendered a.external-link,
+.markdown-rendered a.internal-link {
+    color: #3577F9 !important;
+    transition: color 0.2s ease-in-out;
+}
+.markdown-rendered a:hover,
+.markdown-rendered a.external-link:hover,
+.markdown-rendered a.internal-link:hover {
+    color: #F82C66 !important;
+}
+
+/* Text Selection: Transparent NMOS Green */
+::selection {
+    background-color: rgba(23, 197, 85, 0.4) !important;
+}
+
+/* Checkboxes: NMOS Green */
+input[type="checkbox"]:checked {
+    background-color: #17C555 !important;
+    border-color: #17C555 !important;
+}
+
+/* Blockquotes: NMOS Yellow */
+.markdown-rendered blockquote {
+    border-left: 3px solid #FFBA01 !important;
+}
+
+/* Glowing Dividers (HR): NMOS Yellow with Backlight Glow */
+.markdown-rendered hr {
+    border-top: 2px solid #FFBA01 !important;
+    box-shadow: 0 0 10px rgba(255, 186, 1, 0.4), 
+                 0 0 20px rgba(255, 186, 1, 0.15) !important;
+    opacity: 1 !important;
+}
+
+/* Tags: Glowing hardware aesthetic */
+.markdown-rendered .tag {
+    color: #FFBA01 !important;
+    border: 1px solid rgba(255, 186, 1, 0.4) !important;
+    background-color: transparent !important;
+}
+
+/* Comprehensive Callouts Mapping */
+.callout[data-callout="note"],
+.callout[data-callout="info"],
+.callout[data-callout="todo"],
+.callout[data-callout="abstract"],
+.callout[data-callout="summary"],
+.callout[data-callout="tldr"] {
+    --callout-color: 53, 119, 249 !important; /* NMOS Blue */
+}
+
+.callout[data-callout="tip"],
+.callout[data-callout="hint"],
+.callout[data-callout="important"],
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"],
+.callout[data-callout="example"] {
+    --callout-color: 23, 197, 85 !important; /* NMOS Green */
+}
+
+.callout[data-callout="question"],
+.callout[data-callout="help"],
+.callout[data-callout="faq"],
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"] {
+    --callout-color: 255, 186, 1 !important; /* NMOS Yellow */
+}
+
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"] {
+    --callout-color: 248, 44, 102 !important; /* NMOS Red */
+}
+
+.callout[data-callout="quote"],
+.callout[data-callout="glyph"] {
+    --callout-color: 160, 160, 160 !important; /* Neutral Gray */
+}
+
+/* Inline Code: NMOS Pink/Red on dark background */
+.markdown-rendered code {
+    color: #F82C66 !important; 
+    background-color: rgba(248, 44, 102, 0.1) !important;
+    border-radius: 4px;
+    padding: 2px 5px;
+}
+.markdown-rendered pre code {
+    color: inherit !important;
+    background-color: transparent !important;
+}
+
+
+/* =========================================
+   MULTI-COLORED NMOS HEADERS & GLOWS
+========================================= */
+
+/* H1: NMOS Yellow */
+.markdown-rendered h1 {
+    color: #FFBA01 !important;
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
+                 0 0 25px rgba(255, 186, 1, 0.15);
+    transition: text-shadow 0.3s ease;
+}
+.markdown-rendered h1:hover {
+    text-shadow: 0 0 18px rgba(255, 186, 1, 0.7), 
+                 0 0 35px rgba(255, 186, 1, 0.3);
+}
+
+/* H2: NMOS Blue */
+.markdown-rendered h2 {
+    color: #3577F9 !important;
+    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
+                 0 0 25px rgba(53, 119, 249, 0.15);
+    transition: text-shadow 0.3s ease;
+}
+.markdown-rendered h2:hover {
+    text-shadow: 0 0 18px rgba(53, 119, 249, 0.7), 
+                 0 0 35px rgba(53, 119, 249, 0.3);
+}
+
+/* H3: NMOS Green */
+.markdown-rendered h3 {
+    color: #17C555 !important;
+    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
+                 0 0 25px rgba(23, 197, 85, 0.15);
+    transition: text-shadow 0.3s ease;
+}
+.markdown-rendered h3:hover {
+    text-shadow: 0 0 18px rgba(23, 197, 85, 0.7), 
+                 0 0 35px rgba(23, 197, 85, 0.3);
+}
+
+/* H4: NMOS Red */
+.markdown-rendered h4 {
+    color: #F82C66 !important;
+    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
+                 0 0 25px rgba(248, 44, 102, 0.15);
+    transition: text-shadow 0.3s ease;
+}
+.markdown-rendered h4:hover {
+    text-shadow: 0 0 18px rgba(248, 44, 102, 0.7), 
+                 0 0 35px rgba(248, 44, 102, 0.3);
+}
+
+/* =========================================
+   RIGHT SIDEBAR TABLE OF CONTENTS
+========================================= */
+
+/* Add a subtle structural line to the left of the contents */
+.toc {
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    padding-left: 15px !important;
+    margin-top: 20px;
+}
+
+/* Base style for the contents links */
+.toc a {
+    color: #888 !important;
+    font-size: 0.85rem;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+}
+
+/* Hover effect: Glowing NMOS Yellow */
+.toc a:hover {
+    color: #FFBA01 !important;
+    text-shadow: 0 0 8px rgba(255, 186, 1, 0.5);
+}
+
+/* =========================================
+   NMOS TABLE STYLING
+========================================= */
+
+.markdown-rendered table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* NMOS Blue header background with a subtle glow */
+.markdown-rendered th {
+    background-color: rgba(53, 119, 249, 0.15) !important;
+    color: #3577F9 !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px;
+    border-bottom: 2px solid #3577F9;
+    text-shadow: 0 0 8px rgba(53, 119, 249, 0.3);
+}
+
+/* Clean cell padding and borders */
+.markdown-rendered td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #CCC;
+}
+
+/* Subtle hover effect for table rows */
+.markdown-rendered tr:hover td {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================
+   STATIC ROOT FOLDERS (VISUAL OVERHAUL)
+========================================= */
+
+.filetree-sidebar .folder:not(.inner-folder .folder) {
+    
+    /* 1. Force open and remove the root vertical tree lines */
+    > .filelist,
+    > .inner-folder,
+    > [x-show] {
+        display: block !important;
+        max-height: none !important;
+        height: auto !important;
+        border-left: none !important; /* Removes the root | lines */
+        padding-left: 5px !important; /* Keeps a slight indent for files */
+        margin-left: 0 !important;
+    }
+
+    /* 2. Hide the chevron (targeting the icon outside the wrapper) */
+    > i,
+    > svg,
+    > .foldername-wrapper i,
+    > .foldername-wrapper svg {
+        display: none !important;
+    }
+
+    /* 3. Transform the text into prominent section headers */
+    > .foldername-wrapper {
+        pointer-events: none !important;
+        cursor: default !important;
+        margin-top: 2rem !important; /* Space between categories */
+        margin-bottom: 0.5rem !important;
+        padding-left: 0 !important; 
+        background-color: transparent !important;
+        
+        /* Typography upgrades */
+        font-size: 1rem !important; 
+        font-weight: 900 !important; 
+        color: var(--text-normal) !important; /* Uses your theme's bright text color */
+        letter-spacing: 2px !important;
+    }
+}
+/* =========================================
+   ROOT FOLDER COLORS & GLOWS (FIXED WRAPPERS)
+========================================= */
+
+/* 1. First Root Block: NOTES (NMOS Red) */
+.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    color: #F82C66 !important;
+    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
+                 0 0 25px rgba(248, 44, 102, 0.15) !important;
+}
+
+/* 2. Second Root Block: MEDIA (NMOS Blue) */
+.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    color: #3577F9 !important;
+    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
+                 0 0 25px rgba(53, 119, 249, 0.15) !important;
+}
+
+/* 3. Third Root Block: OTHER STUFF (NMOS Green/Yellow Split) */
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    /* Hide the original all-red text */
+    font-size: 0 !important; 
+    color: transparent !important;
+    text-shadow: none !important;
+    
+}
+
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::before {
+    /* Inject 'OTHER' in NMOS Green */
+    content: "OTHER";
+    font-size: 1rem !important;
+    color: #17C555 !important;
+    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
+                 0 0 25px rgba(23, 197, 85, 0.15) !important;
+}
+
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::after {
+    /* Inject 'STUFF' in NMOS Yellow */
+    content: "STUFF";
+    font-size: 1rem !important;
+    color: #FFBA01 !important;
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
+                 0 0 25px rgba(255, 186, 1, 0.15) !important;
+}
+
+
+/* =========================================
+   MASTER SIDEBAR LAYOUT, SPACING & WRAP FIX
+========================================= */
+
+/* 1. Global Box Sizing: Forbid padding from blowing out the width */
+.filetree-sidebar, .filetree-sidebar * {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+}
+
+/* 2. Hide horizontal scrollbar forcefully on all parent wrappers */
+.filetree-wrapper, .sidebar, .sidebar-left, .filetree-sidebar {
+    overflow-x: hidden !important;
+}
+
+/* 3. Reclaim Space & Fix OTHER STUFF Gap */
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper span,
+.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper .folder-name {
+    display: none !important;
+}
+
+.filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    padding-left: 5px !important; /* Reclaims 15px of space */
+    justify-content: flex-start !important;
+    text-align: left !important;
+    gap: 0.4rem !important; 
+}
+
+.filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
+.filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
+    padding-left: 5px !important; /* Reclaims 15px of space */
+    margin-left: 0 !important;
+}
+
+/* 4. Safe Text Wrapping & Flex Layout */
+.filetree-sidebar .foldername-wrapper,
+.filetree-sidebar .notelink {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+    padding-right: 10px !important; 
+}
+
+.filetree-sidebar .foldername,
+.filetree-sidebar .notelink a {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    flex: 1 1 0% !important; 
+    min-width: 0 !important; 
+    line-height: 1.4 !important;
+}
+
+/* 5. Icon Protection */
+.filetree-sidebar .foldername-wrapper > i,
+.filetree-sidebar .foldername-wrapper > svg,
+.filetree-sidebar .notelink i,
+.filetree-sidebar .notelink svg {
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+    margin-right: 6px !important;
+}
+
+/* =========================================
+   SIDEBAR POLISH, HOVERS & CAPS
+========================================= */
+
+/* Force Notes and Media back to ALL CAPS */
+.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper,
+.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    text-transform: uppercase !important;
+    letter-spacing: 2px !important;
+}
+
+/* Demote Nested Folders to Title Case */
+.filetree-sidebar .inner-folder .foldername-wrapper {
+    text-transform: none !important; 
+    font-weight: 700 !important;
+    letter-spacing: normal !important;
+    color: #999 !important; 
+    font-size: 0.85rem !important;
+}
+
+/* Neutralize File Links and Add Hover Glow */
+.filetree-sidebar .notelink a {
+    color: #AAA !important; 
+    font-weight: 500 !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease !important;
+}
+.filetree-sidebar .notelink:hover a {
+    color: #F82C66 !important; 
+    text-shadow: 0 0 8px rgba(248, 44, 102, 0.4) !important;
+}
+
+/* Clean up the Nested Guide Lines */
+.filetree-sidebar .filelist,
+.filetree-sidebar .inner-folder {
+    border-left: none !important; 
+}
+
+/* Active State High-Contrast NMOS Green */
+.filetree-sidebar .active-note {
+    background-color: rgba(23, 197, 85, 0.15) !important;
+    border-left: 3px solid #17C555 !important;
+}
+.filetree-sidebar .active-note a {
+    color: #17C555 !important;
+    font-weight: 800 !important;
+    text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
+}
+.filetree-sidebar .active-note svg,
+.filetree-sidebar .active-note i {
+    color: #17C555 !important; 
+    opacity: 1 !important;
+}
