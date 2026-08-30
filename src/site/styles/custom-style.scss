@@ -552,29 +552,42 @@ input[type="checkbox"]:checked {
 
 
 /* =========================================
-   SIDEBAR WIDTH & STRUCTURAL BALANCE
+   SIDEBAR WIDTH & STRUCTURAL BALANCE (FORCED)
 ========================================= */
 
-/* 1. Widen the entire sidebar container to fit the text */
-:root {
-    --sidebar-width: 320px !important; /* Bumps up the master width */
+/* 1. Target the body to overpower the theme's default variable */
+body {
+    --sidebar-width: 320px !important;
 }
 
-/* 2. Reclaim horizontal space by reducing nested folder indentation */
+/* 2. Physically stretch the layout containers */
+.filetree-wrapper, 
+.sidebar, 
+.sidebar-left {
+    width: 320px !important;
+    min-width: 320px !important;
+}
+
+/* 3. Reclaim horizontal space by reducing nested folder indentation */
 .filetree-sidebar .inner-folder {
-    margin-left: 12px !important; /* Shrinks the empty space on the left */
+    margin-left: 12px !important;
 }
 
-/* 3. Pin chevrons and icons strictly to the top line of wrapped text */
+/* 4. Forbid sub-folders from wrapping (overrides the Anti-Squish rule) */
+.filetree-sidebar .inner-folder > .foldername-wrapper {
+    white-space: nowrap !important; 
+}
+
+/* 5. Pin chevrons and icons strictly to the top line */
 .filetree-sidebar .foldername-wrapper {
     align-items: flex-start !important;
 }
 .filetree-sidebar .foldername-wrapper > i,
 .filetree-sidebar .foldername-wrapper > svg {
-    margin-top: 4px !important; /* Nudges the icon down to align with the first line */
+    margin-top: 4px !important;
 }
 
-/* 4. Add vertical breathing room between the main root categories */
+/* 6. Add vertical breathing room between the main root categories */
 .filetree-sidebar > .folder {
     margin-bottom: 24px !important; 
 }
