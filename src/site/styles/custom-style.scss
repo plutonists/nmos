@@ -552,30 +552,35 @@ input[type="checkbox"]:checked {
 
 
 /* =========================================
-   SIDEBAR WIDTH & STRUCTURAL BALANCE (FORCED)
+   SIDEBAR FIT & PADDING OPTIMIZATION
 ========================================= */
 
-/* 1. Target the body to overpower the theme's default variable */
-body {
-    --sidebar-width: 320px !important;
-}
-
-/* 2. Physically stretch the layout containers */
+/* 1. Restore fluid width to kill the scrollbar */
 .filetree-wrapper, 
 .sidebar, 
 .sidebar-left {
-    width: 320px !important;
-    min-width: 320px !important;
+    width: 100% !important;
+    min-width: 0 !important;
 }
 
-/* 3. Reclaim horizontal space by reducing nested folder indentation */
-.filetree-sidebar .inner-folder {
-    margin-left: 12px !important;
+/* 2. Shift the root headers left to reclaim space */
+.filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
+    padding-left: 10px !important; /* Was 20px */
 }
 
-/* 4. Forbid sub-folders from wrapping (overrides the Anti-Squish rule) */
-.filetree-sidebar .inner-folder > .foldername-wrapper {
-    white-space: nowrap !important; 
+/* 3. Shift nested items left to match the headers */
+.filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
+.filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
+    padding-left: 10px !important; /* Was 20px, saving a massive 10px of space */
+}
+
+/* 4. Optimize sub-folder font size and restore safe wrapping */
+.filetree-sidebar .inner-folder .foldername-wrapper {
+    font-size: 0.8rem !important; /* Slightly smaller to fit the narrow column */
+    white-space: normal !important; /* Restores safe wrapping */
+    padding-right: 5px !important;
+    margin-left: 0 !important; 
 }
 
 /* 5. Pin chevrons and icons strictly to the top line */
@@ -584,7 +589,7 @@ body {
 }
 .filetree-sidebar .foldername-wrapper > i,
 .filetree-sidebar .foldername-wrapper > svg {
-    margin-top: 4px !important;
+    margin-top: 2px !important;
 }
 
 /* 6. Add vertical breathing room between the main root categories */
