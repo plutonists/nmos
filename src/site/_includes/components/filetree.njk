@@ -59,17 +59,22 @@
                 {% include "components/searchButton.njk" %}
             {%endif%}
 <div class="folder" x-data="{isOpen: true}">
-                {%- for fileOrFolderName, fileOrFolder in filetree -%}
-                    {% if fileOrFolder.isNote %}
-                        {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
-                    {% endif %}
-                {%- endfor -%}
-                {%- for fileOrFolderName, fileOrFolder in filetree -%}
-                    {% if fileOrFolder.isFolder %}
-                        {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
-                    {% endif %}
-                {%- endfor -%}
-            </div>
+    <!-- 1. Render Notes First (Wrapped to retain spacing) -->
+    <div class="root-notes-wrapper" style="margin-bottom: 1.5rem;">
+        {%- for fileOrFolderName, fileOrFolder in filetree -%}
+            {% if fileOrFolder.isNote %}
+                {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
+            {% endif %}
+        {%- endfor -%}
+    </div>
+
+    <!-- 2. Render Folders Second -->
+    {%- for fileOrFolderName, fileOrFolder in filetree -%}
+        {% if fileOrFolder.isFolder %}
+            {{menuItem(fileOrFolderName, fileOrFolder, 0, fileOrFolderName)}}
+        {% endif %}
+    {%- endfor -%}
+</div>
         </nav>
     </div>
 </div>
