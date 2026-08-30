@@ -2,18 +2,25 @@
    NMOS DIGITAL GARDEN THEME
 ========================================= */
 
+/* Force navbar to permanently float at the top and span full width */
 .navbar {
-    position: sticky !important;
+    position: fixed !important;
     top: 0 !important;
+    left: 0 !important;
     width: 100vw !important;
-    margin-left: calc(-50vw + 50%) !important;
-    margin-top: -15px !important; /* Pulls navbar up to cover top gap */
+    margin: 0 !important; /* Fixed positioning natively handles the edges */
     padding: 15px 20px !important;
-    background-color: var(--background-primary, #161618) !important;
+    background-color: #161618 !important; /* Match your dark theme */
     z-index: 999997 !important;
     box-sizing: border-box !important;
 }
 
+/* Push the main reading area down on mobile so it doesn't hide behind the floating navbar */
+@media (max-width: 1000px) {
+    .content, .page-content {
+        padding-top: 90px !important; 
+    }
+}
 .navbar-inner {
     position: relative !important;
     display: flex !important;
