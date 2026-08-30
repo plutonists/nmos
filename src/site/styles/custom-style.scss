@@ -550,10 +550,16 @@ input[type="checkbox"]:checked {
 }
 
 
-/* Force the mobile sidebar to the absolute highest layer to block main page lines */
+/* 1. Create a dark dimming effect for the main page */
+.fullpage-overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important; 
+    z-index: 999998 !important; 
+}
+
+/* 2. Force the sidebar to be fully opaque and sit strictly above the dark overlay */
 .filetree-wrapper {
-    background-color: #161618 !important; /* Forces a solid, opaque background */
-    z-index: 999999 !important; /* Overpowers any rogue lines in the reading view */
+    background-color: #161618 !important; /* Matches your dark theme */
+    z-index: 999999 !important;
 }
 
 .filetree-sidebar {
@@ -561,8 +567,9 @@ input[type="checkbox"]:checked {
     z-index: 999999 !important;
 }
 
-/* Make the background overlay transparent to stop the page from darkening */
-.fullpage-overlay {
-    background-color: transparent !important;
-    z-index: 999998 !important; /* Must sit exactly 1 layer beneath the wrapper */
+/* 3. Keep the top mobile navigation bar bright and layered above the overlay */
+.navbar {
+    position: relative !important;
+    z-index: 999999 !important;
+    background-color: #161618 !important;
 }
