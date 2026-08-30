@@ -338,125 +338,96 @@ input[type="checkbox"]:checked {
    STATIC ROOT FOLDERS (VISUAL OVERHAUL)
 ========================================= */
 
-.filetree-sidebar .folder:not(.inner-folder .folder) {
-    
-    /* 1. Force open and remove the root vertical tree lines */
-    > .filelist,
-    > .inner-folder,
-    > [x-show] {
-        display: block !important;
-        max-height: none !important;
-        height: auto !important;
-        border-left: none !important; /* Removes the root | lines */
-        padding-left: 5px !important; /* Keeps a slight indent for files */
-        margin-left: 0 !important;
-    }
-
-    /* 2. Hide the chevron (targeting the icon outside the wrapper) */
-    > i,
-    > svg,
-    > .foldername-wrapper i,
-    > .foldername-wrapper svg {
-        display: none !important;
-    }
-
-    /* 3. Transform the text into prominent section headers */
-    > .foldername-wrapper {
-        pointer-events: none !important;
-        cursor: default !important;
-        margin-top: 2rem !important; /* Space between categories */
-        margin-bottom: 0.5rem !important;
-        padding-left: 0 !important; 
-        background-color: transparent !important;
-        
-        /* Typography upgrades */
-        font-size: 1rem !important; 
-        font-weight: 900 !important; 
-        color: var(--text-normal) !important; /* Uses your theme's bright text color */
-        letter-spacing: 2px !important;
-    }
+/* 1. Force open and clear root tree lines */
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
+    display: block !important;
+    border-left: none !important;
+    padding-left: 5px !important;
 }
+
+/* 2. Hide chevron and transform typography for all root folders */
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper {
+    pointer-events: none !important;
+    cursor: default !important;
+    margin-top: 1.5rem !important; 
+    margin-bottom: 0.5rem !important;
+    padding-left: 0 !important; 
+    background-color: transparent !important;
+    font-size: 1rem !important; 
+    font-weight: 900 !important; 
+    color: var(--text-normal) !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+}
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper i,
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper svg {
+    display: none !important;
+}
+
 /* =========================================
-   ROOT FOLDER COLORS & GLOWS (FIXED WRAPPERS)
+   ROOT FOLDER COLORS & GLOWS
 ========================================= */
 
-/* 1. Root Block: NOTES (NMOS Red) */
-.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="notes"] > .foldername-wrapper {
+/* NOTES (NMOS Red) */
+.filetree-sidebar .inner-folder[data-folder-name="notes"] > .foldername-wrapper {
     color: #F82C66 !important;
-    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
-                 0 0 25px rgba(248, 44, 102, 0.15) !important;
+    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 0 0 25px rgba(248, 44, 102, 0.15) !important;
 }
 
-/* 2. Root Block: MEDIA (NMOS Blue) */
-.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="media"] > .foldername-wrapper {
+/* MEDIA (NMOS Blue) */
+.filetree-sidebar .inner-folder[data-folder-name="media"] > .foldername-wrapper {
     color: #3577F9 !important;
-    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
-                 0 0 25px rgba(53, 119, 249, 0.15) !important;
+    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 0 0 25px rgba(53, 119, 249, 0.15) !important;
 }
 
-/* 3. Root Block: OTHER STUFF (NMOS Green/Yellow Split) */
-.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper {
+/* OTHER STUFF (NMOS Split) */
+.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper {
     font-size: 0 !important; 
     color: transparent !important;
     text-shadow: none !important;
 }
-
-.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper::before {
+.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper::before {
     content: "OTHER";
     font-size: 1rem !important;
     color: #17C555 !important;
-    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 
-                 0 0 25px rgba(23, 197, 85, 0.15) !important;
+    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 0 0 25px rgba(23, 197, 85, 0.15) !important;
 }
-
-.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper::after {
+.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper::after {
     content: "STUFF";
     font-size: 1rem !important;
     color: #FFBA01 !important;
-    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
-                 0 0 25px rgba(255, 186, 1, 0.15) !important;
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 0 0 25px rgba(255, 186, 1, 0.15) !important;
 }
+.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper span,
+.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper .folder-name {
+    display: none !important;
+}
+
 /* =========================================
    MASTER SIDEBAR LAYOUT, SPACING & WRAP FIX
 ========================================= */
 
-/* 1. Global Box Sizing: Forbid padding from blowing out the width */
 .filetree-sidebar, .filetree-sidebar * {
     box-sizing: border-box !important;
     max-width: 100% !important;
 }
 
-/* 2. Hide horizontal scrollbar forcefully on all parent wrappers */
 .filetree-wrapper, .sidebar, .sidebar-left, .filetree-sidebar {
     overflow-x: hidden !important;
 }
 
-/* 3. Reclaim Space & Fix OTHER STUFF Gap */
-.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper span,
-.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper .folder-name {
-    display: none !important;
-}
-
-.filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
-    padding-left: 5px !important; /* Reclaims 15px of space */
+.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper {
+    padding-left: 5px !important; 
     justify-content: flex-start !important;
     text-align: left !important;
     gap: 0.4rem !important; 
 }
 
-.filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
-.filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
-    padding-left: 5px !important; /* Reclaims 15px of space */
-    margin-left: 0 !important;
-}
-
-/* 4. Safe Text Wrapping & Flex Layout */
 .filetree-sidebar .foldername-wrapper,
 .filetree-sidebar .notelink {
     display: flex !important;
     align-items: flex-start !important;
-    width: auto !important; /* Changed from 100% to prevent overflow */
+    width: auto !important;
     padding-right: 10px !important; 
 }
 
@@ -470,7 +441,6 @@ input[type="checkbox"]:checked {
     line-height: 1.4 !important;
 }
 
-/* 5. Icon Protection */
 .filetree-sidebar .foldername-wrapper > i,
 .filetree-sidebar .foldername-wrapper > svg,
 .filetree-sidebar .notelink i,
@@ -484,14 +454,6 @@ input[type="checkbox"]:checked {
    SIDEBAR POLISH, HOVERS & CAPS
 ========================================= */
 
-/* Force Notes and Media back to ALL CAPS */
-.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper,
-.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
-    text-transform: uppercase !important;
-    letter-spacing: 2px !important;
-}
-
-/* Demote Nested Folders to Title Case */
 .filetree-sidebar .inner-folder .foldername-wrapper {
     text-transform: none !important; 
     font-weight: 700 !important;
@@ -500,7 +462,6 @@ input[type="checkbox"]:checked {
     font-size: 0.85rem !important;
 }
 
-/* Neutralize File Links and Add Hover Glow */
 .filetree-sidebar .notelink a {
     color: #AAA !important; 
     font-weight: 500 !important;
@@ -511,13 +472,11 @@ input[type="checkbox"]:checked {
     text-shadow: 0 0 8px rgba(248, 44, 102, 0.4) !important;
 }
 
-/* Clean up the Nested Guide Lines */
 .filetree-sidebar .filelist,
 .filetree-sidebar .inner-folder {
     border-left: none !important; 
 }
 
-/* Active State High-Contrast NMOS Green */
 .filetree-sidebar .active-note {
     background-color: rgba(23, 197, 85, 0.15) !important;
     border-left: 3px solid #17C555 !important;
@@ -533,7 +492,7 @@ input[type="checkbox"]:checked {
     opacity: 1 !important;
 }
 
-/* Kills the horizontal scrollbar track in WebKit browsers */
+/* Fix WebKit scrollbars */
 .filetree-wrapper::-webkit-scrollbar:horizontal,
 .filetree-sidebar::-webkit-scrollbar:horizontal,
 .sidebar-left::-webkit-scrollbar:horizontal {
