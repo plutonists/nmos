@@ -16,7 +16,7 @@
 }
 
 .site-logo {
-    max-width: 100px; 
+    max-width: 65px; /* Reduced from 100px */
     height: auto;
 }
 
@@ -459,7 +459,7 @@ input[type="checkbox"]:checked {
 .filetree-sidebar .notelink {
     display: flex !important;
     align-items: flex-start !important;
-    width: 100% !important;
+    width: auto !important; /* Changed from 100% to prevent overflow */
     padding-right: 10px !important; 
 }
 
@@ -534,4 +534,12 @@ input[type="checkbox"]:checked {
 .filetree-sidebar .active-note i {
     color: #17C555 !important; 
     opacity: 1 !important;
+}
+
+/* Kills the horizontal scrollbar track in WebKit browsers */
+.filetree-wrapper::-webkit-scrollbar:horizontal,
+.filetree-sidebar::-webkit-scrollbar:horizontal,
+.sidebar-left::-webkit-scrollbar:horizontal {
+    height: 0px !important;
+    display: none !important;
 }
