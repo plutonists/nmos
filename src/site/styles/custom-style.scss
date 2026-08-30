@@ -338,16 +338,17 @@ input[type="checkbox"]:checked {
    STATIC ROOT FOLDERS (VISUAL OVERHAUL)
 ========================================= */
 
-/* 1. Force open and clear root tree lines */
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
+/* 1. Force open root contents and clear root tree lines */
+.filetree-sidebar .level-0 > [x-show] {
     display: block !important;
+}
+.filetree-sidebar .level-0 {
     border-left: none !important;
-    padding-left: 5px !important;
 }
 
-/* 2. Hide chevron and transform typography for all root folders */
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper {
-    pointer-events: none !important;
+/* 2. Transform typography ONLY for root folders (Level 0) */
+.filetree-sidebar .level-0 > .foldername-wrapper {
+    pointer-events: none !important; /* Disables clicking so it acts as a header */
     cursor: default !important;
     margin-top: 1.5rem !important; 
     margin-bottom: 0.5rem !important;
@@ -355,54 +356,57 @@ input[type="checkbox"]:checked {
     background-color: transparent !important;
     font-size: 1rem !important; 
     font-weight: 900 !important; 
-    color: var(--text-normal) !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
 }
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper i,
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] > .inner-folder > .foldername-wrapper svg {
+
+/* 3. Hide chevron ONLY for root folders */
+.filetree-sidebar .level-0 > .foldername-wrapper i,
+.filetree-sidebar .level-0 > .foldername-wrapper svg {
     display: none !important;
 }
+
 
 /* =========================================
    ROOT FOLDER COLORS & GLOWS
 ========================================= */
 
 /* NOTES (NMOS Red) */
-.filetree-sidebar .inner-folder[data-folder-name="notes"] > .foldername-wrapper {
+.filetree-sidebar .level-0[data-folder-name="notes"] > .foldername-wrapper {
     color: #F82C66 !important;
     text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 0 0 25px rgba(248, 44, 102, 0.15) !important;
 }
 
 /* MEDIA (NMOS Blue) */
-.filetree-sidebar .inner-folder[data-folder-name="media"] > .foldername-wrapper {
+.filetree-sidebar .level-0[data-folder-name="media"] > .foldername-wrapper {
     color: #3577F9 !important;
     text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 0 0 25px rgba(53, 119, 249, 0.15) !important;
 }
 
 /* OTHER STUFF (NMOS Split) */
-.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper {
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper {
     font-size: 0 !important; 
     color: transparent !important;
     text-shadow: none !important;
 }
-.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper::before {
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::before {
     content: "OTHER";
     font-size: 1rem !important;
     color: #17C555 !important;
     text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 0 0 25px rgba(23, 197, 85, 0.15) !important;
 }
-.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper::after {
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::after {
     content: "STUFF";
     font-size: 1rem !important;
     color: #FFBA01 !important;
     text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 0 0 25px rgba(255, 186, 1, 0.15) !important;
 }
-.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper span,
-.filetree-sidebar .inner-folder[data-folder-name="other stuff"] > .foldername-wrapper .folder-name {
+
+/* Hide original text for OTHER STUFF */
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper span,
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper .folder-name {
     display: none !important;
 }
-
 /* =========================================
    MASTER SIDEBAR LAYOUT, SPACING & WRAP FIX
 ========================================= */
