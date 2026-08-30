@@ -549,3 +549,32 @@ input[type="checkbox"]:checked {
 .filetree-sidebar {
     overflow-x: hidden !important;
 }
+
+
+/* =========================================
+   SIDEBAR WIDTH & STRUCTURAL BALANCE
+========================================= */
+
+/* 1. Widen the entire sidebar container to fit the text */
+:root {
+    --sidebar-width: 320px !important; /* Bumps up the master width */
+}
+
+/* 2. Reclaim horizontal space by reducing nested folder indentation */
+.filetree-sidebar .inner-folder {
+    margin-left: 12px !important; /* Shrinks the empty space on the left */
+}
+
+/* 3. Pin chevrons and icons strictly to the top line of wrapped text */
+.filetree-sidebar .foldername-wrapper {
+    align-items: flex-start !important;
+}
+.filetree-sidebar .foldername-wrapper > i,
+.filetree-sidebar .foldername-wrapper > svg {
+    margin-top: 4px !important; /* Nudges the icon down to align with the first line */
+}
+
+/* 4. Add vertical breathing room between the main root categories */
+.filetree-sidebar > .folder {
+    margin-bottom: 24px !important; 
+}
