@@ -344,20 +344,31 @@ input[type="checkbox"]:checked {
 }
 .filetree-sidebar .level-0 {
     border-left: none !important;
+    /* Faint separator before each section */
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 1.5rem !important;
+    padding-top: 1rem !important;
+}
+
+/* Faint separator for the standalone notes block at the top */
+.root-notes-wrapper {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 1.5rem !important;
+    padding-top: 1rem !important;
 }
 
 /* 2. Transform typography ONLY for root folders (Level 0) */
-.filetree-sidebar .level-0 > .foldername-wrapper {
-    pointer-events: none !important; /* Disables clicking so it acts as a header */
-    cursor: default !important;
-    margin-top: 1.5rem !important; 
+.filetree-sidebar .level-0 > .foldername-wrapper,
+.filetree-sidebar .level-0 > .foldername-wrapper .foldername {
+    cursor: default !important; /* Allows hover effects to work again */
     margin-bottom: 0.5rem !important;
     padding-left: 0 !important; 
     background-color: transparent !important;
-    font-size: 1rem !important; 
+    font-size: 1.25rem !important; /* Increased Size */
     font-weight: 900 !important; 
     letter-spacing: 2px !important;
-    text-transform: uppercase !important;
+    text-transform: uppercase !important; /* Forced Uppercase */
+    transition: text-shadow 0.3s ease !important; /* Smooth glow transition */
 }
 
 /* 3. Hide chevron ONLY for root folders */
@@ -366,7 +377,6 @@ input[type="checkbox"]:checked {
     display: none !important;
 }
 
-
 /* =========================================
    ROOT FOLDER COLORS & GLOWS
 ========================================= */
@@ -374,13 +384,19 @@ input[type="checkbox"]:checked {
 /* NOTES (NMOS Red) */
 .filetree-sidebar .level-0[data-folder-name="notes"] > .foldername-wrapper {
     color: #F82C66 !important;
-    text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 0 0 25px rgba(248, 44, 102, 0.15) !important;
+    text-shadow: 0 0 10px rgba(248, 44, 102, 0.3) !important;
+}
+.filetree-sidebar .level-0[data-folder-name="notes"] > .foldername-wrapper:hover {
+    text-shadow: 0 0 20px rgba(248, 44, 102, 0.9), 0 0 35px rgba(248, 44, 102, 0.6) !important;
 }
 
 /* MEDIA (NMOS Blue) */
 .filetree-sidebar .level-0[data-folder-name="media"] > .foldername-wrapper {
     color: #3577F9 !important;
-    text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 0 0 25px rgba(53, 119, 249, 0.15) !important;
+    text-shadow: 0 0 10px rgba(53, 119, 249, 0.3) !important;
+}
+.filetree-sidebar .level-0[data-folder-name="media"] > .foldername-wrapper:hover {
+    text-shadow: 0 0 20px rgba(53, 119, 249, 0.9), 0 0 35px rgba(53, 119, 249, 0.6) !important;
 }
 
 /* OTHER STUFF (NMOS Split) */
@@ -389,17 +405,27 @@ input[type="checkbox"]:checked {
     color: transparent !important;
     text-shadow: none !important;
 }
+
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::before {
     content: "OTHER";
-    font-size: 1rem !important;
+    font-size: 1.25rem !important; /* Match new size */
     color: #17C555 !important;
-    text-shadow: 0 0 12px rgba(23, 197, 85, 0.4), 0 0 25px rgba(23, 197, 85, 0.15) !important;
+    text-shadow: 0 0 10px rgba(23, 197, 85, 0.3) !important;
+    transition: text-shadow 0.3s ease !important;
 }
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper:hover::before {
+    text-shadow: 0 0 20px rgba(23, 197, 85, 0.9), 0 0 35px rgba(23, 197, 85, 0.6) !important;
+}
+
 .filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper::after {
     content: "STUFF";
-    font-size: 1rem !important;
+    font-size: 1.25rem !important; /* Match new size */
     color: #FFBA01 !important;
-    text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 0 0 25px rgba(255, 186, 1, 0.15) !important;
+    text-shadow: 0 0 10px rgba(255, 186, 1, 0.3) !important;
+    transition: text-shadow 0.3s ease !important;
+}
+.filetree-sidebar .level-0[data-folder-name="other stuff"] > .foldername-wrapper:hover::after {
+    text-shadow: 0 0 20px rgba(255, 186, 1, 0.9), 0 0 35px rgba(255, 186, 1, 0.6) !important;
 }
 
 /* Hide original text for OTHER STUFF */
