@@ -588,3 +588,18 @@ input[type="checkbox"]:checked {
 .filetree-sidebar > .folder {
     margin-bottom: 24px !important; 
 }
+
+
+/* =========================================
+   HOVER HITBOX & FULL-WIDTH FIX
+========================================= */
+
+/* Force all links, folders, and wrappers to stretch across the full column */
+.filetree-sidebar .folder,
+.filetree-sidebar .filelist,
+.filetree-sidebar .inner-folder,
+.filetree-sidebar .notelink,
+.filetree-sidebar .foldername-wrapper {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
