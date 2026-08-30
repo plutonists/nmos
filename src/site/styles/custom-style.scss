@@ -380,31 +380,28 @@ input[type="checkbox"]:checked {
    ROOT FOLDER COLORS & GLOWS (FIXED WRAPPERS)
 ========================================= */
 
-/* 1. First Root Block: NOTES (NMOS Red) */
-.filetree-sidebar *:nth-child(1) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+/* 1. Root Block: NOTES (NMOS Red) */
+.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="notes"] > .foldername-wrapper {
     color: #F82C66 !important;
     text-shadow: 0 0 12px rgba(248, 44, 102, 0.4), 
                  0 0 25px rgba(248, 44, 102, 0.15) !important;
 }
 
-/* 2. Second Root Block: MEDIA (NMOS Blue) */
-.filetree-sidebar *:nth-child(2) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
+/* 2. Root Block: MEDIA (NMOS Blue) */
+.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="media"] > .foldername-wrapper {
     color: #3577F9 !important;
     text-shadow: 0 0 12px rgba(53, 119, 249, 0.4), 
                  0 0 25px rgba(53, 119, 249, 0.15) !important;
 }
 
-/* 3. Third Root Block: OTHER STUFF (NMOS Green/Yellow Split) */
-.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper {
-    /* Hide the original all-red text */
+/* 3. Root Block: OTHER STUFF (NMOS Green/Yellow Split) */
+.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper {
     font-size: 0 !important; 
     color: transparent !important;
     text-shadow: none !important;
-    
 }
 
-.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::before {
-    /* Inject 'OTHER' in NMOS Green */
+.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper::before {
     content: "OTHER";
     font-size: 1rem !important;
     color: #17C555 !important;
@@ -412,16 +409,13 @@ input[type="checkbox"]:checked {
                  0 0 25px rgba(23, 197, 85, 0.15) !important;
 }
 
-.filetree-sidebar *:nth-child(3) > .folder:not(.inner-folder .folder) > .foldername-wrapper::after {
-    /* Inject 'STUFF' in NMOS Yellow */
+.filetree-sidebar .folder:not(.inner-folder .folder)[data-folder-name="other stuff"] > .foldername-wrapper::after {
     content: "STUFF";
     font-size: 1rem !important;
     color: #FFBA01 !important;
     text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 
                  0 0 25px rgba(255, 186, 1, 0.15) !important;
 }
-
-
 /* =========================================
    MASTER SIDEBAR LAYOUT, SPACING & WRAP FIX
 ========================================= */
