@@ -430,7 +430,7 @@ input[type="checkbox"]:checked {
 }
 
 /* 2. Hide horizontal scrollbar forcefully on all parent wrappers */
-.filetree-wrapper, .sidebar, .sidebar-left {
+.filetree-wrapper, .sidebar, .sidebar-left, .filetree-sidebar {
     overflow-x: hidden !important;
 }
 
