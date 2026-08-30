@@ -555,35 +555,27 @@ input[type="checkbox"]:checked {
    SIDEBAR FIT & PADDING OPTIMIZATION
 ========================================= */
 
-/* 1. Restore fluid width to kill the scrollbar */
-.filetree-wrapper, 
-.sidebar, 
-.sidebar-left {
-    width: 100% !important;
-    min-width: 0 !important;
-}
-
-/* 2. Shift the root headers left to reclaim space */
+/* 1. Reclaim horizontal space by shifting root headers left */
 .filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
-    padding-left: 10px !important; /* Was 20px */
+    padding-left: 10px !important; 
 }
 
-/* 3. Shift nested items left to match the headers */
+/* 2. Shift nested items left to match the headers */
 .filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
 .filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
 .filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
-    padding-left: 10px !important; /* Was 20px, saving a massive 10px of space */
+    padding-left: 10px !important; 
 }
 
-/* 4. Optimize sub-folder font size and restore safe wrapping */
+/* 3. Optimize sub-folder font size and restore safe wrapping */
 .filetree-sidebar .inner-folder .foldername-wrapper {
-    font-size: 0.8rem !important; /* Slightly smaller to fit the narrow column */
-    white-space: normal !important; /* Restores safe wrapping */
+    font-size: 0.8rem !important; 
+    white-space: normal !important; 
     padding-right: 5px !important;
     margin-left: 0 !important; 
 }
 
-/* 5. Pin chevrons and icons strictly to the top line */
+/* 4. Pin chevrons and icons strictly to the top line */
 .filetree-sidebar .foldername-wrapper {
     align-items: flex-start !important;
 }
@@ -592,7 +584,7 @@ input[type="checkbox"]:checked {
     margin-top: 2px !important;
 }
 
-/* 6. Add vertical breathing room between the main root categories */
+/* 5. Add vertical breathing room between the main root categories */
 .filetree-sidebar > .folder {
     margin-bottom: 24px !important; 
 }
