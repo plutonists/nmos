@@ -552,54 +552,46 @@ input[type="checkbox"]:checked {
 
 
 /* =========================================
-   SIDEBAR FIT & PADDING OPTIMIZATION
+   THE ULTIMATE SIDEBAR WRAP & WIDTH FIX
 ========================================= */
 
-/* 1. Reclaim horizontal space by shifting root headers left */
-.filetree-sidebar .folder:not(.inner-folder .folder) > .foldername-wrapper {
-    padding-left: 10px !important; 
-}
-
-/* 2. Shift nested items left to match the headers */
-.filetree-sidebar .folder:not(.inner-folder .folder) > .filelist,
-.filetree-sidebar .folder:not(.inner-folder .folder) > .inner-folder,
-.filetree-sidebar .folder:not(.inner-folder .folder) > [x-show] {
-    padding-left: 10px !important; 
-}
-
-/* 3. Optimize sub-folder font size and restore safe wrapping */
-.filetree-sidebar .inner-folder .foldername-wrapper {
-    font-size: 0.8rem !important; 
-    white-space: normal !important; 
-    padding-right: 5px !important;
-    margin-left: 0 !important; 
-}
-
-/* 4. Pin chevrons and icons strictly to the top line */
-.filetree-sidebar .foldername-wrapper {
-    align-items: flex-start !important;
-}
-.filetree-sidebar .foldername-wrapper > i,
-.filetree-sidebar .foldername-wrapper > svg {
-    margin-top: 2px !important;
-}
-
-/* 5. Add vertical breathing room between the main root categories */
-.filetree-sidebar > .folder {
-    margin-bottom: 24px !important; 
-}
-
-
-/* =========================================
-   HOVER HITBOX & FULL-WIDTH FIX
-========================================= */
-
-/* Force all links, folders, and wrappers to stretch across the full column */
-.filetree-sidebar .folder,
-.filetree-sidebar .filelist,
-.filetree-sidebar .inner-folder,
-.filetree-sidebar .notelink,
-.filetree-sidebar .foldername-wrapper {
-    width: 100% !important;
+/* 1. Nuke the scrollbar and contain the layout */
+.sidebar, 
+.sidebar-left, 
+.filetree-wrapper, 
+.filetree-sidebar {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
+}
+
+/* 2. Setup flexbox so hover backgrounds stretch safely */
+.filetree-sidebar .foldername-wrapper,
+.filetree-sidebar .notelink {
+    display: flex !important;
+    align-items: flex-start !important;
+    width: 100% !important; 
+    box-sizing: border-box !important; /* Forces padding to stay inside the 100% width */
+    padding-right: 10px !important;
+}
+
+/* 3. Force text to wrap and prevent flex-blowout */
+.filetree-sidebar .foldername,
+.filetree-sidebar .notelink a {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    flex: 1 1 0% !important; /* Tells text to fill space, but allows it to shrink */
+    min-width: 0 !important; /* Critical: Stops text from pushing past the right edge */
+    line-height: 1.4 !important;
+}
+
+/* 4. Keep icons rigid so they don't crush when text wraps */
+.filetree-sidebar .foldername-wrapper > i,
+.filetree-sidebar .foldername-wrapper > svg,
+.filetree-sidebar .notelink i,
+.filetree-sidebar .notelink svg {
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+    margin-right: 8px !important;
 }
