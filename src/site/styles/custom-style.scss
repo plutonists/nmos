@@ -536,6 +536,31 @@ input[type="checkbox"]:checked {
     margin-right: 6px !important;
 }
 
+.filetree-sidebar .foldername-wrapper > i,
+.filetree-sidebar .foldername-wrapper > svg,
+.filetree-sidebar .notelink i,
+.filetree-sidebar .notelink svg {
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+    margin-right: 6px !important;
+}
+
+/* Completely hide scrollbars on the sidebar while keeping scroll functionality */
+.filetree-wrapper::-webkit-scrollbar,
+.filetree-sidebar::-webkit-scrollbar,
+.sidebar-left::-webkit-scrollbar {
+    width: 0px !important;
+    height: 0px !important;
+    display: none !important;
+    background: transparent !important;
+}
+
+/* Firefox & Edge Support */
+.filetree-wrapper, .sidebar, .sidebar-left, .filetree-sidebar {
+    scrollbar-width: none !important; 
+    -ms-overflow-style: none !important; 
+}
+
 /* =========================================
    SIDEBAR POLISH, HOVERS & CAPS
 ========================================= */
