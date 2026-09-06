@@ -3,10 +3,10 @@
 <meta property="og:title" content="{{ title | default('Notes, Media, & Other Stuff') }}" />
 <meta property="og:description" content="{{ description | default('A personal database of thoughts, notes, and everything in between.') }}" />
 
-{% if page["dg-image"] %}
+{% if dg_image %}
     <!-- Custom image provided in Obsidian: Use LARGE BANNER layout -->
-    <meta property="og:image" content="{{ page['dg-image'] }}" />
-    <meta name="twitter:image" content="{{ page['dg-image'] }}" />
+    <meta property="og:image" content="{{ dg_image }}" />
+    <meta name="twitter:image" content="{{ dg_image }}" />
     <meta name="twitter:card" content="summary_large_image" />
 {% else %}
     <!-- No custom image provided: Use SMALL SQUARE thumbnail layout -->
