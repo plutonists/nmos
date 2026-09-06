@@ -3,13 +3,11 @@
 <meta property="og:title" content="{{ title | default('Notes, Media, & Other Stuff') }}" />
 <meta property="og:description" content="{{ description | default('A personal database of thoughts, notes, and everything in between.') }}" />
 
-{% if dg_image %}
-    <!-- Custom image provided in Obsidian: Use LARGE BANNER layout -->
-    <meta property="og:image" content="{{ dg_image }}" />
-    <meta name="twitter:image" content="{{ dg_image }}" />
+{% if banner %}
+    <meta property="og:image" content="{{ banner }}" />
+    <meta name="twitter:image" content="{{ banner }}" />
     <meta name="twitter:card" content="summary_large_image" />
 {% else %}
-    <!-- No custom image provided: Use SMALL SQUARE thumbnail layout -->
     <meta property="og:image" content="https://i.clouds.tf/78vt/37tf.png" />
     <meta name="twitter:image" content="https://i.clouds.tf/78vt/37tf.png" />
     <meta name="twitter:card" content="summary" />
