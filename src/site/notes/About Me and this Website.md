@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/about-me-and-this-website/","tags":["seed","gardenEntry"],"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-08-29T07:32:34.564+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
+{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"date":{"{ date }":null},"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-06T16:56:18.227+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
@@ -24,11 +24,11 @@ For the record, I'm not that great at introducing myself, so bear with me as I t
 ## What's this website?
 Good question (not really)! This website is a personal stash of interests; movies, literature, software, videos, art, photos, you name it. I've been wanting to make a personal corner of mine on the internet so I can ~~<font color="#ec2e37">MARK MY TERRITORY</font>~~ have a place I can truly call home 🏠. 
 
-Anyone is welcome here! ![smilethumb2.png\|24](/img/user/1%20Website%20Resources/emojis/Discord_Icons/smilethumb2.png)
+Anyone is welcome here! 
 
 <div style="height: 50px;"></div>
 <h2 style="margin: 0; color: #ec2e37 !important; text-shadow: 0 0 12px rgba(236, 46, 55, 0.4), 0 0 25px rgba(236, 46, 55, 0.15);">Notes</h2>
-The <font color="#ec2e37">N</font> part of the name! It's any thoughts of mine about _anything._ I can review movies, shows, software, books, talk about my own life, things I tried, things I _didn't_ try (but want to), and endless more things. I can freely express myself here. My opinions can contradict yours, of course, but if you'd like to talk about it, feel free! I'm kind of on a journey of self-growth here; maybe you and I can teach each other something. Perspectives are important, and I want to explore a lot of them. <img src="/img/user/1%20Website%20Resources/emojis/Discord_Icons/smilethumb2.png" style="height: 1.5em; vertical-align: middle; display: inline-block; margin-left: 4px;">
+The <font color="#ec2e37">N</font> part of the name! It's any thoughts of mine about *anything* I can review movies, shows, software, books, talk about my own life, things I tried, things I _didn't_ try (but want to), and endless more things. I can freely express myself here. My opinions can contradict yours, of course, but if you'd like to talk about it, feel free! I'm kind of on a journey of self-growth here; maybe you and I can teach each other something. Perspectives are important, and I want to explore a lot of them. <img src="/img/user/1%20Website%20Resources/emojis/Discord_Icons/smilethumb2.png" style="height: 1.5em; vertical-align: middle; display: inline-block; margin-left: 4px;">
 
 Frankly, it gives me pleasure knowing that someone out there might be reading my thoughts and opinions on something. My style of writing is how I'd write a letter to a friend overseas (not like I'd ever done that!), and maybe you'd like that. I hope this place can serve as a comfy place to you. ![swagsmile.png\|24](/img/user/1%20Website%20Resources/emojis/Discord_Icons/LAmojis/swagsmile.png)
 <div style="height: 50px;"></div>
