@@ -1,5 +1,5 @@
 ---
-{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"date":{"{ date }":null},"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-06T17:06:58.533+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
+{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"date":{"{ date }":null},"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"noteIcon":"","created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-06T17:07:25.382+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"date":{"{ date }":null}}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
@@ -35,7 +35,7 @@ The <font color="#2878ff">M</font> part of the name (surprise!). This is self-ex
 <div style="height: 50px;"></div>
 
 
-<h2 style="margin: 0;"><span style="color: #00c753 !important; text-shadow: 0 0 12px rgba(0, 199, 83, 0.4), 0 0 25px rgba(0, 199, 83, 0.15);">Other </span><span style="color: #ffc006 !important; text-shadow: 0 0 12px rgba(255, 192, 6, 0.4), 0 0 25px rgba(255, 192, 6, 0.15);">Stuff</span></h2> <sup>It wouldn't make sense to have "Other" and "Stuff in two separate headers, what the hell am I gonna say about "Other"? Would've been cool, but ??</sup>  
+<h2 style="margin: 0;"><span style="color: #00c753 !important; text-shadow: 0 0 12px rgba(0, 199, 83, 0.4), 0 0 25px rgba(0, 199, 83, 0.15);">Other </span><span style="color: #ffc006 !important; text-shadow: 0 0 12px rgba(255, 192, 6, 0.4), 0 0 25px rgba(255, 192, 6, 0.15);">Stuff</span></h2> <sup>It wouldn't make sense to have "Other" and "Stuff" in two separate headers...</sup>  
 
 OK, you get the drill, the <font color="#00c753">O</font><font color="#ffc006">S</font> part of the name. This is where it becomes closely in tandem with some other wiki sites that give you pretty cool resources, like the aforementioned [FMHY](https://fmhy.net). What makes it different? Well, not much. I'm not going to sugarcoat it, this isn't going to be anywhere near as well-done as FMHY or any other specialized wiki sites, but I can safely say that whatever is listed here will be things I have tried and enjoyed as an average PC user.  I'll be giving brief descriptions of what I liked about whatever's listed, which *won't* be as detailed as <font color="#ec2e37">Notes</font>, but they should prove as a sufficient idea for you if you want to use that resource.
 
