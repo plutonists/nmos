@@ -1,8 +1,6 @@
+const crypto = require("crypto");
 const slugify = require("@sindresorhus/slugify");
 const markdownIt = require("markdown-it");
-const fs = require("fs");
-const crypto = require("crypto"); // <-- Add this import
-const matter = require("gray-matter");
 // Obsidian writes [[Page\|Alias]] in frontmatter, but \| is an invalid YAML
 // escape sequence. This custom engine strips \| before parsing. Shared between
 // Eleventy's own frontmatter parser and the manual matter() call in
@@ -143,6 +141,7 @@ const markdownFileTypeRegex = /\.(md|markdown)$/i;
 const isMarkdownPage = (inputPath) => inputPath && inputPath.match(markdownFileTypeRegex);
 
 module.exports = function(eleventyConfig) {
+  
   eleventyConfig.setLiquidOptions({
     dynamicPartials: true,
   });
@@ -865,7 +864,101 @@ module.exports = function(eleventyConfig) {
       singleTags: ["link"],
     },
   });
+eleventyConfig.addFilter("notPasswordProtected", function (arr) {
+    return (arr || []).filter((item) => !item.data.password);
+  });
 
+  eleventyConfig.addFilter("encryptContent", function(content, password) {
+    if (!password) return content;
+    
+    // Generate secure random salt and Initialization Vector (IV)
+    const salt = crypto.randomBytes(16);
+    const iv = crypto.randomBytes(12);
+    
+    // Derive key using PBKDF2 (100,000 iterations)
+    const key = crypto.pbkdf2Sync(String(password), salt, 100000, 32, 'sha256');
+    
+    // Encrypt the content with AES-256-GCM
+    const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
+    const encryptedBuffer = Buffer.concat([
+        cipher.update(content, 'utf8'),
+        cipher.final()
+    ]);
+    
+    // Convert components to base64
+    const encrypted = encryptedBuffer.toString('base64');
+    const authTag = cipher.getAuthTag().toString('base64');
+    const salt64 = salt.toString('base64');
+    const iv64 = iv.toString('base64');
+    
+    // Return the prompt UI + the encrypted payload (raw content is removed)
+    return `
+    <div id="protected-content" data-salt="${salt64}" data-iv="${iv64}" data-tag="${authTag}" data-ciphertext="${encrypted}">
+        <div class="password-prompt" style="text-align: center; margin: 40px auto; max-width: 400px; padding: 30px; background: var(--background-secondary); border-radius: 8px; border: 1px solid var(--background-modifier-border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <div style="margin-bottom: 20px;">
+                <i data-lucide="lock" style="width: 48px; height: 48px; color: var(--text-accent);"></i>
+            </div>
+            <h2 style="margin-top: 0; margin-bottom: 10px; color: var(--text-normal);">Protected Page</h2>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9em;">Please enter the password to view this content.</p>
+            <form id="password-form" onsubmit="decryptPage(event)" style="display: flex; flex-direction: column; gap: 10px;">
+                <input type="password" id="page-password" placeholder="Password" style="padding: 10px; border-radius: 4px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); outline: none;" />
+                <button type="submit" style="padding: 10px; border-radius: 4px; background: var(--text-accent); color: var(--background-primary); border: none; cursor: pointer; font-weight: bold; transition: opacity 0.2s;">Unlock</button>
+            </form>
+            <p id="password-error" style="color: #e74c3c; display: none; margin-top: 15px; font-size: 0.85em; font-weight: 500;">Incorrect password. Please try again.</p>
+        </div>
+    </div>
+    <script>
+        async function decryptPage(event) {
+            event.preventDefault();
+            const passInput = document.getElementById('page-password').value;
+            const container = document.getElementById('protected-content');
+            const errorText = document.getElementById('password-error');
+            
+            try {
+                // Decode base64 payloads to raw bytes
+                const salt = Uint8Array.from(atob(container.dataset.salt), c => c.charCodeAt(0));
+                const iv = Uint8Array.from(atob(container.dataset.iv), c => c.charCodeAt(0));
+                const tag = Uint8Array.from(atob(container.dataset.tag), c => c.charCodeAt(0));
+                const ciphertext = Uint8Array.from(atob(container.dataset.ciphertext), c => c.charCodeAt(0));
+                
+                // Combine ciphertext and auth tag for Web Crypto API standard
+                const data = new Uint8Array(ciphertext.length + tag.length);
+                data.set(ciphertext);
+                data.set(tag, ciphertext.length);
+
+                const encoder = new TextEncoder();
+                const keyMaterial = await window.crypto.subtle.importKey(
+                    "raw", encoder.encode(passInput), {name: "PBKDF2"}, false, ["deriveKey"]
+                );
+                
+                const key = await window.crypto.subtle.deriveKey(
+                    { name: "PBKDF2", salt: salt, iterations: 100000, hash: "SHA-256" },
+                    keyMaterial,
+                    { name: "AES-GCM", length: 256 },
+                    false,
+                    ["decrypt"]
+                );
+                
+                const decrypted = await window.crypto.subtle.decrypt(
+                    { name: "AES-GCM", iv: iv },
+                    key,
+                    data
+                );
+                
+                // Decode and render the true HTML content
+                const decoder = new TextDecoder();
+                container.innerHTML = decoder.decode(decrypted);
+                
+                // Re-initialize icons/scripts after injecting new DOM elements
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            } catch (e) {
+                // Decryption fails entirely if the password/key is wrong (AES-GCM AuthTag invalid)
+                errorText.style.display = 'block';
+            }
+        }
+    </script>
+    \`;
+  });
   userEleventySetup(eleventyConfig);
 
   return {
