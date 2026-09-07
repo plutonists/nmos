@@ -1,10 +1,8 @@
 {% if not password %}
-    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border); display: grid; grid-template-columns: minmax(0, 1fr);">
-        
+    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border);">
         <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0;">Comments</h2>
         
-        <!-- The grid display above forces this wrapper to NEVER exceed the reading column width -->
-        <div style="width: 100%; min-height: 250px;">
+        <div style="width: 100%; max-width: 100%; overflow: hidden; display: block; position: relative;">
             <script>
               window.CUSDIS_LOCALE = {
                 "en": {
@@ -20,105 +18,27 @@
               };
             </script>
             
-            <div id="cusdis_thread"
+            <!-- Point data-theme to your compiled CSS file! -->
+            <div id="cusdis_thread" class="nmos-cusdis-wrapper"
               data-host="https://cusdis.com"
               data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
               data-page-id="{{ page.url }}"
               data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
               data-page-title="{{ title | default(page.fileSlug) }}"
-              data-theme="dark">
+              data-theme="{{ meta.siteBaseUrl }}/styles/custom-style.css">
             </div>
         </div>
-
-        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-
-        <!-- Force the iframe to respect the grid -->
-        <style>
-            #cusdis_thread, #cusdis_thread iframe {
-                width: 100% !important;
-                max-width: 100% !important;
-                border: none !important;
-                display: block !important;
-            }
-        </style>
-
-        <script>
-            // We wait for Cusdis to initialize, then send the exact styling payload it expects.
-            window.addEventListener('message', function(e) {
-                if (e.data === 'cusdis_ready') {
-                    const iframe = document.querySelector('#cusdis_thread iframe');
-                    if (iframe && iframe.contentWindow) {
-                        
-                        // Set the base theme
-                        iframe.contentWindow.postMessage({
-                            type: 'setTheme',
-                            theme: 'dark'
-                        }, '*');
-                        
-                        // Send the exact CSS overrides using Cusdis's supported schema
-                        iframe.contentWindow.postMessage({
-                            type: 'setCustomCss',
-                            css: `
-                                /* Match main site background */
-                                :root {
-                                    --color-bg: transparent !important;
-                                    --color-text: #dcddde !important;
-                                    --color-border: rgba(255, 255, 255, 0.1) !important;
-                                }
-                                
-                                /* Typography */
-                                body {
-                                    font-family: inherit !important;
-                                }
-                                
-                                /* Input field styling */
-                                input, textarea {
-                                    background-color: rgb(57, 56, 56) !important;
-                                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                                    border-radius: 4px !important;
-                                    color: #dcddde !important;
-                                    padding: 8px 12px !important;
-                                }
-                                
-                                input:focus, textarea:focus {
-                                    border-color: #3577F9 !important;
-                                    outline: none !important;
-                                }
-                                
-                                /* Form layout fixes to prevent squishing */
-                                .flex.gap-4 {
-                                    display: flex !important;
-                                    flex-direction: row !important;
-                                    gap: 12px !important;
-                                    width: 100% !important;
-                                }
-                                
-                                .w-full {
-                                    width: 100% !important;
-                                }
-                                
-                                /* Submit button styling */
-                                button[type="submit"] {
-                                    background-color: #17C555 !important;
-                                    color: #161618 !important;
-                                    font-weight: 600 !important;
-                                    border-radius: 4px !important;
-                                    padding: 8px 16px !important;
-                                }
-                                button[type="submit"]:hover {
-                                    background-color: #14b04b !important;
-                                }
-                                
-                                /* Hide any internal title since we provided our own H2 */
-                                #root > div > h3 {
-                                    display: none !important;
-                                }
-                            `
-                        }, '*');
-                    }
+        
+        <!-- Script with hardcoded inline overrides to clip the iframe bounding box -->
+        <script async defer src="https://cusdis.com/js/cusdis.es.js" onload="
+            setTimeout(() => {
+                const iframe = document.querySelector('#cusdis_thread iframe');
+                if(iframe) {
+                    iframe.setAttribute('style', 'width: 100% !important; max-width: 100% !important; border: none !important; display: block !important; overflow: hidden !important; min-height: 250px !important;');
+                    iframe.scrolling = 'no';
                 }
-            });
-        </script>
+            }, 500);
+        "></script>
         
     </div>
 {% endif %}
