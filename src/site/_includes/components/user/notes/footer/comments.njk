@@ -1,10 +1,10 @@
 {% if not password %}
     <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border); max-width: 100%; box-sizing: border-box;">
         
-        <!-- We use an h2 here but remove the underline border via inline styles to match your theme -->
         <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0;">Comments</h2>
         
-        <div style="width: 100%; overflow: hidden; display: block; box-sizing: border-box;">
+        <!-- Force a minimum height so the container can never collapse -->
+        <div style="width: 100%; min-height: 250px; overflow: visible; display: block; box-sizing: border-box; position: relative;">
             <script>
               window.CUSDIS_LOCALE = {
                 "en": {
@@ -20,8 +20,7 @@
               };
             </script>
             
-            <!-- Added a wrapper class to the container so we can target the iframe easily -->
-            <div id="cusdis_thread" class="nmos-cusdis-wrapper"
+            <div id="cusdis_thread"
               data-host="https://cusdis.com"
               data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
               data-page-id="{{ page.url }}"
@@ -32,118 +31,117 @@
         </div>
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-        <!-- Global override to kill the iframe scrollbars on the parent side -->
         <style>
-            .nmos-cusdis-wrapper iframe {
-                overflow: hidden !important;
-                /* Add a tiny bit of bottom padding to ensure the submit button isn't cut off */
-                min-height: 250px !important; 
+            /* Ensure the iframe itself is allowed to take up space */
+            #cusdis_thread iframe {
+                width: 100% !important;
+                min-height: 250px !important;
+                border: none !important;
+                display: block !important;
             }
         </style>
 
         <script>
             window.addEventListener('message', function(e) {
                 if (e.data === 'cusdis_ready') {
-                    const iframe = document.querySelector('#cusdis_thread iframe');
-                    if (iframe) {
-                        iframe.style.width = '100%';
-                        iframe.style.maxWidth = '100%';
-                        
-                        iframe.contentWindow.postMessage({
-                            type: 'setTheme',
-                            theme: 'dark'
-                        }, '*');
-                        
-                        // Inject our heavily cleaned-up CSS directly into the iframe
-                        iframe.contentWindow.postMessage({
-                            type: 'setCustomCss',
-                            css: `
-                                /* Match main site background */
-                                :root {
-                                    --color-bg: transparent !important; /* Let the parent background show through */
-                                    --color-text: #dcddde !important;
-                                    --color-primary: #3577F9 !important; /* NMOS Blue */
-                                    --color-border: rgba(255, 255, 255, 0.1) !important;
-                                }
-                                body {
-                                    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                                    margin: 0 !important;
-                                    padding: 0 !important;
-                                    overflow: hidden !important; /* Kill the ugly inner scrollbars */
-                                }
-                                
-                                /* Tidy up the labels */
-                                label {
-                                    font-size: 0.85rem !important;
-                                    font-weight: 500 !important;
-                                    color: #aaa !important;
-                                    margin-bottom: 6px !important;
-                                    display: inline-block !important;
-                                }
-                                
-                                /* Clean up the input boxes */
-                                input, textarea {
-                                    background-color: rgb(57, 56, 56) !important; /* var(--background-secondary) */
-                                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                                    border-radius: 6px !important; /* Slightly softer corners */
-                                    color: #dcddde !important;
-                                    box-sizing: border-box !important;
-                                    max-width: 100% !important;
-                                    padding: 10px 12px !important; /* Give the text some breathing room */
-                                    font-size: 0.9rem !important;
-                                    margin-bottom: 12px !important;
-                                    box-shadow: none !important;
-                                }
-                                input:focus, textarea:focus {
-                                    border-color: #3577F9 !important; /* NMOS Blue */
-                                    outline: none !important;
-                                    box-shadow: 0 0 0 2px rgba(53, 119, 249, 0.2) !important; /* Soft blue glow */
-                                }
-                                
-                                /* Submit Button */
-                                button[type="submit"] {
-                                    background-color: #17C555 !important; /* NMOS Green */
-                                    color: #161618 !important;
-                                    font-weight: 600 !important;
-                                    border-radius: 6px !important;
-                                    border: none !important;
-                                    padding: 8px 20px !important;
-                                    font-size: 0.9rem !important;
-                                    cursor: pointer !important;
-                                    transition: background-color 0.2s ease !important;
-                                }
-                                button[type="submit"]:hover {
-                                    background-color: #14b04b !important;
-                                }
-                                
-                                /* Layout fixes to prevent overflow */
-                                .w-full {
-                                    width: 100% !important;
-                                    box-sizing: border-box !important;
-                                }
-                                #root {
-                                    padding: 4px !important;
-                                    max-width: 100% !important;
-                                    overflow: hidden !important;
-                                }
-                                
-                                /* Fix the flexbox grid for Name/Email so it doesn't squish */
-                                .flex.gap-4 {
-                                    gap: 16px !important;
-                                }
-                                
-                                /* Make existing comments look clean */
-                                .prose {
-                                    font-size: 0.95rem !important;
-                                    line-height: 1.5 !important;
-                                }
-                                .text-sm.text-gray-500 {
-                                    font-size: 0.75rem !important;
-                                    color: #888 !important;
-                                }
-                            `
-                        }, '*');
-                    }
+                    // Small timeout to ensure iframe is fully painted before injecting CSS
+                    setTimeout(() => {
+                        const iframe = document.querySelector('#cusdis_thread iframe');
+                        if (iframe && iframe.contentWindow) {
+                            
+                            iframe.contentWindow.postMessage({
+                                type: 'setTheme',
+                                theme: 'dark'
+                            }, '*');
+                            
+                            iframe.contentWindow.postMessage({
+                                type: 'setCustomCss',
+                                css: `
+                                    :root {
+                                        --color-bg: transparent !important;
+                                        --color-text: #dcddde !important;
+                                        --color-primary: #3577F9 !important;
+                                        --color-border: rgba(255, 255, 255, 0.1) !important;
+                                    }
+                                    body {
+                                        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+                                        margin: 0 !important;
+                                        padding: 0 4px !important;
+                                    }
+                                    
+                                    /* Fix the flex grid crushing the inputs */
+                                    #root > div > div.flex {
+                                        display: flex !important;
+                                        flex-direction: row !important;
+                                        gap: 16px !important;
+                                        width: 100% !important;
+                                    }
+                                    
+                                    /* Force the inputs to behave nicely */
+                                    .w-full {
+                                        width: 100% !important;
+                                        flex: 1 1 50% !important;
+                                        box-sizing: border-box !important;
+                                    }
+                                    
+                                    label {
+                                        font-size: 0.85rem !important;
+                                        font-weight: 500 !important;
+                                        color: #aaa !important;
+                                        margin-bottom: 6px !important;
+                                        display: inline-block !important;
+                                    }
+                                    
+                                    input, textarea {
+                                        background-color: rgb(57, 56, 56) !important;
+                                        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                                        border-radius: 6px !important;
+                                        color: #dcddde !important;
+                                        box-sizing: border-box !important;
+                                        width: 100% !important;
+                                        max-width: 100% !important;
+                                        padding: 10px 12px !important;
+                                        font-size: 0.9rem !important;
+                                        margin-bottom: 12px !important;
+                                        box-shadow: none !important;
+                                        display: block !important;
+                                    }
+                                    
+                                    input:focus, textarea:focus {
+                                        border-color: #3577F9 !important;
+                                        outline: none !important;
+                                        box-shadow: 0 0 0 2px rgba(53, 119, 249, 0.2) !important;
+                                    }
+                                    
+                                    button[type="submit"] {
+                                        background-color: #17C555 !important;
+                                        color: #161618 !important;
+                                        font-weight: 600 !important;
+                                        border-radius: 6px !important;
+                                        border: none !important;
+                                        padding: 8px 20px !important;
+                                        font-size: 0.9rem !important;
+                                        cursor: pointer !important;
+                                        transition: background-color 0.2s ease !important;
+                                    }
+                                    
+                                    button[type="submit"]:hover {
+                                        background-color: #14b04b !important;
+                                    }
+                                    
+                                    .prose {
+                                        font-size: 0.95rem !important;
+                                        line-height: 1.5 !important;
+                                    }
+                                    
+                                    .text-sm.text-gray-500 {
+                                        font-size: 0.75rem !important;
+                                        color: #888 !important;
+                                    }
+                                `
+                            }, '*');
+                        }
+                    }, 50); // 50ms delay
                 }
             });
         </script>
