@@ -642,3 +642,39 @@ html {
     scrollbar-width: thin !important;
     scrollbar-color: #FFBA01 var(--background-primary, #161618) !important;
 }
+
+/* =========================================
+   CUSDIS COMMENTS IFRAME OVERRIDES
+   (Injected via data-theme URL)
+========================================= */
+
+#root > div > div.flex {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 16px !important;
+    width: 100% !important;
+    flex-wrap: wrap !important;
+}
+
+.w-full {
+    width: 100% !important;
+    flex: 1 1 calc(50% - 16px) !important;
+    min-width: 200px !important;
+    box-sizing: border-box !important;
+}
+
+#root > div > h3 {
+    display: none !important;
+}
+
+label {
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    color: #aaa !important;
+    margin-bottom: 6px !important;
+    display: inline-block !important;
+}
+
+input, textarea {
+    background-color: rgb(57, 56, 56) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1
