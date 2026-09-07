@@ -1,8 +1,8 @@
 {% if not password %}
-    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border);">
+    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border); max-width: 700px; margin-left: auto; margin-right: auto; box-sizing: border-box;">
         <h3 style="margin-top: 0; margin-bottom: 20px;">Comments</h3>
         
-        <div style="width: 100%; max-width: 100%; overflow: hidden;">
+        <div style="width: 100%; overflow: hidden; display: block; box-sizing: border-box;">
             <!-- Note the new window.CUSDIS_LOCALE script above the thread -->
             <script>
               window.CUSDIS_LOCALE = {
@@ -36,6 +36,8 @@
                 if (e.data === 'cusdis_ready') {
                     const iframe = document.querySelector('#cusdis_thread iframe');
                     if (iframe) {
+                        iframe.style.width = '100%';
+                        iframe.style.maxWidth = '100%';
                         iframe.contentWindow.postMessage({
                             type: 'setTheme',
                             theme: 'dark'
@@ -54,6 +56,9 @@
                                 }
                                 body {
                                     font-family: inherit !important;
+                                    margin: 0 !important;
+                                    padding: 0 !important;
+                                    overflow-x: hidden !important;
                                 }
                                 /* Input boxes */
                                 input, textarea {
@@ -61,6 +66,8 @@
                                     border: 1px solid rgba(255, 255, 255, 0.1) !important;
                                     border-radius: 4px !important;
                                     color: #dcddde !important;
+                                    box-sizing: border-box !important;
+                                    max-width: 100% !important;
                                 }
                                 input:focus, textarea:focus {
                                     border-color: #3577F9 !important; /* NMOS Blue */
@@ -81,6 +88,10 @@
                                 .w-full {
                                     width: 100% !important;
                                     box-sizing: border-box !important;
+                                }
+                                #root {
+                                    padding: 0 !important;
+                                    max-width: 100% !important;
                                 }
                             `
                         }, '*');
