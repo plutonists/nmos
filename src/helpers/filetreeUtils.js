@@ -97,6 +97,7 @@ function getPermalinkMeta(note, key) {
   let noteIcon = process.env.NOTE_ICON_DEFAULT;
   let hide = false;
   let pinned = false;
+  let isProtected = false;
   let folders = null;
   try {
     if (note.data.permalink) {
