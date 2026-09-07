@@ -1,17 +1,93 @@
 {% if not password %}
-    <hr style="margin-top: 50px; border-top: 1px solid var(--background-modifier-border);">
-    <div style="margin-top: 30px;">
-        <h3 style="margin-bottom: 20px;">Comments</h3>
+    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border);">
+        <h3 style="margin-top: 0; margin-bottom: 20px;">Comments</h3>
         
-        <div id="cusdis_thread"
-          data-host="https://cusdis.com"
-          data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
-          data-page-id="{{ page.url }}"
-          data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
-          data-page-title="{{ title | default(page.fileSlug) }}"
-          data-theme="{{ meta.baseTheme }}">
+        <div style="width: 100%; max-width: 100%; overflow: hidden;">
+            <!-- Note the new window.CUSDIS_LOCALE script above the thread -->
+            <script>
+              window.CUSDIS_LOCALE = {
+                "en": {
+                  "post": "Send",
+                  "reply": "Reply",
+                  "cancel": "Cancel",
+                  "reply_to": "Reply to",
+                  "placeholder": "Write a comment...",
+                  "name": "Name",
+                  "email": "Email (optional)",
+                  "website": "Website (optional)"
+                }
+              };
+            </script>
+            
+            <div id="cusdis_thread"
+              data-host="https://cusdis.com"
+              data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
+              data-page-id="{{ page.url }}"
+              data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
+              data-page-title="{{ title | default(page.fileSlug) }}"
+              data-theme="{{ meta.baseTheme }}">
+            </div>
         </div>
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+
+        <!-- Custom CSS injected into the Cusdis iframe -->
+        <script>
+            window.addEventListener('message', function(e) {
+                if (e.data === 'cusdis_ready') {
+                    const iframe = document.querySelector('#cusdis_thread iframe');
+                    if (iframe) {
+                        iframe.contentWindow.postMessage({
+                            type: 'setTheme',
+                            theme: 'dark'
+                        }, '*');
+                        
+                        // Inject our custom site styles directly into the iframe
+                        iframe.contentWindow.postMessage({
+                            type: 'setCustomCss',
+                            css: `
+                                /* Match main site background */
+                                :root {
+                                    --color-bg: #161618 !important; 
+                                    --color-text: #dcddde !important;
+                                    --color-primary: #3577F9 !important; /* NMOS Blue */
+                                    --color-border: rgba(255, 255, 255, 0.1) !important;
+                                }
+                                body {
+                                    font-family: inherit !important;
+                                }
+                                /* Input boxes */
+                                input, textarea {
+                                    background-color: rgb(57, 56, 56) !important; /* var(--background-secondary) */
+                                    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+                                    border-radius: 4px !important;
+                                    color: #dcddde !important;
+                                }
+                                input:focus, textarea:focus {
+                                    border-color: #3577F9 !important; /* NMOS Blue */
+                                    outline: none !important;
+                                }
+                                /* Submit Button */
+                                button[type="submit"] {
+                                    background-color: #17C555 !important; /* NMOS Green */
+                                    color: #161618 !important;
+                                    font-weight: bold !important;
+                                    border-radius: 4px !important;
+                                    border: none !important;
+                                }
+                                button[type="submit"]:hover {
+                                    background-color: #14b04b !important;
+                                }
+                                /* Remove strange margins */
+                                .w-full {
+                                    width: 100% !important;
+                                    box-sizing: border-box !important;
+                                }
+                            `
+                        }, '*');
+                    }
+                }
+            });
+        </script>
         
     </div>
 {% endif %}
