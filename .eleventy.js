@@ -1,6 +1,7 @@
 const slugify = require("@sindresorhus/slugify");
 const markdownIt = require("markdown-it");
 const fs = require("fs");
+const crypto = require("crypto"); // <-- Add this import
 const matter = require("gray-matter");
 // Obsidian writes [[Page\|Alias]] in frontmatter, but \| is an invalid YAML
 // escape sequence. This custom engine strips \| before parsing. Shared between
