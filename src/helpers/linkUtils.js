@@ -245,7 +245,7 @@ async function getGraph(data) {
       backLinks: new Set(),
       noteIcon: v.data.noteIcon || process.env.NOTE_ICON_DEFAULT,
       hide: v.data.hide || v.data.hideInGraph || false,
-      private: v.data.hide || false,
+      private: v.data.hide || !!v.data.password,
     };
     stemURLs[fpath] = v.url;
     if (
