@@ -1,0 +1,36 @@
+{% if not password %}
+    <!-- Container matching your Digital Garden's aesthetic -->
+    <div style="margin-top: 60px; padding-top: 30px; border-top: 2px solid #3577F9; background-color: transparent; max-width: 100%; box-sizing: border-box;">
+        
+        <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0; color: #dcddde;">Comments</h2>
+        
+        <!-- Custom text labels -->
+        <script>
+          window.CUSDIS_LOCALE = {
+            "en": {
+              "post": "Post Comment",
+              "reply": "Reply",
+              "cancel": "Cancel",
+              "reply_to": "Reply to",
+              "placeholder": "Write your thoughts here...",
+              "name": "Name",
+              "email": "Email (optional)",
+              "website": "Website (optional)"
+            }
+          };
+        </script>
+        
+        <!-- The Core Widget -->
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
+          data-page-id="{{ page.url }}"
+          data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
+          data-page-title="{{ title | default(page.fileSlug) }}"
+          data-theme="dark">
+        </div>
+        
+        <!-- The Engine -->
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+    </div>
+{% endif %}
