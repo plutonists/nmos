@@ -29,6 +29,7 @@ const CASCADE_KEYS = new Set([
 	"noteProps",
 	"dynamics",
 	"meta",
+	"password"
 ]);
 
 function pickNoteMetadata(data) {
@@ -39,6 +40,13 @@ function pickNoteMetadata(data) {
 		if (CASCADE_KEYS.has(key)) continue;
 		picked[key] = value;
 	}
+	// Precaution: Also strip if password is typed redundantly under dg-note-properties
+	if (picked["dg-note-properties"] && picked["dg-note-properties"].password) {
+		const nested = { ...picked["dg-note-properties"] };
+		delete nested.password;
+		picked["dg-note-properties"] = nested;
+	}
+	
 	return picked;
 }
 
