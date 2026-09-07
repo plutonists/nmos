@@ -3,7 +3,6 @@
     
     <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0; color: #dcddde;">Comments</h2>
     
-    <!-- Custom text labels -->
     <script>
         window.CUSDIS_LOCALE = {
         "en": {
@@ -19,6 +18,23 @@
         };
     </script>
     
+    <!-- Protect the iframe from the site's global embed CSS -->
+    <style>
+        #cusdis_thread {
+            width: 100%;
+            min-height: 400px;
+        }
+        #cusdis_thread iframe {
+            width: 100% !important;
+            max-height: none !important;
+            min-height: 400px !important;
+            aspect-ratio: auto !important;
+            border: none !important;
+            display: block !important;
+            overflow: hidden !important;
+        }
+    </style>
+    
     <!-- The Core Widget -->
     <div id="cusdis_thread"
         data-host="https://cusdis.com"
@@ -28,16 +44,6 @@
         data-page-title="{{ title | default(page.fileSlug) }}"
         data-theme="dark">
     </div>
-    
-    <!-- Protect the iframe from the site's global CSS -->
-    <style>
-        #cusdis_thread iframe {
-            width: 100% !important;
-            min-height: 320px !important;
-            border: none !important;
-            display: block !important;
-        }
-    </style>
     
     <!-- The Engine -->
     <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
