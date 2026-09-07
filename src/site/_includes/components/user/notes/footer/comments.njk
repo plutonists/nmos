@@ -1,0 +1,17 @@
+{% if not password %}
+    <hr style="margin-top: 50px; border-top: 1px solid var(--background-modifier-border);">
+    <div style="margin-top: 30px;">
+        <h3 style="margin-bottom: 20px;">Comments</h3>
+        
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
+          data-page-id="{{ page.url }}"
+          data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
+          data-page-title="{{ title | default(page.fileSlug) }}"
+          data-theme="{{ meta.baseTheme }}">
+        </div>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
+        
+    </div>
+{% endif %}
