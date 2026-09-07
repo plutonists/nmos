@@ -663,6 +663,15 @@ html {
     box-sizing: border-box !important;
 }
 
+/* Ensure the main container doesn't push past the left edge */
+#root {
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 #root > div > h3 {
     display: none !important;
 }
@@ -684,8 +693,9 @@ input, textarea {
     width: 100% !important;
     max-width: 100% !important;
     padding: 10px 12px !important;
-    font-size: 0.9rem !important;
-    margin-bottom: 12px !important;
+    font-size: 0.95rem !important;
+    font-family: inherit !important;
+    margin-bottom: 16px !important;
     box-shadow: none !important;
     display: block !important;
 }
@@ -696,18 +706,34 @@ input:focus, textarea:focus {
     box-shadow: 0 0 0 2px rgba(53, 119, 249, 0.2) !important;
 }
 
+input::placeholder, textarea::placeholder {
+    color: #888 !important;
+}
+
 button[type="submit"] {
     background-color: #17C555 !important;
     color: #161618 !important;
     font-weight: 600 !important;
     border-radius: 6px !important;
     border: none !important;
-    padding: 8px 20px !important;
-    font-size: 0.9rem !important;
+    padding: 8px 24px !important;
+    font-size: 0.95rem !important;
     cursor: pointer !important;
     transition: background-color 0.2s ease !important;
+    margin-top: 4px !important;
 }
 
 button[type="submit"]:hover {
     background-color: #14b04b !important;
+}
+
+/* Make existing comments look clean */
+.prose {
+    font-size: 0.95rem !important;
+    line-height: 1.6 !important;
+    color: #dcddde !important;
+}
+.text-sm.text-gray-500 {
+    font-size: 0.8rem !important;
+    color: #888 !important;
 }
