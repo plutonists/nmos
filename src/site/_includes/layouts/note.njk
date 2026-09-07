@@ -67,7 +67,11 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
       {% for imp in dynamics.notes.beforeContent %}
         {% include imp %}
       {% endfor %}
-      {{ content | hideDataview | taggify | link | resolveMdLinks | safe}}
+      {{% if password %}
+        {{ content | hideDataview | taggify | link | resolveMdLinks | encryptContent(password) | safe}}
+      {% else %}
+        {{ content | hideDataview | taggify | link | resolveMdLinks | safe}}
+      {% endif %}
       {% for imp in dynamics.common.afterContent %}
         {% include imp %}
       {% endfor %}
