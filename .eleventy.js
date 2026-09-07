@@ -892,7 +892,12 @@ eleventyConfig.addFilter("notPasswordProtected", function (arr) {
     const iv64 = iv.toString('base64');
     
     // Return the prompt UI + the encrypted payload (raw content is removed)
-    return `
+        return `
+    <style>
+        .nmos-unlock-btn:hover {
+            background: #ff3366 !important;
+        }
+    </style>
     <div id="protected-content" data-salt="${salt64}" data-iv="${iv64}" data-tag="${authTag}" data-ciphertext="${encrypted}">
         <div class="password-prompt" style="text-align: center; margin: 40px auto; max-width: 400px; padding: 30px; background: var(--background-secondary); border-radius: 8px; border: 1px solid var(--background-modifier-border); box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
             <div style="margin-bottom: 20px;">
