@@ -3,148 +3,30 @@
         
         <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0;">Comments</h2>
         
-        <!-- Force a minimum height so the container can never collapse -->
-        <div style="width: 100%; min-height: 250px; overflow: visible; display: block; box-sizing: border-box; position: relative;">
-            <script>
-              window.CUSDIS_LOCALE = {
-                "en": {
-                  "post": "Post Comment",
-                  "reply": "Reply",
-                  "cancel": "Cancel",
-                  "reply_to": "Reply to",
-                  "placeholder": "Write your thoughts here...",
-                  "name": "Name",
-                  "email": "Email (optional)",
-                  "website": "Website (optional)"
-                }
-              };
-            </script>
-            
-            <div id="cusdis_thread"
-              data-host="https://cusdis.com"
-              data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
-              data-page-id="{{ page.url }}"
-              data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
-              data-page-title="{{ title | default(page.fileSlug) }}"
-              data-theme="{{ meta.baseTheme }}">
-            </div>
-        </div>
-        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-
-        <style>
-            /* Ensure the iframe itself is allowed to take up space */
-            #cusdis_thread iframe {
-                width: 100% !important;
-                min-height: 250px !important;
-                border: none !important;
-                display: block !important;
-            }
-        </style>
-
         <script>
-            window.addEventListener('message', function(e) {
-                if (e.data === 'cusdis_ready') {
-                    // Small timeout to ensure iframe is fully painted before injecting CSS
-                    setTimeout(() => {
-                        const iframe = document.querySelector('#cusdis_thread iframe');
-                        if (iframe && iframe.contentWindow) {
-                            
-                            iframe.contentWindow.postMessage({
-                                type: 'setTheme',
-                                theme: 'dark'
-                            }, '*');
-                            
-                            iframe.contentWindow.postMessage({
-                                type: 'setCustomCss',
-                                css: `
-                                    :root {
-                                        --color-bg: transparent !important;
-                                        --color-text: #dcddde !important;
-                                        --color-primary: #3577F9 !important;
-                                        --color-border: rgba(255, 255, 255, 0.1) !important;
-                                    }
-                                    body {
-                                        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
-                                        margin: 0 !important;
-                                        padding: 0 4px !important;
-                                    }
-                                    
-                                    /* Fix the flex grid crushing the inputs */
-                                    #root > div > div.flex {
-                                        display: flex !important;
-                                        flex-direction: row !important;
-                                        gap: 16px !important;
-                                        width: 100% !important;
-                                    }
-                                    
-                                    /* Force the inputs to behave nicely */
-                                    .w-full {
-                                        width: 100% !important;
-                                        flex: 1 1 50% !important;
-                                        box-sizing: border-box !important;
-                                    }
-                                    
-                                    label {
-                                        font-size: 0.85rem !important;
-                                        font-weight: 500 !important;
-                                        color: #aaa !important;
-                                        margin-bottom: 6px !important;
-                                        display: inline-block !important;
-                                    }
-                                    
-                                    input, textarea {
-                                        background-color: rgb(57, 56, 56) !important;
-                                        border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                                        border-radius: 6px !important;
-                                        color: #dcddde !important;
-                                        box-sizing: border-box !important;
-                                        width: 100% !important;
-                                        max-width: 100% !important;
-                                        padding: 10px 12px !important;
-                                        font-size: 0.9rem !important;
-                                        margin-bottom: 12px !important;
-                                        box-shadow: none !important;
-                                        display: block !important;
-                                    }
-                                    
-                                    input:focus, textarea:focus {
-                                        border-color: #3577F9 !important;
-                                        outline: none !important;
-                                        box-shadow: 0 0 0 2px rgba(53, 119, 249, 0.2) !important;
-                                    }
-                                    
-                                    button[type="submit"] {
-                                        background-color: #17C555 !important;
-                                        color: #161618 !important;
-                                        font-weight: 600 !important;
-                                        border-radius: 6px !important;
-                                        border: none !important;
-                                        padding: 8px 20px !important;
-                                        font-size: 0.9rem !important;
-                                        cursor: pointer !important;
-                                        transition: background-color 0.2s ease !important;
-                                    }
-                                    
-                                    button[type="submit"]:hover {
-                                        background-color: #14b04b !important;
-                                    }
-                                    
-                                    .prose {
-                                        font-size: 0.95rem !important;
-                                        line-height: 1.5 !important;
-                                    }
-                                    
-                                    .text-sm.text-gray-500 {
-                                        font-size: 0.75rem !important;
-                                        color: #888 !important;
-                                    }
-                                `
-                            }, '*');
-                        }
-                    }, 50); // 50ms delay
-                }
-            });
+          window.CUSDIS_LOCALE = {
+            "en": {
+              "post": "Post Comment",
+              "reply": "Reply",
+              "cancel": "Cancel",
+              "reply_to": "Reply to",
+              "placeholder": "Write your thoughts here...",
+              "name": "Name",
+              "email": "Email (optional)",
+              "website": "Website (optional)"
+            }
+          };
         </script>
         
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
+          data-page-id="{{ page.url }}"
+          data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
+          data-page-title="{{ title | default(page.fileSlug) }}"
+          data-theme="dark">
+        </div>
+        
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
     </div>
 {% endif %}
