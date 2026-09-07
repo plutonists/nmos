@@ -117,6 +117,9 @@ function getPermalinkMeta(note, key) {
     if (note.data.hide || note.data.hideInFiletree) {
       hide = true;
     }
+    if (note.data.password) {
+      isProtected = true;
+    }
     if (note.data.pinned) {
       pinned = note.data.pinned;
     }
