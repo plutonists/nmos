@@ -146,7 +146,7 @@ function getPermalinkMeta(note, key) {
     //ignore
   }
 
-  return [{ permalink, name, noteIcon, hide, pinned }, folders];
+  return [{ permalink, name, noteIcon, hide, pinned, isProtected }, folders];
 }
 
 function assignNested(obj, keyPath, value) {
