@@ -3,7 +3,10 @@
         <div x-show="isOpen" style="display:none" class="{{'filelist' if step>0}}">
             {%if fileOrFolder.isNote and not fileOrFolder.hide %}
                 <div @click.stop class="notelink {{ 'active-note' if fileOrFolder.permalink === permalink}}">
-                    <a data-note-icon="{{fileOrFolder.noteIcon}}" style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">{{fileOrFolder.name}} </a>
+                    <a data-note-icon="{{fileOrFolder.noteIcon}}" style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">
+    {{fileOrFolder.name}} 
+    {% if fileOrFolder.isProtected %}<i data-lucide="lock" style="width: 14px; height: 14px; margin-left: 4px; display: inline-block; vertical-align: -2px; color: var(--text-accent);"></i>{% endif %}
+                    </a>
                 </div>
             {% elif fileOrFolder.isFolder%}
                             <div class="folder inner-folder level-{{step}}" data-folder-name="{{ fileOrFolderName | lower }}" x-data="{isOpen: $persist(false).as({{currentPath | dump}})}" @click.stop="isOpen=!isOpen">
