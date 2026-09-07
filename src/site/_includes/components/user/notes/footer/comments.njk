@@ -25,7 +25,7 @@
               data-page-id="{{ page.url }}"
               data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
               data-page-title="{{ title | default(page.fileSlug) }}"
-              data-theme="{{ meta.siteBaseUrl }}/styles/custom-style.css">
+              data-theme="{{ meta.siteBaseUrl }}/styles/custom-style.css?v={{ meta.buildDate | isoDate }}"
             </div>
         </div>
         
