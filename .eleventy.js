@@ -907,7 +907,7 @@ eleventyConfig.addFilter("notPasswordProtected", function (arr) {
             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.9em;">Please enter the password to view this content.</p>
             <form id="password-form" onsubmit="decryptPage(event)" style="display: flex; flex-direction: column; gap: 10px;">
                 <input type="password" id="page-password" placeholder="Password" style="padding: 10px; border-radius: 4px; border: 1px solid var(--background-modifier-border); background: var(--background-primary); color: var(--text-normal); outline: none;" />
-                <button type="submit" style="padding: 10px; border-radius: 4px; background: var(--text-accent); color: var(--background-primary); border: none; cursor: pointer; font-weight: bold; transition: opacity 0.2s;">Unlock</button>
+                <button type="submit" class="nmos-unlock-btn" style="padding: 10px; border-radius: 4px; background: var(--text-accent); color: var(--background-primary); border: none; cursor: pointer; font-weight: bold; transition: background 0.2s ease;">Unlock</button>
             </form>
             <p id="password-error" style="color: #e74c3c; display: none; margin-top: 15px; font-size: 0.85em; font-weight: 500;">Incorrect password. Please try again.</p>
         </div>
