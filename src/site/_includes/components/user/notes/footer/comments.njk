@@ -1,17 +1,18 @@
 {% if not password %}
-    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border); max-width: 700px; margin-left: auto; margin-right: auto; box-sizing: border-box;">
-        <h3 style="margin-top: 0; margin-bottom: 20px;">Comments</h3>
+    <div style="margin-top: 60px; padding-top: 30px; border-top: 1px solid var(--background-modifier-border); max-width: 100%; box-sizing: border-box;">
+        
+        <!-- We use an h2 here but remove the underline border via inline styles to match your theme -->
+        <h2 style="margin-top: 0; margin-bottom: 20px; border: none; padding-bottom: 0;">Comments</h2>
         
         <div style="width: 100%; overflow: hidden; display: block; box-sizing: border-box;">
-            <!-- Note the new window.CUSDIS_LOCALE script above the thread -->
             <script>
               window.CUSDIS_LOCALE = {
                 "en": {
-                  "post": "Send",
+                  "post": "Post Comment",
                   "reply": "Reply",
                   "cancel": "Cancel",
                   "reply_to": "Reply to",
-                  "placeholder": "Write a comment...",
+                  "placeholder": "Write your thoughts here...",
                   "name": "Name",
                   "email": "Email (optional)",
                   "website": "Website (optional)"
@@ -19,9 +20,10 @@
               };
             </script>
             
-            <div id="cusdis_thread"
+            <!-- Added a wrapper class to the container so we can target the iframe easily -->
+            <div id="cusdis_thread" class="nmos-cusdis-wrapper"
               data-host="https://cusdis.com"
-              data-app-id="425fa494-1e5f-4392-b7ef-0d09394e9e18"
+              data-app-id="YOUR_APP_ID_HERE"
               data-page-id="{{ page.url }}"
               data-page-url="{{ meta.siteBaseUrl }}{{ page.url }}"
               data-page-title="{{ title | default(page.fileSlug) }}"
@@ -30,7 +32,15 @@
         </div>
         <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
-        <!-- Custom CSS injected into the Cusdis iframe -->
+        <!-- Global override to kill the iframe scrollbars on the parent side -->
+        <style>
+            .nmos-cusdis-wrapper iframe {
+                overflow: hidden !important;
+                /* Add a tiny bit of bottom padding to ensure the submit button isn't cut off */
+                min-height: 250px !important; 
+            }
+        </style>
+
         <script>
             window.addEventListener('message', function(e) {
                 if (e.data === 'cusdis_ready') {
@@ -38,60 +48,98 @@
                     if (iframe) {
                         iframe.style.width = '100%';
                         iframe.style.maxWidth = '100%';
+                        
                         iframe.contentWindow.postMessage({
                             type: 'setTheme',
                             theme: 'dark'
                         }, '*');
                         
-                        // Inject our custom site styles directly into the iframe
+                        // Inject our heavily cleaned-up CSS directly into the iframe
                         iframe.contentWindow.postMessage({
                             type: 'setCustomCss',
                             css: `
                                 /* Match main site background */
                                 :root {
-                                    --color-bg: #161618 !important; 
+                                    --color-bg: transparent !important; /* Let the parent background show through */
                                     --color-text: #dcddde !important;
                                     --color-primary: #3577F9 !important; /* NMOS Blue */
                                     --color-border: rgba(255, 255, 255, 0.1) !important;
                                 }
                                 body {
-                                    font-family: inherit !important;
+                                    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
                                     margin: 0 !important;
                                     padding: 0 !important;
-                                    overflow-x: hidden !important;
+                                    overflow: hidden !important; /* Kill the ugly inner scrollbars */
                                 }
-                                /* Input boxes */
+                                
+                                /* Tidy up the labels */
+                                label {
+                                    font-size: 0.85rem !important;
+                                    font-weight: 500 !important;
+                                    color: #aaa !important;
+                                    margin-bottom: 6px !important;
+                                    display: inline-block !important;
+                                }
+                                
+                                /* Clean up the input boxes */
                                 input, textarea {
                                     background-color: rgb(57, 56, 56) !important; /* var(--background-secondary) */
                                     border: 1px solid rgba(255, 255, 255, 0.1) !important;
-                                    border-radius: 4px !important;
+                                    border-radius: 6px !important; /* Slightly softer corners */
                                     color: #dcddde !important;
                                     box-sizing: border-box !important;
                                     max-width: 100% !important;
+                                    padding: 10px 12px !important; /* Give the text some breathing room */
+                                    font-size: 0.9rem !important;
+                                    margin-bottom: 12px !important;
+                                    box-shadow: none !important;
                                 }
                                 input:focus, textarea:focus {
                                     border-color: #3577F9 !important; /* NMOS Blue */
                                     outline: none !important;
+                                    box-shadow: 0 0 0 2px rgba(53, 119, 249, 0.2) !important; /* Soft blue glow */
                                 }
+                                
                                 /* Submit Button */
                                 button[type="submit"] {
                                     background-color: #17C555 !important; /* NMOS Green */
                                     color: #161618 !important;
-                                    font-weight: bold !important;
-                                    border-radius: 4px !important;
+                                    font-weight: 600 !important;
+                                    border-radius: 6px !important;
                                     border: none !important;
+                                    padding: 8px 20px !important;
+                                    font-size: 0.9rem !important;
+                                    cursor: pointer !important;
+                                    transition: background-color 0.2s ease !important;
                                 }
                                 button[type="submit"]:hover {
                                     background-color: #14b04b !important;
                                 }
-                                /* Remove strange margins */
+                                
+                                /* Layout fixes to prevent overflow */
                                 .w-full {
                                     width: 100% !important;
                                     box-sizing: border-box !important;
                                 }
                                 #root {
-                                    padding: 0 !important;
+                                    padding: 4px !important;
                                     max-width: 100% !important;
+                                    overflow: hidden !important;
+                                }
+                                
+                                /* Fix the flexbox grid for Name/Email so it doesn't squish */
+                                .flex.gap-4 {
+                                    gap: 16px !important;
+                                }
+                                
+                                /* Make existing comments look clean */
+                                .prose {
+                                    font-size: 0.95rem !important;
+                                    line-height: 1.5 !important;
+                                }
+                                .text-sm.text-gray-500 {
+                                    font-size: 0.75rem !important;
+                                    color: #888 !important;
                                 }
                             `
                         }, '*');
