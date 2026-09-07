@@ -957,7 +957,7 @@ eleventyConfig.addFilter("notPasswordProtected", function (arr) {
             }
         }
     </script>
-    \`;
+    `;
   });
   userEleventySetup(eleventyConfig);
 
