@@ -647,14 +647,25 @@ html {
    STANDARD PAGE IMAGE BEHAVIOR
 ========================================= */
 
-/* Change from default zoom-in to standard pointer */
 main.content img:not(.site-logo) {
     cursor: pointer;
-    transition: filter 0.2s ease;
+    border-radius: 6px; /* Softens the corners so the glow looks natural */
+    position: relative;
+    z-index: 1;
+    /* Smooth, springy transition for the pop-out and glow */
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                filter 0.3s ease;
 }
 
 main.content img:not(.site-logo):hover {
-    filter: brightness(1.1); /* Slight highlight to hint it's clickable */
+    z-index: 2; /* Ensures the popped-out image overlaps nearby text */
+    transform: scale(1.03); /* "Pops out" slightly */
+    filter: brightness(1.05); /* Slight illumination */
+    
+    /* NMOS Yellow outline glow */
+    box-shadow: 0 0 15px rgba(255, 186, 1, 0.6), 
+                0 0 30px rgba(255, 186, 1, 0.2);
 }
 
 /* =========================================
