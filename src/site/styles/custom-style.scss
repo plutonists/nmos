@@ -852,45 +852,122 @@ main.content img:not(.site-logo):hover {
     letter-spacing: 1px;
 }
 /* =========================================
-   NMOS RANKING SYSTEM (MARKDOWN LINK HACK)
+   NMOS RANKING SYSTEM (ANIMATED & INTERACTIVE)
 ========================================= */
 
-/* Make our "fake links" act like static badges (unclickable) */
-a[href="#_s" i], a[href="#_a" i], a[href="#_b" i], a[href="#_f" i],
-a[href="#_y" i], a[href="#_n" i], a[href="#_w" i] {
-    pointer-events: none !important; 
+/* 1. Base Reset & Smooth Transitions */
+:is(.markdown-rendered, .markdown-preview-view) a:is(
+    [href="#_s" i], [data-href="#_s" i], 
+    [href="#_a" i], [data-href="#_a" i], 
+    [href="#_b" i], [data-href="#_b" i], 
+    [href="#_f" i], [data-href="#_f" i], 
+    [href="#_y" i], [data-href="#_y" i], 
+    [href="#_n" i], [data-href="#_n" i], 
+    [href="#_w" i], [data-href="#_w" i]
+) {
     text-decoration: none !important;
-    display: inline-block !important;
+    display: inline-flex !important; 
+    align-items: center !important;
+    justify-content: center !important;
     vertical-align: middle !important;
     line-height: 1 !important;
+    cursor: default !important; 
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important; 
 }
 
-/* --- 1. Tier Badges --- */
-a[href="#_s" i], a[href="#_a" i], a[href="#_b" i], a[href="#_f" i] {
-    font-family: monospace;
-    font-weight: 800;
-    font-size: 0.9rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin: 0 8px;
-    background: rgba(0, 0, 0, 0.4);
+/* 2. Tier Badges (Square Base) */
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i], [href="#_a" i], [data-href="#_a" i], [href="#_b" i], [data-href="#_b" i], [href="#_f" i], [data-href="#_f" i]) {
+    font-family: monospace !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    width: 28px !important;  
+    height: 28px !important; 
+    padding: 0 !important;   
+    border-radius: 4px !important;
+    margin: 0 8px !important;
+    background: rgba(0, 0, 0, 0.4) !important;
+    text-shadow: 0 0 10px currentColor !important;
+    position: relative;
+    z-index: 1;
+    
+    /* FIX: Force the 1px solid border so the colors actually show up! */
+    border-width: 1px !important;
+    border-style: solid !important;
 }
-a[href="#_s" i] { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
-a[href="#_a" i] { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.5); box-shadow: 0 0 10px rgba(23, 197, 85, 0.2); }
-a[href="#_b" i] { color: #3577F9 !important; border: 1px solid rgba(53, 119, 249, 0.5); box-shadow: 0 0 10px rgba(53, 119, 249, 0.2); }
-a[href="#_f" i] { color: #F82C66 !important; border: 1px solid rgba(248, 44, 102, 0.5); box-shadow: 0 0 10px rgba(248, 44, 102, 0.2); }
 
-/* --- 2. Feature Tags --- */
-a[href="#_y" i], a[href="#_n" i], a[href="#_w" i] {
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 3px 6px;
-    border-radius: 12px;
-    margin-right: 4px;
-    background: rgba(57, 56, 56, 0.8);
+/* --- THE GOD TIER SHINE ANIMATION --- */
+@keyframes nmos-s-tier-shine {
+    0%, 85% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
+    88% { color: #F82C66; border-color: rgba(248, 44, 102, 0.8); box-shadow: 0 0 18px rgba(248, 44, 102, 0.6); } 
+    92% { color: #3577F9; border-color: rgba(53, 119, 249, 0.8); box-shadow: 0 0 18px rgba(53, 119, 249, 0.6); } 
+    96% { color: #17C555; border-color: rgba(23, 197, 85, 0.8); box-shadow: 0 0 18px rgba(23, 197, 85, 0.6); } 
+    100% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
 }
-a[href="#_y" i] { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.3); }
-a[href="#_w" i] { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.3); }
-a[href="#_n" i] { color: rgba(248, 44, 102, 0.6) !important; border: 1px solid rgba(248, 44, 102, 0.2); text-decoration: line-through !important; }
+
+/* Base Colors */
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i]) { 
+    animation: nmos-s-tier-shine 5s infinite; 
+    border-color: rgba(255, 186, 1, 0.5); /* Fallback just in case */
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_a" i], [data-href="#_a" i]) { color: #17C555 !important; border-color: rgba(23, 197, 85, 0.5) !important; box-shadow: 0 0 10px rgba(23, 197, 85, 0.2) !important; }
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_b" i], [data-href="#_b" i]) { color: #3577F9 !important; border-color: rgba(53, 119, 249, 0.5) !important; box-shadow: 0 0 10px rgba(53, 119, 249, 0.2) !important; }
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_f" i], [data-href="#_f" i]) { color: #F82C66 !important; border-color: rgba(248, 44, 102, 0.5) !important; box-shadow: 0 0 10px rgba(248, 44, 102, 0.2) !important; }
+
+/* --- INTENSIFIED HOVER GLOWS --- */
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i]):hover {
+    animation: none !important;
+    color: #FFBA01 !important; 
+    border-color: #FFBA01 !important; 
+    box-shadow: 0 0 25px rgba(255, 186, 1, 0.8), inset 0 0 10px rgba(255, 186, 1, 0.3) !important;
+    transform: scale(1.15) !important;
+    z-index: 10;
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_a" i], [data-href="#_a" i]):hover {
+    border-color: #17C555 !important; 
+    box-shadow: 0 0 25px rgba(23, 197, 85, 0.8), inset 0 0 10px rgba(23, 197, 85, 0.3) !important;
+    transform: scale(1.15) !important;
+    z-index: 10;
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_b" i], [data-href="#_b" i]):hover {
+    border-color: #3577F9 !important; 
+    box-shadow: 0 0 25px rgba(53, 119, 249, 0.8), inset 0 0 10px rgba(53, 119, 249, 0.3) !important;
+    transform: scale(1.15) !important;
+    z-index: 10;
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_f" i], [data-href="#_f" i]):hover {
+    border-color: #F82C66 !important; 
+    box-shadow: 0 0 25px rgba(248, 44, 102, 0.8), inset 0 0 10px rgba(248, 44, 102, 0.3) !important;
+    transform: scale(1.15) !important;
+    z-index: 10;
+}
+
+
+/* 3. Feature Tags */
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i], [href="#_n" i], [data-href="#_n" i], [href="#_w" i], [data-href="#_w" i]) {
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    padding: 4px 8px !important;
+    border-radius: 12px !important;
+    margin-right: 5px !important;
+    background: rgba(0, 0, 0, 0.45) !important;
+}
+
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i]) { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.3) !important; }
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_w" i], [data-href="#_w" i]) { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.3) !important; }
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_n" i], [data-href="#_n" i]) { color: #F82C66 !important; border: 1px solid rgba(248, 44, 102, 0.3) !important; }
+
+/* Feature Tag Hovers */
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i]):hover {
+    box-shadow: 0 0 15px rgba(23, 197, 85, 0.4) !important;
+    border-color: #17C555 !important;
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_w" i], [data-href="#_w" i]):hover {
+    box-shadow: 0 0 15px rgba(255, 186, 1, 0.4) !important;
+    border-color: #FFBA01 !important;
+}
+:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_n" i], [data-href="#_n" i]):hover {
+    box-shadow: 0 0 15px rgba(248, 44, 102, 0.4) !important;
+    border-color: #F82C66 !important;
+}
