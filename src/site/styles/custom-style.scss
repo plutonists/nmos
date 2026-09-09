@@ -752,3 +752,7 @@ html {
 .nmos-iv-content img.zoomed:active {
     cursor: grabbing;
 }
+/* Add magnifying glass cursor to standard reading images */
+main.content img:not(.site-logo) {
+    cursor: zoom-in;
+}
