@@ -854,8 +854,6 @@ main.content img:not(.site-logo):hover {
 /* =========================================
    NMOS RANKING SYSTEM (TIERS & TAGS)
 ========================================= */
-
-/* --- 1. Tier Badges --- */
 .nmos-tier {
     display: inline-block;
     font-family: monospace;
@@ -869,33 +867,11 @@ main.content img:not(.site-logo):hover {
     text-shadow: 0 0 10px currentColor;
     background: rgba(0, 0, 0, 0.4);
 }
+.nmos-tier.s { color: #FFBA01; border: 1px solid rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
+.nmos-tier.a { color: #17C555; border: 1px solid rgba(23, 197, 85, 0.5); box-shadow: 0 0 10px rgba(23, 197, 85, 0.2); }
+.nmos-tier.b { color: #3577F9; border: 1px solid rgba(53, 119, 249, 0.5); box-shadow: 0 0 10px rgba(53, 119, 249, 0.2); }
+.nmos-tier.f { color: #F82C66; border: 1px solid rgba(248, 44, 102, 0.5); box-shadow: 0 0 10px rgba(248, 44, 102, 0.2); }
 
-/* S-Tier: Flawless (NMOS Yellow/Gold) */
-.nmos-tier.s { 
-    color: #FFBA01; 
-    border: 1px solid rgba(255, 186, 1, 0.5);
-    box-shadow: 0 0 10px rgba(255, 186, 1, 0.2);
-}
-/* A-Tier: Great (NMOS Green) */
-.nmos-tier.a { 
-    color: #17C555; 
-    border: 1px solid rgba(23, 197, 85, 0.5);
-    box-shadow: 0 0 10px rgba(23, 197, 85, 0.2);
-}
-/* B-Tier: Good/Average (NMOS Blue) */
-.nmos-tier.b { 
-    color: #3577F9; 
-    border: 1px solid rgba(53, 119, 249, 0.5);
-    box-shadow: 0 0 10px rgba(53, 119, 249, 0.2);
-}
-/* C/F-Tier: Bad (NMOS Red) */
-.nmos-tier.f { 
-    color: #F82C66; 
-    border: 1px solid rgba(248, 44, 102, 0.5);
-    box-shadow: 0 0 10px rgba(248, 44, 102, 0.2);
-}
-
-/* --- 2. Feature Tags --- */
 .nmos-ftag {
     display: inline-block;
     font-size: 0.7rem;
@@ -906,24 +882,8 @@ main.content img:not(.site-logo):hover {
     border-radius: 12px;
     margin-right: 4px;
     vertical-align: middle;
-    background: var(--background-secondary);
+    background: rgba(57, 56, 56, 0.8);
 }
-
-/* Tag: Feature is Present (Green Glow) */
-.nmos-ftag.yes {
-    color: #17C555;
-    border: 1px solid rgba(23, 197, 85, 0.3);
-}
-
-/* Tag: Feature is Missing/Bad (Red & Strikethrough) */
-.nmos-ftag.no {
-    color: rgba(248, 44, 102, 0.6);
-    border: 1px solid rgba(248, 44, 102, 0.2);
-    text-decoration: line-through;
-}
-
-/* Tag: Warning/Caution (Yellow) */
-.nmos-ftag.warn {
-    color: #FFBA01;
-    border: 1px solid rgba(255, 186, 1, 0.3);
-}
+.nmos-ftag.yes { color: #17C555; border: 1px solid rgba(23, 197, 85, 0.3); }
+.nmos-ftag.warn { color: #FFBA01; border: 1px solid rgba(255, 186, 1, 0.3); }
+.nmos-ftag.no { color: rgba(248, 44, 102, 0.6); border: 1px solid rgba(248, 44, 102, 0.2); text-decoration: line-through; }
