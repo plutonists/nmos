@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-09T22:25:41.473+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
+{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-09T23:21:57.915+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
 ---
 
 ## Streaming Websites
@@ -8,16 +8,17 @@ These are all streaming websites I've tested, all of them work, personally, I ha
 This page will be using the <span style="color:#ff3366">F</span><span style="color:#00c853">A</span><span style="color:#2979ff">B</span><span style="color:#ffc107">S</span> Tiering:
 > [!abstract] <span style="color:#ff3366">F</span><span style="color:#00c853">A</span><span style="color:#2979ff">B</span><span style="color:#ffc107">S</span> Criteria:
 > For those who don't know, the FABS Ranking is simply a way to rank websites:
-> - [S](#_S)⇒ **Stellar**: Flawless website.
-> - [A](#_A)⇒ **Approved**: Great website, but isn't perfect.
-> - [B](#_B)⇒ **Basic**: Gets the job done, good backup when [S](#_S) & [A](#_A) are down.
-> - [F](#_F)⇒ **Failure**: Avoid.
+> - <span class="s">S</span> ⇒ **Stellar**: Flawless website.
+> - <span class="a">A</span> ⇒ **Approved**: Great website, but isn't perfect.
+> - <span class="b">B</span> ⇒ **Basic**: Gets the job done, good backup when <span class="s">S</span> & <span class="a">A</span> are down.
+> - <span class="f">F</span> ⇒ **Failure**: Avoid.
 >---
 >A website must pass the following checks in order to be placed above the <span style="color:#ff3366">F tier</span>:
 >- **Basic Website Functionality:** Does the website fulfill the expected? Is the usage of the website agonizing?
 >- **Advertisements & Safety:** How intrusive are the ads? Are the ads NSFW or malicious? Are the ads completely unmanageable even with adblocker turned on? Does it require you to turn off your adblocker? Is the website malicious?
 >  - **Paywall & Privacy**: Does the website have an unjustifiable paywall? Does it require you to signup with an account and hand over some of your information? 
->    The <span style="color:#ffc107">S tier</span> requires the website to be absolutely flawless with no hiccups. As for the <span style="color:#00c853">A tier </span>& <span style="color:#2979ff">B tier</span>, vibe based.
+>    
+> The <span style="color:#ffc107">S tier</span> requires the website to be absolutely flawless with no hiccups. As for the <span style="color:#00c853">A tier </span>& <span style="color:#2979ff">B tier</span>, vibe based.
 >**Criteria:** UI/UX, Speed, Subtitles, Streaming Quality, Features, Ads
 
 > [!attention] Disclaimer
@@ -27,7 +28,6 @@ This page will be using the <span style="color:#ff3366">F</span><span style="col
 
 ---
 
-- [S](#_S)[Cinejoy](https://cinejoy.to/) [UI/UX ](#_y)[Speed](#_y) [Subtitles](#_y) [Streaming Quality](#_y) [Features](#_y) [No Ads](#_y)
+- <span class="s">S</span> [Cinejoy](https://cinejoy.to/) <span class="y">UI/UX</span> <span class="y">Speed</span> <span class="y">Subtitles</span> <span class="y">Streaming Quality</span> <span class="y">Features</span> <span class="y">No Ads</span>
 - 
-- 
-
+-
