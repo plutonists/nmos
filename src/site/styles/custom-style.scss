@@ -772,32 +772,34 @@ main.content img:not(.site-logo):hover {
 }
 
 /* =========================================
-   NMOS GALLERY LAYOUT (MASONRY)
+   NMOS GALLERY LAYOUT (HORIZONTAL MASONRY)
 ========================================= */
 .nmos-gallery-grid {
-    column-count: 1;
-    column-gap: 16px;
-    margin-top: 0.5rem; /* Drastically reduced gap */
+    display: flex;
+    gap: 16px;
+    margin-top: 0.5rem; /* Reduced massive gap */
     padding-bottom: 2rem;
+    align-items: flex-start; /* Prevents columns from stretching vertically */
 }
 
-/* Adjust columns based on screen width so they are larger */
-@media (min-width: 600px) { .nmos-gallery-grid { column-count: 2; } }
-@media (min-width: 1000px) { .nmos-gallery-grid { column-count: 3; } }
+.nmos-gallery-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1; /* Makes all columns exactly the same width */
+}
 
-.nmos-gallery-grid picture,
-.nmos-gallery-grid img {
+.nmos-gallery-col picture,
+.nmos-gallery-col img {
     width: 100%;
-    height: auto !important; /* Maintains true aspect ratio */
+    height: auto !important; /* Keeps true aspect ratio */
     object-fit: contain;
     border-radius: 12px;
-    margin: 0 0 16px 0 !important; /* Space below each image */
+    margin: 0 !important;
     display: block;
-    break-inside: avoid; /* Prevents images from splitting across columns */
-    -webkit-column-break-inside: avoid;
 }
 
-/* --- Image Viewer Navigation Buttons --- */
+/* --- Image Viewer Navigation & Counter --- */
 .nmos-iv-nav {
     position: absolute;
     top: 50%;
@@ -819,7 +821,7 @@ main.content img:not(.site-logo):hover {
 }
 
 .nmos-iv-nav:hover:not(:disabled) {
-    background: rgba(53, 119, 249, 0.8); /* NMOS Blue */
+    background: rgba(53, 119, 249, 0.8);
     border-color: #3577F9;
     transform: translateY(-50%) scale(1.05);
 }
@@ -831,3 +833,21 @@ main.content img:not(.site-logo):hover {
 
 .nmos-iv-nav-left { left: 20px; }
 .nmos-iv-nav-right { right: 20px; }
+
+.nmos-iv-counter {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    color: #FFF;
+    background: rgba(15, 15, 15, 0.6);
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 600;
+    font-size: 1rem;
+    z-index: 5;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-family: monospace;
+    letter-spacing: 1px;
+}
