@@ -60,3 +60,26 @@
 {% endif %}
 <style>
 </style>
+<!-- Custom Video Player UI (Plyr) -->
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<script defer src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+
+<style>
+  /* Override Plyr to match NMOS Blue */
+  :root {
+    --plyr-color-main: #3577F9;
+    --plyr-video-background: transparent;
+  }
+  .plyr {
+    border-radius: 4px;
+  }
+</style>
+
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initializes the custom player on all videos with the "js-plyr" class
+    const players = Array.from(document.querySelectorAll('.js-plyr')).map(p => new Plyr(p, {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen']
+    }));
+  });
+</script>
