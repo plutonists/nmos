@@ -770,3 +770,33 @@ main.content img:not(.site-logo):hover {
     -webkit-user-drag: none;
     will-change: transform; /* Hint for browser to use GPU */
 }
+
+/* =========================================
+   NMOS CUSTOM VIDEO PLAYER
+========================================= */
+.nmos-video-wrapper {
+    position: relative;
+    margin: 1.5em 0;
+    border-radius: 8px;
+    background: var(--background-secondary);
+    padding: 4px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.nmos-video-wrapper:hover {
+    box-shadow: 0 8px 25px rgba(53, 119, 249, 0.3); /* NMOS Blue glow */
+    transform: translateY(-2px);
+    border-color: rgba(53, 119, 249, 0.5);
+}
+
+.nmos-video-embed {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 4px;
+    background: #000; /* Black background for 16:9 letterboxing */
+    outline: none;
+}
