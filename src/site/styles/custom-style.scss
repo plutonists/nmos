@@ -649,23 +649,23 @@ html {
 
 main.content img:not(.site-logo) {
     cursor: pointer;
-    border-radius: 6px; /* Softens the corners so the glow looks natural */
+    border-radius: 6px;
     position: relative;
     z-index: 1;
-    /* Smooth, springy transition for the pop-out and glow */
     transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
                 box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
                 filter 0.3s ease;
 }
 
 main.content img:not(.site-logo):hover {
-    z-index: 2; /* Ensures the popped-out image overlaps nearby text */
-    transform: scale(1.03); /* "Pops out" slightly */
-    filter: brightness(1.05); /* Slight illumination */
+    z-index: 2; 
+    transform: scale(1.03); 
+    filter: brightness(1.05); 
     
-    /* NMOS Yellow outline glow */
-    box-shadow: 0 0 15px rgba(255, 186, 1, 0.6), 
-                0 0 30px rgba(255, 186, 1, 0.2);
+    /* Brighter NMOS Yellow glow: 3 layers for a true neon effect */
+    box-shadow: 0 0 5px rgba(255, 186, 1, 0.9),  /* Tight, bright core */
+                0 0 18px rgba(255, 186, 1, 0.6), /* Mid-level spread */
+                0 0 35px rgba(255, 186, 1, 0.3); /* Soft outer haze */
 }
 
 /* =========================================
@@ -683,12 +683,22 @@ main.content img:not(.site-logo):hover {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     opacity: 1;
-    animation: fadeIn 0.2s ease-out;
+    animation: fadeIn 0.2s ease-out forwards; /* 'forwards' keeps it at opacity 1 */
+}
+
+/* New class added by JS when closing */
+.nmos-image-viewer.nmos-iv-closing {
+    animation: fadeOut 0.2s ease-in forwards;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from { opacity: 0; transform: scale(1.02); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.02); }
 }
 
 .nmos-iv-overlay {
