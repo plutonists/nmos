@@ -9,7 +9,7 @@
         <button id="nmos-iv-close" title="Close"><i data-lucide="x"></i></button>
     </div>
 
-    <div class="nmos-iv-content" id="nmos-iv-content">
+    <div class="nmos-iv-content" id="nmos-iv-content" title="Click outside image to close">
         <img id="nmos-iv-img" src="" alt="Expanded Image" />
     </div>
 </div>
@@ -29,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentSrc = '';
     let isZoomed = false;
 
-    // 1. Find all readable images in the main content area
-    const contentImages = document.querySelectorAll('main.content img:not(.site-logo)');
-
-    contentImages.forEach(image => {
-        image.style.cursor = 'zoom-in';
-        image.addEventListener('click', (e) => {
-            e.preventDefault(); // Prevent navigating if wrapped in a link
-            currentSrc = e.target.currentSrc || e.target.src;
+    // 1. Event Delegation: Works for standard pages AND decrypted password pages
+    document.addEventListener('click', (e) => {
+        // Look for clicks on images inside the main content area
+        const imgTarget = e.target.closest('main.content img:not(.site-logo)');
+        
+        if (imgTarget) {
+            e.preventDefault();
+            currentSrc = imgTarget.currentSrc || imgTarget.src;
             img.src = currentSrc;
             
             viewer.style.display = 'flex';
@@ -46,17 +46,26 @@ document.addEventListener('DOMContentLoaded', () => {
             isZoomed = false;
             img.classList.remove('zoomed');
             btnZoom.innerHTML = '<i data-lucide="zoom-in"></i>';
-            lucide.createIcons({ root: btnZoom });
-        });
+            if (typeof lucide !== 'undefined') lucide.createIcons({ root: btnZoom });
+        }
     });
 
-    // 2. Close Viewer
+    // 2. Close Viewer Logic
     function closeViewer() {
         viewer.style.display = 'none';
         document.body.style.overflow = '';
     }
+    
     btnClose.addEventListener('click', closeViewer);
     overlay.addEventListener('click', closeViewer);
+    
+    // Allow clicking the empty space around the image to close
+    contentBox.addEventListener('click', (e) => {
+        if (e.target === contentBox) { // Ensures we didn't click the image itself
+            closeViewer();
+        }
+    });
+
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeViewer(); });
 
     // 3. Copy Link
@@ -64,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const absoluteUrl = new URL(currentSrc, window.location.origin).href;
         navigator.clipboard.writeText(absoluteUrl).then(() => {
             btnCopy.innerHTML = '<i data-lucide="check"></i>';
-            lucide.createIcons({ root: btnCopy });
+            if (typeof lucide !== 'undefined') lucide.createIcons({ root: btnCopy });
             setTimeout(() => {
                 btnCopy.innerHTML = '<i data-lucide="link"></i>';
-                lucide.createIcons({ root: btnCopy });
+                if (typeof lucide !== 'undefined') lucide.createIcons({ root: btnCopy });
             }, 2000);
         });
     });
@@ -92,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.classList.remove('zoomed');
             btnZoom.innerHTML = '<i data-lucide="zoom-in"></i>';
         }
-        lucide.createIcons({ root: btnZoom });
+        if (typeof lucide !== 'undefined') lucide.createIcons({ root: btnZoom });
     }
     btnZoom.addEventListener('click', toggleZoom);
     img.addEventListener('dblclick', toggleZoom);
@@ -103,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     img.addEventListener('mousedown', (e) => {
         if (!isZoomed) return;
+        e.preventDefault(); // prevents ghost image dragging
         isDragging = true;
         img.style.cursor = 'grabbing';
         startX = e.pageX - contentBox.offsetLeft;
