@@ -71,10 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Close Viewer Logic
+// 2. Close Viewer Logic
     function closeViewer() {
-        viewer.style.display = 'none';
-        document.body.style.overflow = '';
+        viewer.classList.add('nmos-iv-closing');
+        document.body.style.overflow = ''; 
+        
+        setTimeout(() => {
+            viewer.style.display = 'none';
+            viewer.classList.remove('nmos-iv-closing'); 
+        }, 200); 
     }
     
     btnClose.addEventListener('click', closeViewer);
