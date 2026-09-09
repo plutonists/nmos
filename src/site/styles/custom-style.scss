@@ -852,38 +852,45 @@ main.content img:not(.site-logo):hover {
     letter-spacing: 1px;
 }
 /* =========================================
-   NMOS RANKING SYSTEM (TIERS & TAGS)
+   NMOS RANKING SYSTEM (MARKDOWN LINK HACK)
 ========================================= */
-.nmos-tier {
-    display: inline-block;
+
+/* Make our "fake links" act like static badges (unclickable) */
+a[href="#_s" i], a[href="#_a" i], a[href="#_b" i], a[href="#_f" i],
+a[href="#_y" i], a[href="#_n" i], a[href="#_w" i] {
+    pointer-events: none !important; 
+    text-decoration: none !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
+}
+
+/* --- 1. Tier Badges --- */
+a[href="#_s" i], a[href="#_a" i], a[href="#_b" i], a[href="#_f" i] {
     font-family: monospace;
     font-weight: 800;
     font-size: 0.9rem;
     padding: 2px 8px;
     border-radius: 4px;
-    margin-left: 8px;
-    margin-right: 8px;
-    vertical-align: middle;
-    text-shadow: 0 0 10px currentColor;
+    margin: 0 8px;
     background: rgba(0, 0, 0, 0.4);
 }
-.nmos-tier.s { color: #FFBA01; border: 1px solid rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
-.nmos-tier.a { color: #17C555; border: 1px solid rgba(23, 197, 85, 0.5); box-shadow: 0 0 10px rgba(23, 197, 85, 0.2); }
-.nmos-tier.b { color: #3577F9; border: 1px solid rgba(53, 119, 249, 0.5); box-shadow: 0 0 10px rgba(53, 119, 249, 0.2); }
-.nmos-tier.f { color: #F82C66; border: 1px solid rgba(248, 44, 102, 0.5); box-shadow: 0 0 10px rgba(248, 44, 102, 0.2); }
+a[href="#_s" i] { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
+a[href="#_a" i] { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.5); box-shadow: 0 0 10px rgba(23, 197, 85, 0.2); }
+a[href="#_b" i] { color: #3577F9 !important; border: 1px solid rgba(53, 119, 249, 0.5); box-shadow: 0 0 10px rgba(53, 119, 249, 0.2); }
+a[href="#_f" i] { color: #F82C66 !important; border: 1px solid rgba(248, 44, 102, 0.5); box-shadow: 0 0 10px rgba(248, 44, 102, 0.2); }
 
-.nmos-ftag {
-    display: inline-block;
+/* --- 2. Feature Tags --- */
+a[href="#_y" i], a[href="#_n" i], a[href="#_w" i] {
     font-size: 0.7rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 2px 6px;
+    padding: 3px 6px;
     border-radius: 12px;
     margin-right: 4px;
-    vertical-align: middle;
     background: rgba(57, 56, 56, 0.8);
 }
-.nmos-ftag.yes { color: #17C555; border: 1px solid rgba(23, 197, 85, 0.3); }
-.nmos-ftag.warn { color: #FFBA01; border: 1px solid rgba(255, 186, 1, 0.3); }
-.nmos-ftag.no { color: rgba(248, 44, 102, 0.6); border: 1px solid rgba(248, 44, 102, 0.2); text-decoration: line-through; }
+a[href="#_y" i] { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.3); }
+a[href="#_w" i] { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.3); }
+a[href="#_n" i] { color: rgba(248, 44, 102, 0.6) !important; border: 1px solid rgba(248, 44, 102, 0.2); text-decoration: line-through !important; }
