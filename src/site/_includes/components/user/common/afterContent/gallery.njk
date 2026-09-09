@@ -4,35 +4,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('main.content');
     if (!mainContent) return;
 
-    // Find all images in the content. We exclude the site logo and UI icons.
     const images = Array.from(mainContent.querySelectorAll('img:not(.site-logo):not([src*="svg"])'));
-    
     if (images.length === 0) return;
 
-    // Create the grid container
     const galleryGrid = document.createElement('div');
     galleryGrid.className = 'nmos-gallery-grid';
 
     images.forEach(img => {
-        // If the image is optimized by Eleventy, it's wrapped in a <picture> tag. We need to move the whole tag.
         let elementToMove = img;
         if (img.parentElement && img.parentElement.tagName.toLowerCase() === 'picture') {
             elementToMove = img.parentElement;
         }
-
-        // Find the paragraph holding the image
-        const parentP = elementToMove.closest('p');
-        
-        // Move the image into our grid container
         galleryGrid.appendChild(elementToMove);
+    });
 
-        // If the original paragraph is now empty, remove it to prevent awkward blank spaces in the text
-        if (parentP && parentP.innerHTML.trim() === '') {
-            parentP.remove();
+    // Aggressive cleanup: Find all empty paragraphs and <br> tags causing the massive gap
+    mainContent.querySelectorAll('p').forEach(p => {
+        // If the paragraph only contains spaces or line breaks, delete it
+        if (p.innerHTML.replace(/<br\s*\/?>/gi, '').trim() === '') {
+            p.remove();
         }
     });
 
-    // Place the finished gallery grid at the bottom of the page content
     mainContent.appendChild(galleryGrid);
 });
 </script>
