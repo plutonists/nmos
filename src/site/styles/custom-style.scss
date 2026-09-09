@@ -800,3 +800,26 @@ main.content img:not(.site-logo):hover {
     background: #000; /* Black background for 16:9 letterboxing */
     outline: none;
 }
+/* =========================================
+   NMOS GALLERY LAYOUT
+========================================= */
+.nmos-gallery-grid {
+    display: grid;
+    /* This automatically changes columns based on screen size */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.nmos-gallery-grid picture,
+.nmos-gallery-grid img {
+    display: block;
+    width: 100%;
+    height: 200px; /* Forces uniform height for the gallery */
+    object-fit: cover; /* Crops center perfectly without stretching */
+    border-radius: 12px; /* Smooth rounded corners */
+    margin: 0 !important;
+}
+
+/* The glowing hover effects from your main CSS will automatically apply to these too! */
