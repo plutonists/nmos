@@ -878,7 +878,7 @@ main.content img:not(.site-logo):hover {
     cursor: default !important;
 }
 
-/* God Tier Animation Fix */
+/* Normal S-Tier Animation */
 @keyframes nmos-s-tier-shine {
     0%, 85% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
     88% { color: #F82C66; border-color: rgba(248, 44, 102, 0.8); box-shadow: 0 0 18px rgba(248, 44, 102, 0.6); } 
@@ -887,17 +887,26 @@ main.content img:not(.site-logo):hover {
     100% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
 }
 
-:is(.markdown-rendered, .markdown-preview-view) span.s { 
-    animation: nmos-s-tier-shine 5s infinite; 
-    color: #FFBA01; /* NO !important here, allows animation to run */
-    border-color: rgba(255, 186, 1, 0.5);
+/* HOVER S-Tier Animation (Massive Glow) */
+@keyframes nmos-s-tier-hover-shine {
+    0%, 85% { color: #FFBA01; border-color: #FFBA01; box-shadow: 0 0 25px rgba(255, 186, 1, 0.8), inset 0 0 10px rgba(255, 186, 1, 0.3); }
+    88% { color: #F82C66; border-color: #F82C66; box-shadow: 0 0 25px rgba(248, 44, 102, 0.8), inset 0 0 10px rgba(248, 44, 102, 0.3); } 
+    92% { color: #3577F9; border-color: #3577F9; box-shadow: 0 0 25px rgba(53, 119, 249, 0.8), inset 0 0 10px rgba(53, 119, 249, 0.3); } 
+    96% { color: #17C555; border-color: #17C555; box-shadow: 0 0 25px rgba(23, 197, 85, 0.8), inset 0 0 10px rgba(23, 197, 85, 0.3); } 
+    100% { color: #FFBA01; border-color: #FFBA01; box-shadow: 0 0 25px rgba(255, 186, 1, 0.8), inset 0 0 10px rgba(255, 186, 1, 0.3); }
 }
+
+:is(.markdown-rendered, .markdown-preview-view) span.s { animation: nmos-s-tier-shine 5s infinite; color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); }
 :is(.markdown-rendered, .markdown-preview-view) span.a { color: #17C555 !important; border-color: rgba(23, 197, 85, 0.5) !important; box-shadow: 0 0 10px rgba(23, 197, 85, 0.2) !important; }
 :is(.markdown-rendered, .markdown-preview-view) span.b { color: #3577F9 !important; border-color: rgba(53, 119, 249, 0.5) !important; box-shadow: 0 0 10px rgba(53, 119, 249, 0.2) !important; }
 :is(.markdown-rendered, .markdown-preview-view) span.f { color: #F82C66 !important; border-color: rgba(248, 44, 102, 0.5) !important; box-shadow: 0 0 10px rgba(248, 44, 102, 0.2) !important; }
 
 /* Tier Hovers */
-:is(.markdown-rendered, .markdown-preview-view) span.s:hover { transform: scale(1.15) !important; z-index: 10; filter: brightness(1.3); }
+:is(.markdown-rendered, .markdown-preview-view) span.s:hover { 
+    animation: nmos-s-tier-hover-shine 5s infinite !important; 
+    transform: scale(1.15) !important; 
+    z-index: 10; 
+}
 :is(.markdown-rendered, .markdown-preview-view) span.a:hover { border-color: #17C555 !important; box-shadow: 0 0 25px rgba(23, 197, 85, 0.8), inset 0 0 10px rgba(23, 197, 85, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
 :is(.markdown-rendered, .markdown-preview-view) span.b:hover { border-color: #3577F9 !important; box-shadow: 0 0 25px rgba(53, 119, 249, 0.8), inset 0 0 10px rgba(53, 119, 249, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
 :is(.markdown-rendered, .markdown-preview-view) span.f:hover { border-color: #F82C66 !important; box-shadow: 0 0 25px rgba(248, 44, 102, 0.8), inset 0 0 10px rgba(248, 44, 102, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
