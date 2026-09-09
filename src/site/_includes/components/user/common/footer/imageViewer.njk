@@ -2,6 +2,9 @@
 <div id="nmos-image-viewer" class="nmos-image-viewer" style="display: none;">
     <div class="nmos-iv-overlay" id="nmos-iv-overlay" title="Click to close"></div>
     
+    <!-- Image Counter -->
+    <div id="nmos-iv-counter" class="nmos-iv-counter"></div>
+
     <div class="nmos-iv-toolbar">
         <button id="nmos-iv-copy" title="Copy Link"><i data-lucide="link"></i></button>
         <button id="nmos-iv-download" title="Save Image"><i data-lucide="download"></i></button>
@@ -32,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const btnPrev = document.getElementById('nmos-iv-prev');
     const btnNext = document.getElementById('nmos-iv-next');
+    const counterEl = document.getElementById('nmos-iv-counter');
 
     let currentSrc = '';
     let scale = 1;
@@ -63,9 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTransform(true);
     }
 
-    function updateNavButtons() {
+    function updateNavUI() {
+        // Disable buttons at the edges
         btnPrev.disabled = currentImageIndex <= 0;
         btnNext.disabled = currentImageIndex >= pageImages.length - 1;
+        
+        // Update Counter
+        if (pageImages.length > 0) {
+            counterEl.style.display = 'block';
+            counterEl.textContent = `${currentImageIndex + 1} / ${pageImages.length}`;
+        } else {
+            counterEl.style.display = 'none';
+        }
     }
 
     function navigateGallery(dir) {
@@ -79,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             img.src = currentSrc;
             
             resetViewer();
-            updateNavButtons();
+            updateNavUI();
         }
     }
 
@@ -89,14 +102,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (imgTarget) {
             e.preventDefault();
             
-            // Re-fetch all images in case page content changed
+            // Re-fetch images to ensure correct count
             pageImages = Array.from(document.querySelectorAll('main.content img:not(.site-logo)'));
             currentImageIndex = pageImages.indexOf(imgTarget);
             
             currentSrc = imgTarget.currentSrc || imgTarget.src;
             img.src = currentSrc;
             
-            updateNavButtons();
+            updateNavUI();
             
             viewer.style.display = 'flex';
             document.body.style.overflow = 'hidden'; 
@@ -124,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === contentBox) closeViewer();
     });
 
-    // Keyboard Shortcuts (Escape, Left/Right)
+    // Keyboard Shortcuts
     document.addEventListener('keydown', (e) => { 
         if (viewer.style.display === 'flex' && !viewer.classList.contains('nmos-iv-closing')) {
             if (e.key === 'Escape') closeViewer();
@@ -164,25 +177,17 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault(); 
         isDragging = true;
         hasMoved = false;
-        
-        startX = e.clientX;
-        startY = e.clientY;
-        startTx = translateX;
-        startTy = translateY;
-        
+        startX = e.clientX; startY = e.clientY;
+        startTx = translateX; startTy = translateY;
         if (scale > 1) img.style.cursor = 'grabbing';
     });
 
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        const dx = e.clientX - startX;
-        const dy = e.clientY - startY;
-        
+        const dx = e.clientX - startX; const dy = e.clientY - startY;
         if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
-        
         if (hasMoved) {
-            translateX = startTx + dx;
-            translateY = startTy + dy;
+            translateX = startTx + dx; translateY = startTy + dy;
             updateTransform(false); 
         }
     });
@@ -190,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mouseup', (e) => {
         if (!isDragging) return;
         isDragging = false;
-        
         if (!hasMoved) {
             if (scale !== 1) resetViewer();
             else {
@@ -199,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mouseY = e.clientY - rect.top - rect.height / 2;
                 const targetScale = 2.5; 
                 const ratio = 1 - (targetScale / scale);
-                
                 translateX += (mouseX - translateX) * ratio;
                 translateY += (mouseY - translateY) * ratio;
                 scale = targetScale;
@@ -213,21 +216,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // 6. Scrollwheel Zoom
     contentBox.addEventListener('wheel', (e) => {
         e.preventDefault(); 
-        
         const rect = contentBox.getBoundingClientRect();
         const mouseX = e.clientX - rect.left - rect.width / 2;
         const mouseY = e.clientY - rect.top - rect.height / 2;
-
         const zoomSensitivity = 0.002;
         const delta = -e.deltaY * zoomSensitivity;
         let newScale = scale * Math.exp(delta);
         newScale = Math.max(0.5, Math.min(newScale, 15));
-
         const ratio = 1 - (newScale / scale);
         translateX += (mouseX - translateX) * ratio;
         translateY += (mouseY - translateY) * ratio;
         scale = newScale;
-
         updateTransform(false); 
     }, { passive: false });
 
