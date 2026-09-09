@@ -9,6 +9,10 @@
         <button id="nmos-iv-close" title="Close"><i data-lucide="x"></i></button>
     </div>
 
+    <!-- Navigation Arrows -->
+    <button id="nmos-iv-prev" class="nmos-iv-nav nmos-iv-nav-left" title="Previous Image"><i data-lucide="chevron-left"></i></button>
+    <button id="nmos-iv-next" class="nmos-iv-nav nmos-iv-nav-right" title="Next Image"><i data-lucide="chevron-right"></i></button>
+
     <div class="nmos-iv-content" id="nmos-iv-content" title="Click outside image to close">
         <img id="nmos-iv-img" src="" alt="Expanded Image" />
     </div>
@@ -25,20 +29,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCopy = document.getElementById('nmos-iv-copy');
     const btnDownload = document.getElementById('nmos-iv-download');
     const btnZoom = document.getElementById('nmos-iv-zoom');
+    
+    const btnPrev = document.getElementById('nmos-iv-prev');
+    const btnNext = document.getElementById('nmos-iv-next');
 
     let currentSrc = '';
-    
-    // Transform state
     let scale = 1;
     let translateX = 0;
     let translateY = 0;
+    
+    // Gallery Navigation State
+    let pageImages = [];
+    let currentImageIndex = -1;
 
-    // Apply the math to the image visually
     function updateTransform(animate = false) {
         img.style.transition = animate ? 'transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none';
         img.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
         
-        // Update cursors and icons based on state
         if (scale > 1) {
             img.style.cursor = 'grab';
             btnZoom.innerHTML = '<i data-lucide="zoom-out"></i>';
@@ -49,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof lucide !== 'undefined') lucide.createIcons({ root: btnZoom });
     }
 
-    // Reset to fit-to-screen
     function resetViewer() {
         scale = 1;
         translateX = 0;
@@ -57,13 +63,40 @@ document.addEventListener('DOMContentLoaded', () => {
         updateTransform(true);
     }
 
+    function updateNavButtons() {
+        btnPrev.disabled = currentImageIndex <= 0;
+        btnNext.disabled = currentImageIndex >= pageImages.length - 1;
+    }
+
+    function navigateGallery(dir) {
+        if (currentImageIndex === -1 || pageImages.length === 0) return;
+        const newIndex = currentImageIndex + dir;
+        
+        if (newIndex >= 0 && newIndex < pageImages.length) {
+            currentImageIndex = newIndex;
+            const newImg = pageImages[currentImageIndex];
+            currentSrc = newImg.currentSrc || newImg.src;
+            img.src = currentSrc;
+            
+            resetViewer();
+            updateNavButtons();
+        }
+    }
+
     // 1. Open Viewer via Event Delegation
     document.addEventListener('click', (e) => {
         const imgTarget = e.target.closest('main.content img:not(.site-logo)');
         if (imgTarget) {
             e.preventDefault();
+            
+            // Re-fetch all images in case page content changed
+            pageImages = Array.from(document.querySelectorAll('main.content img:not(.site-logo)'));
+            currentImageIndex = pageImages.indexOf(imgTarget);
+            
             currentSrc = imgTarget.currentSrc || imgTarget.src;
             img.src = currentSrc;
+            
+            updateNavButtons();
             
             viewer.style.display = 'flex';
             document.body.style.overflow = 'hidden'; 
@@ -71,11 +104,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-// 2. Close Viewer Logic
+    // 2. Navigation Button Clicks
+    btnPrev.addEventListener('click', (e) => { e.stopPropagation(); navigateGallery(-1); });
+    btnNext.addEventListener('click', (e) => { e.stopPropagation(); navigateGallery(1); });
+
+    // 3. Close Viewer Logic
     function closeViewer() {
         viewer.classList.add('nmos-iv-closing');
         document.body.style.overflow = ''; 
-        
         setTimeout(() => {
             viewer.style.display = 'none';
             viewer.classList.remove('nmos-iv-closing'); 
@@ -87,9 +123,17 @@ document.addEventListener('DOMContentLoaded', () => {
     contentBox.addEventListener('click', (e) => {
         if (e.target === contentBox) closeViewer();
     });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeViewer(); });
 
-    // 3. Copy Link
+    // Keyboard Shortcuts (Escape, Left/Right)
+    document.addEventListener('keydown', (e) => { 
+        if (viewer.style.display === 'flex' && !viewer.classList.contains('nmos-iv-closing')) {
+            if (e.key === 'Escape') closeViewer();
+            if (e.key === 'ArrowLeft') navigateGallery(-1);
+            if (e.key === 'ArrowRight') navigateGallery(1);
+        }
+    });
+
+    // 4. Copy & Download 
     btnCopy.addEventListener('click', () => {
         const absoluteUrl = new URL(currentSrc, window.location.origin).href;
         navigator.clipboard.writeText(absoluteUrl).then(() => {
@@ -102,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Download Image
     btnDownload.addEventListener('click', () => {
         const a = document.createElement('a');
         a.href = currentSrc;
@@ -114,11 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 5. Drag to Pan & Click to Toggle Zoom
     let isDragging = false;
-    let hasMoved = false; // Tracks if it was a real drag or just a click
+    let hasMoved = false; 
     let startX, startY, startTx, startTy;
 
     img.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // Prevents ghost image dragging
+        e.preventDefault(); 
         isDragging = true;
         hasMoved = false;
         
@@ -132,19 +175,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-        
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
         
-        // If moved more than 3 pixels, it's considered a drag
-        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
-            hasMoved = true;
-        }
+        if (Math.abs(dx) > 3 || Math.abs(dy) > 3) hasMoved = true;
         
         if (hasMoved) {
             translateX = startTx + dx;
             translateY = startTy + dy;
-            updateTransform(false); // No animation during drag for smoothness
+            updateTransform(false); 
         }
     });
 
@@ -152,24 +191,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isDragging) return;
         isDragging = false;
         
-        // If the user didn't move the mouse, treat it as a CLICK
         if (!hasMoved) {
-            if (scale !== 1) {
-                // If already zoomed in, fit to screen
-                resetViewer();
-            } else {
-                // If fit to screen, zoom in 2x exactly where they clicked!
+            if (scale !== 1) resetViewer();
+            else {
                 const rect = contentBox.getBoundingClientRect();
                 const mouseX = e.clientX - rect.left - rect.width / 2;
                 const mouseY = e.clientY - rect.top - rect.height / 2;
-                
                 const targetScale = 2.5; 
                 const ratio = 1 - (targetScale / scale);
                 
                 translateX += (mouseX - translateX) * ratio;
                 translateY += (mouseY - translateY) * ratio;
                 scale = targetScale;
-                
                 updateTransform(true);
             }
         } else {
@@ -177,11 +210,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 6. Scrollwheel Zoom (Zoom towards pointer)
+    // 6. Scrollwheel Zoom
     contentBox.addEventListener('wheel', (e) => {
-        e.preventDefault(); // Stop page scrolling
+        e.preventDefault(); 
         
-        // Calculate mouse position relative to the center of the screen
         const rect = contentBox.getBoundingClientRect();
         const mouseX = e.clientX - rect.left - rect.width / 2;
         const mouseY = e.clientY - rect.top - rect.height / 2;
@@ -189,17 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const zoomSensitivity = 0.002;
         const delta = -e.deltaY * zoomSensitivity;
         let newScale = scale * Math.exp(delta);
-
-        // Clamp scale between 0.5x (zoomed out) and 15x (heavily zoomed in)
         newScale = Math.max(0.5, Math.min(newScale, 15));
 
-        // Adjust translation to keep the pixel under the mouse stationary
         const ratio = 1 - (newScale / scale);
         translateX += (mouseX - translateX) * ratio;
         translateY += (mouseY - translateY) * ratio;
         scale = newScale;
 
-        updateTransform(false); // Smooth, non-animated hardware refresh
+        updateTransform(false); 
     }, { passive: false });
 
     // Toolbar Zoom Button Toggle
