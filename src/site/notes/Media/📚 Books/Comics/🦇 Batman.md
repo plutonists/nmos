@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/media/books/comics/batman/","dgPassFrontmatter":true,"created":"2026-09-09T11:53:55.788+03:00","updated":"2026-09-09T17:38:33.963+03:00","dg-note-properties":{}}
+{"dg-publish":true,"image":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic and funny moments from the comics involving the Batman.","permalink":"/media/books/comics/batman/","dgPassFrontmatter":true,"created":"2026-09-09T11:53:55.788+03:00","updated":"2026-09-09T17:47:26.211+03:00","dg-note-properties":{"image":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic and funny moments from the comics involving the Batman."}}
 ---
 
 ![](https://i.clouds.tf/7fi5/sr3q.png)![](https://i.clouds.tf/vmy8/hr9o.png)
