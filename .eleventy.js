@@ -326,6 +326,25 @@ module.exports = function(eleventyConfig) {
           }
         }
 
+        // >> NEW VIDEO INTERCEPTION LOGIC <<
+        const srcIndex = tokens[idx].attrIndex("src");
+        const src = srcIndex >= 0 ? tokens[idx].attrs[srcIndex][1] : "";
+
+        // Check if the URL ends with a video extension (catbox.moe or local files)
+        if (/\.(mp4|webm|ogg|mov)$/i.test(src)) {
+          let widthAttr = width ? `width="${width}px"` : '';
+          let ext = src.split('.').pop().toLowerCase();
+          let type = ext === 'mov' ? 'mp4' : ext; // fallback for QuickTime
+          
+          return `<div class="nmos-video-wrapper">
+                    <!-- class "js-plyr" allows us to attach a custom player UI later -->
+                    <video controls playsinline class="nmos-video-embed js-plyr" ${widthAttr} preload="metadata">
+                      <source src="${src}" type="video/${type}">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>`;
+        }
+
         return defaultImageRule(tokens, idx, options, env, self);
       };
 
