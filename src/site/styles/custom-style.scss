@@ -772,54 +772,62 @@ main.content img:not(.site-logo):hover {
 }
 
 /* =========================================
-   NMOS CUSTOM VIDEO PLAYER
-========================================= */
-.nmos-video-wrapper {
-    position: relative;
-    margin: 1.5em 0;
-    border-radius: 8px;
-    background: var(--background-secondary);
-    padding: 4px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
-}
-
-.nmos-video-wrapper:hover {
-    box-shadow: 0 8px 25px rgba(53, 119, 249, 0.3); /* NMOS Blue glow */
-    transform: translateY(-2px);
-    border-color: rgba(53, 119, 249, 0.5);
-}
-
-.nmos-video-embed {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    border-radius: 4px;
-    background: #000; /* Black background for 16:9 letterboxing */
-    outline: none;
-}
-/* =========================================
-   NMOS GALLERY LAYOUT
+   NMOS GALLERY LAYOUT (MASONRY)
 ========================================= */
 .nmos-gallery-grid {
-    display: grid;
-    /* This automatically changes columns based on screen size */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    margin-top: 2rem;
+    column-count: 1;
+    column-gap: 16px;
+    margin-top: 0.5rem; /* Drastically reduced gap */
     padding-bottom: 2rem;
 }
 
+/* Adjust columns based on screen width so they are larger */
+@media (min-width: 600px) { .nmos-gallery-grid { column-count: 2; } }
+@media (min-width: 1000px) { .nmos-gallery-grid { column-count: 3; } }
+
 .nmos-gallery-grid picture,
 .nmos-gallery-grid img {
-    display: block;
     width: 100%;
-    height: 200px; /* Forces uniform height for the gallery */
-    object-fit: cover; /* Crops center perfectly without stretching */
-    border-radius: 12px; /* Smooth rounded corners */
-    margin: 0 !important;
+    height: auto !important; /* Maintains true aspect ratio */
+    object-fit: contain;
+    border-radius: 12px;
+    margin: 0 0 16px 0 !important; /* Space below each image */
+    display: block;
+    break-inside: avoid; /* Prevents images from splitting across columns */
+    -webkit-column-break-inside: avoid;
 }
 
-/* The glowing hover effects from your main CSS will automatically apply to these too! */
+/* --- Image Viewer Navigation Buttons --- */
+.nmos-iv-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(15, 15, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #FFF;
+    width: 50px;
+    height: 70px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.nmos-iv-nav:hover:not(:disabled) {
+    background: rgba(53, 119, 249, 0.8); /* NMOS Blue */
+    border-color: #3577F9;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.nmos-iv-nav:disabled {
+    opacity: 0.15;
+    cursor: not-allowed;
+}
+
+.nmos-iv-nav-left { left: 20px; }
+.nmos-iv-nav-right { right: 20px; }
