@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/note-testing/","title":"NMOS Theme Testing Suite","noteIcon":"","created":"2026-08-27T23:37:24.084+03:00","updated":"2026-08-27T23:38:11.226+03:00","dg-note-properties":{"title":"NMOS Theme Testing Suite"}}
+{"dg-publish":true,"title":"NMOS Theme Testing Suite","permalink":"/note-testing/","dgPassFrontmatter":true,"created":"2026-08-27T23:37:24.084+03:00","updated":"2026-08-27T23:38:11.226+03:00","dg-note-properties":{"title":"NMOS Theme Testing Suite"}}
 ---
 
 
