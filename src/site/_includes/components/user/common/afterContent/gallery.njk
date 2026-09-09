@@ -4,29 +4,62 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('main.content');
     if (!mainContent) return;
 
-    const images = Array.from(mainContent.querySelectorAll('img:not(.site-logo):not([src*="svg"])'));
-    if (images.length === 0) return;
+    // 1. Find images and their wrappers
+    const rawImages = Array.from(mainContent.querySelectorAll('img:not(.site-logo):not([src*="svg"])'));
+    if (rawImages.length === 0) return;
 
+    const imageElements = rawImages.map(img => {
+        if (img.parentElement && img.parentElement.tagName.toLowerCase() === 'picture') {
+            return img.parentElement;
+        }
+        return img;
+    });
+
+    // 2. Clean up Obsidian's invisible empty paragraphs that cause huge gaps
+    mainContent.querySelectorAll('p').forEach(p => {
+        if (p.innerHTML.replace(/<br\s*\/?>/gi, '').trim() === '') p.remove();
+    });
+
+    // 3. Setup the Grid
     const galleryGrid = document.createElement('div');
     galleryGrid.className = 'nmos-gallery-grid';
-
-    images.forEach(img => {
-        let elementToMove = img;
-        if (img.parentElement && img.parentElement.tagName.toLowerCase() === 'picture') {
-            elementToMove = img.parentElement;
-        }
-        galleryGrid.appendChild(elementToMove);
-    });
-
-    // Aggressive cleanup: Find all empty paragraphs and <br> tags causing the massive gap
-    mainContent.querySelectorAll('p').forEach(p => {
-        // If the paragraph only contains spaces or line breaks, delete it
-        if (p.innerHTML.replace(/<br\s*\/?>/gi, '').trim() === '') {
-            p.remove();
-        }
-    });
-
     mainContent.appendChild(galleryGrid);
+
+    // 4. Horizontal Masonry Distribution Logic
+    function getColCount() {
+        if (window.innerWidth >= 1000) return 3;
+        if (window.innerWidth >= 600) return 2;
+        return 1;
+    }
+
+    let currentCols = -1;
+
+    function renderGallery() {
+        const cols = getColCount();
+        if (cols === currentCols) return; // Only re-render if screen size crosses a boundary
+        currentCols = cols;
+
+        galleryGrid.innerHTML = ''; // Wipe grid
+
+        // Create column divs
+        const columnDivs = Array.from({ length: cols }, () => {
+            const col = document.createElement('div');
+            col.className = 'nmos-gallery-col';
+            return col;
+        });
+
+        // Distribute images sequentially (Left to Right)
+        imageElements.forEach((el, index) => {
+            columnDivs[index % cols].appendChild(el);
+        });
+
+        // Add columns to grid
+        columnDivs.forEach(col => galleryGrid.appendChild(col));
+    }
+
+    // Run on load and whenever the window is resized
+    renderGallery();
+    window.addEventListener('resize', renderGallery);
 });
 </script>
 {% endif %}
