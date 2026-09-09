@@ -644,6 +644,20 @@ html {
 }
 
 /* =========================================
+   STANDARD PAGE IMAGE BEHAVIOR
+========================================= */
+
+/* Change from default zoom-in to standard pointer */
+main.content img:not(.site-logo) {
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+main.content img:not(.site-logo):hover {
+    filter: brightness(1.1); /* Slight highlight to hint it's clickable */
+}
+
+/* =========================================
    NMOS IMAGE VIEWER (LIGHTBOX)
 ========================================= */
 
@@ -669,7 +683,7 @@ html {
 .nmos-iv-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    cursor: zoom-out;
+    cursor: default;
     z-index: 1;
 }
 
@@ -697,7 +711,6 @@ html {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Hover colors mapped to NMOS theme */
 .nmos-iv-toolbar button:hover {
     background: #3577F9; /* NMOS Blue */
     border-color: #3577F9;
@@ -707,7 +720,7 @@ html {
 }
 
 #nmos-iv-close:hover {
-    background: #F82C66; /* NMOS Red for Close */
+    background: #F82C66; /* NMOS Red */
     border-color: #F82C66;
     box-shadow: 0 5px 15px rgba(248, 44, 102, 0.4);
 }
@@ -720,39 +733,19 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: auto; /* Required for panning */
-    scrollbar-width: none; /* Hide scrollbars */
-}
-
-.nmos-iv-content::-webkit-scrollbar { 
-    display: none; 
+    overflow: hidden; /* Prevent native scrollbars */
 }
 
 .nmos-iv-content img {
     display: block;
     max-width: 90vw;
     max-height: 90vh;
+    width: auto;
+    height: auto;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transition: max-width 0.3s ease, max-height 0.3s ease;
-    cursor: zoom-in;
     user-select: none;
     -webkit-user-drag: none;
-}
-
-/* Zoomed-in state */
-.nmos-iv-content img.zoomed {
-    max-width: 250vw; /* Allows native scroll/pan */
-    max-height: 250vh;
-    cursor: grab;
-    border-radius: 0;
-}
-
-.nmos-iv-content img.zoomed:active {
-    cursor: grabbing;
-}
-/* Add magnifying glass cursor to standard reading images */
-main.content img:not(.site-logo) {
-    cursor: zoom-in;
+    will-change: transform; /* Hint for browser to use GPU */
 }
