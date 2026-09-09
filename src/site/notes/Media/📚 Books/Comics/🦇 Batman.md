@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"banner":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic, badass, and funny moments from the comics involving the Batman.","title":"🦇 Batman","permalink":"/media/books/comics/batman/","dgPassFrontmatter":true,"created":"2026-09-09T11:53:55.788+03:00","updated":"2026-09-09T17:52:07.537+03:00","dg-note-properties":{"banner":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic, badass, and funny moments from the comics involving the Batman.","title":"🦇 Batman"}}
+{"dg-publish":true,"banner":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic, badass, and funny moments from the comics involving the Batman.","title":"🦇 Batman","gallery":true,"permalink":"/media/books/comics/batman/","dgPassFrontmatter":true,"created":"2026-09-09T11:53:55.788+03:00","updated":"2026-09-09T18:14:51.360+03:00","dg-note-properties":{"banner":"https://i.clouds.tf/glnx/jow2.jpg","desc":"Some iconic, badass, and funny moments from the comics involving the Batman.","title":"🦇 Batman","gallery":true}}
 ---
 
 ![](https://i.clouds.tf/7fi5/sr3q.png)![](https://i.clouds.tf/vmy8/hr9o.png)
