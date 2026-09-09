@@ -851,3 +851,89 @@ main.content img:not(.site-logo):hover {
     font-family: monospace;
     letter-spacing: 1px;
 }
+/* =========================================
+   NMOS STAR METRIC SYSTEM
+========================================= */
+
+/* 1. The Inline Star Badge */
+.nmos-stars {
+    position: relative;
+    display: inline-block;
+    color: #FFBA01; /* NMOS Yellow */
+    text-shadow: 0 0 8px rgba(255, 186, 1, 0.6), 0 0 15px rgba(255, 186, 1, 0.3);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    cursor: help;
+    margin-left: 8px;
+    padding: 2px 8px;
+    background: rgba(255, 186, 1, 0.05);
+    border: 1px solid rgba(255, 186, 1, 0.2);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.nmos-stars:hover {
+    background: rgba(255, 186, 1, 0.15);
+    border-color: #FFBA01;
+    text-shadow: 0 0 12px rgba(255, 186, 1, 0.9), 0 0 25px rgba(255, 186, 1, 0.6);
+    transform: translateY(-1px);
+}
+
+/* 2. The Custom Hover Tooltip */
+.nmos-stars::after {
+    /* Grabs the text from the 'desc' attribute you write in Obsidian */
+    content: attr(desc); 
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: #161618; /* Dark BG */
+    color: #dcddde;
+    border: 1px solid #3577F9; /* NMOS Blue Border */
+    box-shadow: 0 4px 15px rgba(53, 119, 249, 0.3);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: var(--font-default);
+    white-space: nowrap;
+    letter-spacing: normal;
+    text-shadow: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+}
+
+.nmos-stars:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* 3. The Metric Legend Callout */
+.callout[data-callout="metric"] {
+    --callout-color: 255, 186, 1 !important; /* NMOS Yellow */
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 186, 1, 0.2);
+    border-left: 4px solid #FFBA01;
+    box-shadow: inset 0 0 20px rgba(255, 186, 1, 0.05);
+}
+
+.callout[data-callout="metric"] .callout-title-inner {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(255, 186, 1, 0.5);
+}
+
+.callout[data-callout="metric"] li {
+    margin-bottom: 8px;
+    list-style-type: none; /* Hide default bullets */
+}
+
+/* Make stars inside the legend glow too */
+.callout[data-callout="metric"] strong {
+    color: #FFBA01;
+    text-shadow: 0 0 8px rgba(255, 186, 1, 0.6);
+    letter-spacing: 2px;
+    margin-right: 8px;
+}
