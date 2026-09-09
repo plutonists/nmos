@@ -852,31 +852,16 @@ main.content img:not(.site-logo):hover {
     letter-spacing: 1px;
 }
 /* =========================================
-   NMOS RANKING SYSTEM (ANIMATED & INTERACTIVE)
+   NMOS RANKING SYSTEM (SPAN METHOD)
 ========================================= */
 
-/* 1. Base Reset & Smooth Transitions */
-:is(.markdown-rendered, .markdown-preview-view) a:is(
-    [href="#_s" i], [data-href="#_s" i], 
-    [href="#_a" i], [data-href="#_a" i], 
-    [href="#_b" i], [data-href="#_b" i], 
-    [href="#_f" i], [data-href="#_f" i], 
-    [href="#_y" i], [data-href="#_y" i], 
-    [href="#_n" i], [data-href="#_n" i], 
-    [href="#_w" i], [data-href="#_w" i]
-) {
-    text-decoration: none !important;
+/* --- 1. Tier Badges --- */
+:is(.markdown-rendered, .markdown-preview-view) span:is(.s, .a, .b, .f) {
     display: inline-flex !important; 
     align-items: center !important;
     justify-content: center !important;
     vertical-align: middle !important;
     line-height: 1 !important;
-    cursor: default !important; 
-    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important; 
-}
-
-/* 2. Tier Badges (Square Base) */
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i], [href="#_a" i], [data-href="#_a" i], [href="#_b" i], [data-href="#_b" i], [href="#_f" i], [data-href="#_f" i]) {
     font-family: monospace !important;
     font-weight: 800 !important;
     font-size: 1rem !important;
@@ -887,15 +872,13 @@ main.content img:not(.site-logo):hover {
     margin: 0 8px !important;
     background: rgba(0, 0, 0, 0.4) !important;
     text-shadow: 0 0 10px currentColor !important;
-    position: relative;
-    z-index: 1;
-    
-    /* FIX: Force the 1px solid border so the colors actually show up! */
     border-width: 1px !important;
     border-style: solid !important;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important; 
+    cursor: default !important;
 }
 
-/* --- THE GOD TIER SHINE ANIMATION --- */
+/* God Tier Animation Fix */
 @keyframes nmos-s-tier-shine {
     0%, 85% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
     88% { color: #F82C66; border-color: rgba(248, 44, 102, 0.8); box-shadow: 0 0 18px rgba(248, 44, 102, 0.6); } 
@@ -904,46 +887,29 @@ main.content img:not(.site-logo):hover {
     100% { color: #FFBA01; border-color: rgba(255, 186, 1, 0.5); box-shadow: 0 0 10px rgba(255, 186, 1, 0.2); }
 }
 
-/* Base Colors */
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i]) { 
+:is(.markdown-rendered, .markdown-preview-view) span.s { 
     animation: nmos-s-tier-shine 5s infinite; 
-    border-color: rgba(255, 186, 1, 0.5); /* Fallback just in case */
+    color: #FFBA01; /* NO !important here, allows animation to run */
+    border-color: rgba(255, 186, 1, 0.5);
 }
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_a" i], [data-href="#_a" i]) { color: #17C555 !important; border-color: rgba(23, 197, 85, 0.5) !important; box-shadow: 0 0 10px rgba(23, 197, 85, 0.2) !important; }
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_b" i], [data-href="#_b" i]) { color: #3577F9 !important; border-color: rgba(53, 119, 249, 0.5) !important; box-shadow: 0 0 10px rgba(53, 119, 249, 0.2) !important; }
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_f" i], [data-href="#_f" i]) { color: #F82C66 !important; border-color: rgba(248, 44, 102, 0.5) !important; box-shadow: 0 0 10px rgba(248, 44, 102, 0.2) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.a { color: #17C555 !important; border-color: rgba(23, 197, 85, 0.5) !important; box-shadow: 0 0 10px rgba(23, 197, 85, 0.2) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.b { color: #3577F9 !important; border-color: rgba(53, 119, 249, 0.5) !important; box-shadow: 0 0 10px rgba(53, 119, 249, 0.2) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.f { color: #F82C66 !important; border-color: rgba(248, 44, 102, 0.5) !important; box-shadow: 0 0 10px rgba(248, 44, 102, 0.2) !important; }
 
-/* --- INTENSIFIED HOVER GLOWS --- */
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_s" i], [data-href="#_s" i]):hover {
-    animation: none !important;
-    color: #FFBA01 !important; 
-    border-color: #FFBA01 !important; 
-    box-shadow: 0 0 25px rgba(255, 186, 1, 0.8), inset 0 0 10px rgba(255, 186, 1, 0.3) !important;
-    transform: scale(1.15) !important;
-    z-index: 10;
-}
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_a" i], [data-href="#_a" i]):hover {
-    border-color: #17C555 !important; 
-    box-shadow: 0 0 25px rgba(23, 197, 85, 0.8), inset 0 0 10px rgba(23, 197, 85, 0.3) !important;
-    transform: scale(1.15) !important;
-    z-index: 10;
-}
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_b" i], [data-href="#_b" i]):hover {
-    border-color: #3577F9 !important; 
-    box-shadow: 0 0 25px rgba(53, 119, 249, 0.8), inset 0 0 10px rgba(53, 119, 249, 0.3) !important;
-    transform: scale(1.15) !important;
-    z-index: 10;
-}
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_f" i], [data-href="#_f" i]):hover {
-    border-color: #F82C66 !important; 
-    box-shadow: 0 0 25px rgba(248, 44, 102, 0.8), inset 0 0 10px rgba(248, 44, 102, 0.3) !important;
-    transform: scale(1.15) !important;
-    z-index: 10;
-}
+/* Tier Hovers */
+:is(.markdown-rendered, .markdown-preview-view) span.s:hover { animation: none; color: #FFBA01 !important; border-color: #FFBA01 !important; box-shadow: 0 0 25px rgba(255, 186, 1, 0.8), inset 0 0 10px rgba(255, 186, 1, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
+:is(.markdown-rendered, .markdown-preview-view) span.a:hover { border-color: #17C555 !important; box-shadow: 0 0 25px rgba(23, 197, 85, 0.8), inset 0 0 10px rgba(23, 197, 85, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
+:is(.markdown-rendered, .markdown-preview-view) span.b:hover { border-color: #3577F9 !important; box-shadow: 0 0 25px rgba(53, 119, 249, 0.8), inset 0 0 10px rgba(53, 119, 249, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
+:is(.markdown-rendered, .markdown-preview-view) span.f:hover { border-color: #F82C66 !important; box-shadow: 0 0 25px rgba(248, 44, 102, 0.8), inset 0 0 10px rgba(248, 44, 102, 0.3) !important; transform: scale(1.15) !important; z-index: 10; }
 
 
-/* 3. Feature Tags */
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i], [href="#_n" i], [data-href="#_n" i], [href="#_w" i], [data-href="#_w" i]) {
+/* --- 2. Feature Tags --- */
+:is(.markdown-rendered, .markdown-preview-view) span:is(.y, .n, .w) {
+    display: inline-flex !important; 
+    align-items: center !important;
+    justify-content: center !important;
+    vertical-align: middle !important;
+    line-height: 1 !important;
     font-size: 0.7rem !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
@@ -952,22 +918,17 @@ main.content img:not(.site-logo):hover {
     border-radius: 12px !important;
     margin-right: 5px !important;
     background: rgba(0, 0, 0, 0.45) !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important; 
+    cursor: default !important;
 }
 
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i]) { color: #17C555 !important; border: 1px solid rgba(23, 197, 85, 0.3) !important; }
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_w" i], [data-href="#_w" i]) { color: #FFBA01 !important; border: 1px solid rgba(255, 186, 1, 0.3) !important; }
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_n" i], [data-href="#_n" i]) { color: #F82C66 !important; border: 1px solid rgba(248, 44, 102, 0.3) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.y { color: #17C555 !important; border-color: rgba(23, 197, 85, 0.3) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.w { color: #FFBA01 !important; border-color: rgba(255, 186, 1, 0.3) !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.n { color: #F82C66 !important; border-color: rgba(248, 44, 102, 0.3) !important; }
 
-/* Feature Tag Hovers */
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_y" i], [data-href="#_y" i]):hover {
-    box-shadow: 0 0 15px rgba(23, 197, 85, 0.4) !important;
-    border-color: #17C555 !important;
-}
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_w" i], [data-href="#_w" i]):hover {
-    box-shadow: 0 0 15px rgba(255, 186, 1, 0.4) !important;
-    border-color: #FFBA01 !important;
-}
-:is(.markdown-rendered, .markdown-preview-view) a:is([href="#_n" i], [data-href="#_n" i]):hover {
-    box-shadow: 0 0 15px rgba(248, 44, 102, 0.4) !important;
-    border-color: #F82C66 !important;
-}
+/* Tag Hovers */
+:is(.markdown-rendered, .markdown-preview-view) span.y:hover { box-shadow: 0 0 15px rgba(23, 197, 85, 0.4) !important; border-color: #17C555 !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.w:hover { box-shadow: 0 0 15px rgba(255, 186, 1, 0.4) !important; border-color: #FFBA01 !important; }
+:is(.markdown-rendered, .markdown-preview-view) span.n:hover { box-shadow: 0 0 15px rgba(248, 44, 102, 0.4) !important; border-color: #F82C66 !important; }
