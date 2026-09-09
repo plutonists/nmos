@@ -1,0 +1,128 @@
+<!-- Custom NMOS Image Viewer -->
+<div id="nmos-image-viewer" class="nmos-image-viewer" style="display: none;">
+    <div class="nmos-iv-overlay" id="nmos-iv-overlay" title="Click to close"></div>
+    
+    <div class="nmos-iv-toolbar">
+        <button id="nmos-iv-copy" title="Copy Link"><i data-lucide="link"></i></button>
+        <button id="nmos-iv-download" title="Save Image"><i data-lucide="download"></i></button>
+        <button id="nmos-iv-zoom" title="Toggle Zoom"><i data-lucide="zoom-in"></i></button>
+        <button id="nmos-iv-close" title="Close"><i data-lucide="x"></i></button>
+    </div>
+
+    <div class="nmos-iv-content" id="nmos-iv-content">
+        <img id="nmos-iv-img" src="" alt="Expanded Image" />
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const viewer = document.getElementById('nmos-image-viewer');
+    const overlay = document.getElementById('nmos-iv-overlay');
+    const contentBox = document.getElementById('nmos-iv-content');
+    const img = document.getElementById('nmos-iv-img');
+    
+    const btnClose = document.getElementById('nmos-iv-close');
+    const btnCopy = document.getElementById('nmos-iv-copy');
+    const btnDownload = document.getElementById('nmos-iv-download');
+    const btnZoom = document.getElementById('nmos-iv-zoom');
+
+    let currentSrc = '';
+    let isZoomed = false;
+
+    // 1. Find all readable images in the main content area
+    const contentImages = document.querySelectorAll('main.content img:not(.site-logo)');
+
+    contentImages.forEach(image => {
+        image.style.cursor = 'zoom-in';
+        image.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent navigating if wrapped in a link
+            currentSrc = e.target.currentSrc || e.target.src;
+            img.src = currentSrc;
+            
+            viewer.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Stop background scrolling
+            
+            // Reset zoom state
+            isZoomed = false;
+            img.classList.remove('zoomed');
+            btnZoom.innerHTML = '<i data-lucide="zoom-in"></i>';
+            lucide.createIcons({ root: btnZoom });
+        });
+    });
+
+    // 2. Close Viewer
+    function closeViewer() {
+        viewer.style.display = 'none';
+        document.body.style.overflow = '';
+    }
+    btnClose.addEventListener('click', closeViewer);
+    overlay.addEventListener('click', closeViewer);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeViewer(); });
+
+    // 3. Copy Link
+    btnCopy.addEventListener('click', () => {
+        const absoluteUrl = new URL(currentSrc, window.location.origin).href;
+        navigator.clipboard.writeText(absoluteUrl).then(() => {
+            btnCopy.innerHTML = '<i data-lucide="check"></i>';
+            lucide.createIcons({ root: btnCopy });
+            setTimeout(() => {
+                btnCopy.innerHTML = '<i data-lucide="link"></i>';
+                lucide.createIcons({ root: btnCopy });
+            }, 2000);
+        });
+    });
+
+    // 4. Download Image
+    btnDownload.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = currentSrc;
+        a.download = currentSrc.split('/').pop() || 'nmos-image';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+    });
+
+    // 5. Toggle Zoom
+    function toggleZoom() {
+        isZoomed = !isZoomed;
+        if (isZoomed) {
+            img.classList.add('zoomed');
+            btnZoom.innerHTML = '<i data-lucide="zoom-out"></i>';
+        } else {
+            img.classList.remove('zoomed');
+            btnZoom.innerHTML = '<i data-lucide="zoom-in"></i>';
+        }
+        lucide.createIcons({ root: btnZoom });
+    }
+    btnZoom.addEventListener('click', toggleZoom);
+    img.addEventListener('dblclick', toggleZoom);
+
+    // 6. Drag to Pan (when zoomed in)
+    let isDragging = false;
+    let startX, startY, scrollLeft, scrollTop;
+
+    img.addEventListener('mousedown', (e) => {
+        if (!isZoomed) return;
+        isDragging = true;
+        img.style.cursor = 'grabbing';
+        startX = e.pageX - contentBox.offsetLeft;
+        startY = e.pageY - contentBox.offsetTop;
+        scrollLeft = contentBox.scrollLeft;
+        scrollTop = contentBox.scrollTop;
+    });
+    
+    window.addEventListener('mouseup', () => {
+        isDragging = false;
+        if (isZoomed) img.style.cursor = 'grab';
+    });
+    
+    window.addEventListener('mousemove', (e) => {
+        if (!isDragging || !isZoomed) return;
+        e.preventDefault();
+        const x = e.pageX - contentBox.offsetLeft;
+        const y = e.pageY - contentBox.offsetTop;
+        contentBox.scrollLeft = scrollLeft - (x - startX);
+        contentBox.scrollTop = scrollTop - (y - startY);
+    });
+});
+</script>
