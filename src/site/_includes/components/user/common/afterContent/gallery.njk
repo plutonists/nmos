@@ -15,51 +15,29 @@ document.addEventListener('DOMContentLoaded', () => {
         return img;
     });
 
-    // 2. Clean up Obsidian's invisible empty paragraphs that cause huge gaps
+    // 2. Clean up ALL of Obsidian's invisible empty paragraphs and line breaks that cause huge gaps
     mainContent.querySelectorAll('p').forEach(p => {
-        if (p.innerHTML.replace(/<br\s*\/?>/gi, '').trim() === '') p.remove();
+        // If a paragraph only contains whitespace, <br> tags, or spans with whitespace, nuke it.
+        if (p.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/<span[^>]*>\s*<\/span>/gi, '').trim() === '') {
+            p.remove();
+        }
     });
 
-    // 3. Setup the Grid
+    // 3. Setup the Grid Container
     const galleryGrid = document.createElement('div');
     galleryGrid.className = 'nmos-gallery-grid';
-    mainContent.appendChild(galleryGrid);
+    
+    // Find the very first image so we can insert the grid exactly where the images started
+    const firstImageParent = imageElements[0].closest('p') || imageElements[0].parentElement;
+    firstImageParent.before(galleryGrid);
 
-    // 4. Horizontal Masonry Distribution Logic
-    function getColCount() {
-        if (window.innerWidth >= 1000) return 3;
-        if (window.innerWidth >= 600) return 2;
-        return 1;
-    }
-
-    let currentCols = -1;
-
-    function renderGallery() {
-        const cols = getColCount();
-        if (cols === currentCols) return; // Only re-render if screen size crosses a boundary
-        currentCols = cols;
-
-        galleryGrid.innerHTML = ''; // Wipe grid
-
-        // Create column divs
-        const columnDivs = Array.from({ length: cols }, () => {
-            const col = document.createElement('div');
-            col.className = 'nmos-gallery-col';
-            return col;
-        });
-
-        // Distribute images sequentially (Left to Right)
-        imageElements.forEach((el, index) => {
-            columnDivs[index % cols].appendChild(el);
-        });
-
-        // Add columns to grid
-        columnDivs.forEach(col => galleryGrid.appendChild(col));
-    }
-
-    // Run on load and whenever the window is resized
-    renderGallery();
-    window.addEventListener('resize', renderGallery);
+    // 4. Move all images into the grid container sequentially (Left to Right ordering)
+    imageElements.forEach(el => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'nmos-gallery-item';
+        wrapper.appendChild(el);
+        galleryGrid.appendChild(wrapper);
+    });
 });
 </script>
 {% endif %}
