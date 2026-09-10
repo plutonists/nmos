@@ -936,3 +936,52 @@ main.content img:not(.site-logo):hover {
 :is(.markdown-rendered, .markdown-preview-view) span.y:hover { box-shadow: 0 0 15px rgba(23, 197, 85, 0.4) !important; border-color: #17C555 !important; }
 :is(.markdown-rendered, .markdown-preview-view) span.w:hover { box-shadow: 0 0 15px rgba(255, 186, 1, 0.4) !important; border-color: #FFBA01 !important; }
 :is(.markdown-rendered, .markdown-preview-view) span.n:hover { box-shadow: 0 0 15px rgba(248, 44, 102, 0.4) !important; border-color: #F82C66 !important; }
+
+/* =========================================
+   LAYOUT TEMPLATE 1: CENTERED FOCUS
+========================================= */
+
+@media (min-width: 1000px) {
+    body {
+        /* Widen the reading area slightly for a modern feel (default is 700px) */
+        --dg-content-max-width: 850px; 
+    }
+
+    .content {
+        /* Dynamically center the content exactly between the left menu and the right edge of the screen */
+        margin-left: calc(var(--dg-filetree-width) + ((100vw - var(--dg-filetree-width) - var(--dg-content-max-width)) / 2)) !important;
+        margin-right: auto !important;
+    }
+}
+
+/* Force the right sidebar (Graph/Backlinks) to the bottom of the page on ALL large screens.
+   This makes it act like a footer, keeping your reading space centered and clean. */
+@media (min-width: 1400px) {
+    .sidebar {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        margin-top: 60px !important;
+        
+        /* Match the width and margin of our newly centered content */
+        max-width: var(--dg-content-max-width) !important;
+        margin-left: calc(var(--dg-filetree-width) + ((100vw - var(--dg-filetree-width) - var(--dg-content-max-width)) / 2)) !important;
+        padding: 30px 0 !important;
+        height: auto !important;
+        border-top: 1px solid var(--background-modifier-border, rgba(255,255,255,0.1)) !important;
+    }
+
+    .sidebar-container {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        gap: 40px !important;
+        height: auto !important;
+    }
+
+    .toc {
+        display: none !important; /* Hide TOC since it makes no sense at the bottom */
+    }
+}
