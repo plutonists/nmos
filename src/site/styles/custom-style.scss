@@ -1213,36 +1213,19 @@ main.content img:not(.site-logo):hover {
 .logo-shine-wrapper {
     position: relative;
     display: inline-block;
-    /* Removed overflow:hidden so we don't clip the hover scale effect */
     border-radius: 0; 
 }
 
-/* We target the rect INSIDE the SVG now */
+/* Animate the physical rectangle inside the SVG */
 .nmos-svg-glimmer-rect {
-    /* Solid stripes, applied as a background via CSS */
-    background: linear-gradient(
-        to right, 
-        rgba(255, 255, 255, 0) 0%,     
-        #ff3366 10%,      
-        #ff3366 30%,      
-        #2979ff 30%,      
-        #2979ff 50%,      
-        #00c853 50%,      
-        #00c853 70%,      
-        #ffc107 70%,      
-        #ffc107 90%,      
-        rgba(255, 255, 255, 0) 100%    
-    );
-    
     transform-origin: center center;
-    transform: translateX(-3000px) skewX(-25deg);
+    transform: translateX(-2000px) skewX(-25deg);
     animation: nmos-svg-glimmer 10s infinite;
-    opacity: 1 !important; 
 }
 
 @keyframes nmos-svg-glimmer {
     0% {
-        transform: translateX(-3000px) skewX(-25deg);
+        transform: translateX(-2000px) skewX(-25deg);
     }
     15% {
         /* Sweep across */
