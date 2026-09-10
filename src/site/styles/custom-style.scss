@@ -1250,3 +1250,16 @@ main.content img:not(.site-logo):hover {
         transform: translateX(1500px) skewX(-25deg);
     }
 }
+
+/* =========================================
+   RIGHT SIDEBAR HIDE SCROLLBAR
+========================================= */
+/* Prevent horizontal scrolling on the main page */
+html, body {
+    overflow-x: hidden !important;
+}
+
+/* Prevent horizontal scrolling specifically inside the right sidebar */
+aside, .sidebar, .sidebar-container {
+    overflow-x: hidden !important;
+}
