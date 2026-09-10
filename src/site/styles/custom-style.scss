@@ -1005,14 +1005,15 @@ main.content img:not(.site-logo):hover {
     /* Main Content: Perfectly center it between the two 280px sidebars */
 /* Main Content: Expanded to fill the screen while staying perfectly centered */
     .content {
-        max-width: 1200px !important; /* Increased from 800px for a much wider reading area */
+        max-width: 1200px !important;
         width: auto !important;
         
-        /* 280px offset for sidebars + dynamic centering space (minimum 40px gap) */
+        /* Left Margin: Starts at 280px (to clear the left sidebar) PLUS the dynamic math to center it */
         margin-left: calc(280px + max(40px, (100vw - 280px - 280px - 1200px) / 2)) !important;
+        
+        /* Right Margin: Leaves 280px of room for the right sidebar PLUS the dynamic math */
         margin-right: calc(280px + max(40px, (100vw - 280px - 280px - 1200px) / 2)) !important;
     }
-
     .toc {
         display: block !important;
     }
