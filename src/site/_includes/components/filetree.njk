@@ -41,23 +41,20 @@
             {% endfor %}
 
            {{% if meta.siteLogoPath %}
+            <!-- NMOS SVG Logo with Shine -->
+            <!-- NMOS SVG Logo with Striped Shine -->
             <a href="/" class="nmos-logo-link">
-                <div class="nmos-logo-grid">
-                    <div class="nmos-logo-part nmos-bg-red"></div>
-                    <div class="nmos-logo-part nmos-bg-blue"></div>
-                    <div class="nmos-logo-part nmos-bg-green"></div>
-                    <div class="nmos-logo-part nmos-bg-yellow"></div>
-                    <!-- The dark letters cut out from the center -->
-                    <div class="nmos-logo-letter letter-n"></div>
-                    <div class="nmos-logo-letter letter-m"></div>
-                    <div class="nmos-logo-letter letter-o"></div>
-                    <div class="nmos-logo-letter letter-s"></div>
+                <div class="logo-shine-wrapper">
+                    <svg class="nmos-svg-logo" width="100%" height="100%" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <path d="M-0,472.241l0,-472.241l382.031,0l0,472.241l-178.109,0l0,-380.491l-26.458,0l0,380.491l-177.464,0Z" style="fill:#ff3366;fill-rule:nonzero;"/>
+                        <path d="M411.7,472.241l0,-472.241l588.3,0l0,472.241l-178.626,0l0,-380.491l-26.535,0l0,380.491l-178.626,0l0,-380.491l-26.535,0l0,380.491l-177.978,0Z" style="fill:#2979ff;fill-rule:nonzero;"/>
+                        <path d="M0,1000l0,-472.241l382.031,0l0,472.241l-382.031,0Zm177.464,-91.75l26.458,0l0,-288.741l-26.458,0l0,288.741Z" style="fill:#00c853;fill-rule:nonzero;"/>
+                        <path d="M411.7,1000l0,-157.863l274.275,0l0,55.994l40.744,0l0,-82.979l-315.019,0l0,-287.392l588.3,0l0,157.863l-273.281,0l0,-66.114l-40.744,0l0,93.773l314.025,0l0,286.717l-588.3,0Z" style="fill:#ffc107;fill-rule:nonzero;"/>
+                    </svg>
                 </div>
                 <span class="nmos-logo-text">
-                    <span class="nmos-text-red">Notes,</span>
-                    <span class="nmos-text-blue">Media,</span><br>
-                    <span class="nmos-text-green">&amp; Other</span>
-                    <span class="nmos-text-yellow">Stuff</span>
+                    <span class="nmos-text-red">Notes,</span> <span class="nmos-text-blue">Media,</span><br>
+                    <span class="nmos-text-green">&amp; Other</span> <span class="nmos-text-yellow">Stuff</span>
                 </span>
             </a>
             {% else %}
