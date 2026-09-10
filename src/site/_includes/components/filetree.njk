@@ -40,14 +40,33 @@
                 {% include imp %}
             {% endfor %}
 
-            <!-- NMOS SVG Logo with Striped Shine -->
+           <!-- NMOS SVG Logo with Masked Striped Shine -->
             <a href="/" class="nmos-logo-link">
                 <div class="logo-shine-wrapper">
-                    <svg class="nmos-svg-logo" width="100%" height="100%" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-                        <path d="M-0,472.241l0,-472.241l382.031,0l0,472.241l-178.109,0l0,-380.491l-26.458,0l0,380.491l-177.464,0Z" style="fill:#ff3366;fill-rule:nonzero;"/>
-                        <path d="M411.7,472.241l0,-472.241l588.3,0l0,472.241l-178.626,0l0,-380.491l-26.535,0l0,380.491l-178.626,0l0,-380.491l-26.535,0l0,380.491l-177.978,0Z" style="fill:#2979ff;fill-rule:nonzero;"/>
-                        <path d="M0,1000l0,-472.241l382.031,0l0,472.241l-382.031,0Zm177.464,-91.75l26.458,0l0,-288.741l-26.458,0l0,288.741Z" style="fill:#00c853;fill-rule:nonzero;"/>
-                        <path d="M411.7,1000l0,-157.863l274.275,0l0,55.994l40.744,0l0,-82.979l-315.019,0l0,-287.392l588.3,0l0,157.863l-273.281,0l0,-66.114l-40.744,0l0,93.773l314.025,0l0,286.717l-588.3,0Z" style="fill:#ffc107;fill-rule:nonzero;"/>
+                    <svg class="nmos-svg-logo" width="100%" height="100%" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        
+                        <!-- 1. The base, static colored logo -->
+                        <g>
+                            <path d="M-0,472.241l0,-472.241l382.031,0l0,472.241l-178.109,0l0,-380.491l-26.458,0l0,380.491l-177.464,0Z" fill="#ff3366"/>
+                            <path d="M411.7,472.241l0,-472.241l588.3,0l0,472.241l-178.626,0l0,-380.491l-26.535,0l0,380.491l-178.626,0l0,-380.491l-26.535,0l0,380.491l-177.978,0Z" fill="#2979ff"/>
+                            <path d="M0,1000l0,-472.241l382.031,0l0,472.241l-382.031,0Zm177.464,-91.75l26.458,0l0,-288.741l-26.458,0l0,288.741Z" fill="#00c853"/>
+                            <path d="M411.7,1000l0,-157.863l274.275,0l0,55.994l40.744,0l0,-82.979l-315.019,0l0,-287.392l588.3,0l0,157.863l-273.281,0l0,-66.114l-40.744,0l0,93.773l314.025,0l0,286.717l-588.3,0Z" fill="#ffc107"/>
+                        </g>
+
+                        <!-- 2. Define the exact same shapes as a Clip Mask -->
+                        <defs>
+                            <clipPath id="nmos-letter-mask">
+                                <path d="M-0,472.241l0,-472.241l382.031,0l0,472.241l-178.109,0l0,-380.491l-26.458,0l0,380.491l-177.464,0Z" />
+                                <path d="M411.7,472.241l0,-472.241l588.3,0l0,472.241l-178.626,0l0,-380.491l-26.535,0l0,380.491l-178.626,0l0,-380.491l-26.535,0l0,380.491l-177.978,0Z" />
+                                <path d="M0,1000l0,-472.241l382.031,0l0,472.241l-382.031,0Zm177.464,-91.75l26.458,0l0,-288.741l-26.458,0l0,288.741Z" />
+                                <path d="M411.7,1000l0,-157.863l274.275,0l0,55.994l40.744,0l0,-82.979l-315.019,0l0,-287.392l588.3,0l0,157.863l-273.281,0l0,-66.114l-40.744,0l0,93.773l314.025,0l0,286.717l-588.3,0Z" />
+                            </clipPath>
+                        </defs>
+
+                        <!-- 3. Render a rectangle containing the CSS glimmer animation, masked to the letters -->
+                        <g clip-path="url(#nmos-letter-mask)">
+                            <rect class="nmos-svg-glimmer-rect" x="0" y="-500" width="3000" height="2000" fill="none" />
+                        </g>
                     </svg>
                 </div>
                 <span class="nmos-logo-text">
