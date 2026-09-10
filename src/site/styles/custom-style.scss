@@ -1252,14 +1252,17 @@ main.content img:not(.site-logo):hover {
 }
 
 /* =========================================
-   RIGHT SIDEBAR HIDE SCROLLBAR
+   RIGHT SIDEBAR SCROLLBAR
 ========================================= */
-/* Prevent horizontal scrolling on the main page */
-html, body {
-    overflow-x: hidden !important;
+/* Add breathing room to the right side of the sidebar */
+aside {
+    padding-right: 24px !important;
+    box-sizing: border-box !important;
 }
 
-/* Prevent horizontal scrolling specifically inside the right sidebar */
-aside, .sidebar, .sidebar-container {
-    overflow-x: hidden !important;
+/* Force the graph and link boxes to respect the new padding */
+.sidebar-container, 
+.sidebar-container * {
+    box-sizing: border-box !important;
+    max-width: 100% !important;
 }
