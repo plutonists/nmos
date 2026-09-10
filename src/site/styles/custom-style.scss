@@ -990,7 +990,7 @@ main.content img:not(.site-logo):hover {
         left: 0 !important;
     }
 
-   /* Right Sidebar: Pin to the right edge and make it VISIBLE */
+/* Right Sidebar: Pin to the right edge */
     .sidebar {
         position: fixed !important;
         right: 0 !important;
@@ -1001,12 +1001,7 @@ main.content img:not(.site-logo):hover {
         height: calc(100vh - 65px) !important;
         margin: 0 !important;
         padding: 20px !important;
-        
-        /* The Fix: Give it a distinct background and border so it acts as a permanent panel */
-        background-color: var(--background-secondary) !important;
-        border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
         border-top: none !important;
-        
         display: flex !important;
         z-index: 100 !important;
         overflow-y: auto !important;
