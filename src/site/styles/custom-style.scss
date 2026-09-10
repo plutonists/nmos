@@ -156,8 +156,8 @@
     transform: translateX(0) !important;
 }
 
-/* =========================================
-   MODERN SIDEBAR OVERHAUL
+//* =========================================
+   MODERN SIDEBAR OVERHAUL (TIGHTER SPACING)
 ========================================= */
 
 .filetree-sidebar .foldername-wrapper {
@@ -166,8 +166,10 @@
     letter-spacing: 1.5px;
     font-weight: 800;
     color: #888;
-    padding: 10px 10px !important;
-    margin-top: 8px;
+    /* Reduced padding and margin to tighten folder gaps */
+    padding: 6px 10px !important; 
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -202,13 +204,15 @@
     padding-left: 10px !important;
     border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
+
 .inner-folder {
     padding-left: 0 !important;
 }
 
 .filetree-sidebar .notelink {
-    padding: 6px 12px 6px 15px !important;
-    margin: 2px 0;
+    /* Reduced vertical padding and margin for files */
+    padding: 4px 12px 4px 15px !important;
+    margin: 1px 0 !important;
     border-radius: 0 6px 6px 0;
     font-size: 0.9rem;
     position: relative;
@@ -227,11 +231,11 @@
     border-left: 3px solid #17C555 !important;
     background-color: rgba(23, 197, 85, 0.1) !important;
 }
+
 .filetree-sidebar .active-note a {
     color: #17C555 !important;
     font-weight: bold;
 }
-
 
 /* =========================================
    MAIN READING AREA ACCENTS
@@ -399,23 +403,28 @@ input[type="checkbox"]:checked {
 .filetree-sidebar .level-0 > [x-show] {
     display: block !important;
 }
+
 .filetree-sidebar .level-0 {
     border-left: none !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    margin-top: 1.5rem !important;
-    padding-top: 1rem !important;
+    /* Reduced gap above root sections */
+    margin-top: 1rem !important;
+    padding-top: 0.75rem !important;
 }
 
 .root-notes-wrapper {
     border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    margin-top: 1.5rem !important;
-    padding-top: 1rem !important;
+    /* Reduced gap above root sections */
+    margin-top: 1rem !important;
+    padding-top: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
 }
 
 .filetree-sidebar .level-0 > .foldername-wrapper,
 .filetree-sidebar .level-0 > .foldername-wrapper .foldername {
     cursor: default !important; 
-    margin-bottom: 0.5rem !important;
+    /* Reduced gap between the word "MEDIA" and its contents */
+    margin-bottom: 0.2rem !important;
     padding-left: 0 !important; 
     background-color: transparent !important;
     font-size: 1.25rem !important; 
@@ -424,12 +433,6 @@ input[type="checkbox"]:checked {
     text-transform: uppercase !important; 
     transition: text-shadow 0.3s ease !important; 
 }
-
-.filetree-sidebar .level-0 > .foldername-wrapper i,
-.filetree-sidebar .level-0 > .foldername-wrapper svg {
-    display: none !important;
-}
-
 /* =========================================
    ROOT FOLDER COLORS & GLOWS
 ========================================= */
