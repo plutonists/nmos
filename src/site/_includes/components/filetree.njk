@@ -40,14 +40,25 @@
                 {% include imp %}
             {% endfor %}
 
-           {% if meta.siteLogoPath %}
-            <a href="/" style="text-decoration: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 12px; padding: 10px 8px 0 8px;">
-                <div class="logo-shine-wrapper">
-                    <img class="site-logo" src="{{meta.siteLogoPath}}" alt="Logo" style="max-width: 100px; height: auto;">
+           {{% if meta.siteLogoPath %}
+            <a href="/" class="nmos-logo-link">
+                <div class="nmos-logo-grid">
+                    <div class="nmos-logo-part nmos-bg-red"></div>
+                    <div class="nmos-logo-part nmos-bg-blue"></div>
+                    <div class="nmos-logo-part nmos-bg-green"></div>
+                    <div class="nmos-logo-part nmos-bg-yellow"></div>
+                    <!-- The dark letters cut out from the center -->
+                    <div class="nmos-logo-letter letter-n"></div>
+                    <div class="nmos-logo-letter letter-m"></div>
+                    <div class="nmos-logo-letter letter-o"></div>
+                    <div class="nmos-logo-letter letter-s"></div>
                 </div>
-                <span style="font-size: 0.95rem; font-weight: 700; text-align: center; line-height: 1.3;">
-                    <span class="nmos-red">Notes,</span> <span class="nmos-blue">Media,</span> <br> <span class="nmos-green">&amp; Other</span> <span class="nmos-yellow">Stuff</span>
-                    </span>
+                <span class="nmos-logo-text">
+                    <span class="nmos-text-red">Notes,</span>
+                    <span class="nmos-text-blue">Media,</span><br>
+                    <span class="nmos-text-green">&amp; Other</span>
+                    <span class="nmos-text-yellow">Stuff</span>
+                </span>
             </a>
             {% else %}
             <a href="/" style="text-decoration: none; text-align: center;">
