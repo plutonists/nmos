@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainContent = document.querySelector('main.content');
     if (!mainContent) return;
 
-    // 1. Find images and their wrappers
+    // 1. Find images
     const rawImages = Array.from(mainContent.querySelectorAll('img:not(.site-logo):not([src*="svg"])'));
     if (rawImages.length === 0) return;
 
@@ -15,29 +15,59 @@ document.addEventListener('DOMContentLoaded', () => {
         return img;
     });
 
-    // 2. Clean up ALL of Obsidian's invisible empty paragraphs and line breaks that cause huge gaps
+    // 2. Clean up empty Obsidian gaps
     mainContent.querySelectorAll('p').forEach(p => {
-        // If a paragraph only contains whitespace, <br> tags, or spans with whitespace, nuke it.
         if (p.innerHTML.replace(/<br\s*\/?>/gi, '').replace(/<span[^>]*>\s*<\/span>/gi, '').trim() === '') {
             p.remove();
         }
     });
 
-    // 3. Setup the Grid Container
+    // 3. Setup Grid Container
     const galleryGrid = document.createElement('div');
     galleryGrid.className = 'nmos-gallery-grid';
-    
-    // Find the very first image so we can insert the grid exactly where the images started
     const firstImageParent = imageElements[0].closest('p') || imageElements[0].parentElement;
     firstImageParent.before(galleryGrid);
 
-    // 4. Move all images into the grid container sequentially (Left to Right ordering)
+    // 4. Create wrappers for the Pinterest layout
     imageElements.forEach(el => {
         const wrapper = document.createElement('div');
         wrapper.className = 'nmos-gallery-item';
         wrapper.appendChild(el);
         galleryGrid.appendChild(wrapper);
     });
+
+    // 5. The Masonry Math (Pinterest style)
+    function applyMasonry() {
+        const grid = document.querySelector('.nmos-gallery-grid');
+        if (!grid) return;
+
+        // Reset grid to calculate natural heights
+        grid.style.alignItems = 'start';
+        
+        const rowGap = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-row-gap')) || 16;
+        const items = grid.querySelectorAll('.nmos-gallery-item');
+
+        items.forEach(item => {
+            // Remove previous inline styles to recalculate
+            item.style.gridRowEnd = '';
+            
+            // Get the actual height of the image inside
+            const img = item.querySelector('img');
+            if (img && img.complete) {
+                const height = item.getBoundingClientRect().height;
+                // Calculate how many "rows" it spans (we set rows to 1px in CSS)
+                const rowSpan = Math.ceil((height + rowGap) / (1 + rowGap));
+                item.style.gridRowEnd = `span ${rowSpan}`;
+            } else if (img) {
+                // If image isn't loaded yet, wait for it
+                img.addEventListener('load', applyMasonry, { once: true });
+            }
+        });
+    }
+
+    // Run on load and resize
+    applyMasonry();
+    window.addEventListener('resize', applyMasonry);
 });
 </script>
 {% endif %}
