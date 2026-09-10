@@ -310,6 +310,25 @@ input[type="checkbox"]:checked {
    MULTI-COLORED NMOS HEADERS & GLOWS
 ========================================= */
 
+/* --- 1. Dynamic Page Title Glow --- */
+/* Targets the main title and any colored <span> tags inside it */
+header h1 {
+    font-size: 2.5rem !important; 
+    margin-bottom: 0.5rem !important;
+    transition: text-shadow 0.3s ease;
+}
+
+header h1, header h1 span {
+    /* Uses color-mix to create a glow based on the exact color of the text */
+    text-shadow: 0 0 15px color-mix(in srgb, currentColor 40%, transparent) !important;
+}
+
+header h1:hover, header h1:hover span {
+    text-shadow: 0 0 20px color-mix(in srgb, currentColor 70%, transparent), 
+                 0 0 35px color-mix(in srgb, currentColor 30%, transparent) !important;
+}
+
+/* --- 2. Standard Markdown Headers --- */
 .markdown-rendered h1 {
     color: #FFBA01 !important;
     text-shadow: 0 0 12px rgba(255, 186, 1, 0.4), 0 0 25px rgba(255, 186, 1, 0.15);
