@@ -775,84 +775,36 @@ main.content img:not(.site-logo):hover {
 }
 
 /* =========================================
-   NMOS GALLERY LAYOUT (HORIZONTAL MASONRY)
+   NMOS GALLERY LAYOUT (PINTEREST MASONRY)
 ========================================= */
 .nmos-gallery-grid {
-    display: flex;
-    gap: 16px;
-    margin-top: 0.5rem; /* Reduced massive gap */
+    display: grid;
+    /* Auto-columns: 1 on mobile, 2 tablet, 3 desktop */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    
+    /* The Magic Trick: Make rows extremely tiny (1px), so JS can tell an image to span X amount of rows based on its height, effectively creating dynamic heights with no gaps */
+    grid-auto-rows: 1px;
+    grid-gap: 16px;
+    
+    margin-top: 1rem;
     padding-bottom: 2rem;
-    align-items: flex-start; /* Prevents columns from stretching vertically */
+    align-items: start; 
 }
 
-.nmos-gallery-col {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    flex: 1; /* Makes all columns exactly the same width */
-}
-
-.nmos-gallery-col picture,
-.nmos-gallery-col img {
+.nmos-gallery-item {
     width: 100%;
-    height: auto !important; /* Keeps true aspect ratio */
+    /* Remove flex here so height calculations are exact */
+    margin: 0 !important;
+}
+
+.nmos-gallery-item picture,
+.nmos-gallery-item img {
+    width: 100%;
+    height: auto !important;
     object-fit: contain;
     border-radius: 12px;
     margin: 0 !important;
     display: block;
-}
-
-/* --- Image Viewer Navigation & Counter --- */
-.nmos-iv-nav {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(15, 15, 15, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: #FFF;
-    width: 50px;
-    height: 70px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 5;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-}
-
-.nmos-iv-nav:hover:not(:disabled) {
-    background: rgba(53, 119, 249, 0.8);
-    border-color: #3577F9;
-    transform: translateY(-50%) scale(1.05);
-}
-
-.nmos-iv-nav:disabled {
-    opacity: 0.15;
-    cursor: not-allowed;
-}
-
-.nmos-iv-nav-left { left: 20px; }
-.nmos-iv-nav-right { right: 20px; }
-
-.nmos-iv-counter {
-    position: absolute;
-    top: 25px;
-    left: 30px;
-    color: #FFF;
-    background: rgba(15, 15, 15, 0.6);
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-weight: 600;
-    font-size: 1rem;
-    z-index: 5;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    font-family: monospace;
-    letter-spacing: 1px;
 }
 /* =========================================
    NMOS RANKING SYSTEM (SPAN METHOD)
