@@ -40,8 +40,6 @@
                 {% include imp %}
             {% endfor %}
 
-           {{% if meta.siteLogoPath %}
-            <!-- NMOS SVG Logo with Shine -->
             <!-- NMOS SVG Logo with Striped Shine -->
             <a href="/" class="nmos-logo-link">
                 <div class="logo-shine-wrapper">
@@ -57,13 +55,6 @@
                     <span class="nmos-text-green">&amp; Other</span> <span class="nmos-text-yellow">Stuff</span>
                 </span>
             </a>
-            {% else %}
-            <a href="/" style="text-decoration: none; text-align: center;">
-                <h1 style="text-align:center;">
-                    <span class="nmos-red">Notes,</span> <span class="nmos-blue">Media,</span> <br> <span class="nmos-green">&amp; Other</span> <span class="nmos-yellow">Stuff</span>
-                </h1>
-            </a>
-            {% endif %}
 
             {% for imp in dynamics.filetree.afterTitle %}
                 {% include imp %}
