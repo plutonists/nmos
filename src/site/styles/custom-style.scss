@@ -975,12 +975,14 @@ main.content img:not(.site-logo):hover {
     }
 
     /* Main Content: Perfectly center it between the two 280px sidebars */
+/* Main Content: Expanded to fill the screen while staying perfectly centered */
     .content {
-        max-width: 800px !important;
+        max-width: 1200px !important; /* Increased from 800px for a much wider reading area */
         width: auto !important;
-        /* 280px offset for sidebars + dynamic centering space (minimum 30px gap) */
-        margin-left: calc(280px + max(30px, (100vw - 280px - 280px - 800px) / 2)) !important;
-        margin-right: calc(280px + max(30px, (100vw - 280px - 280px - 800px) / 2)) !important;
+        
+        /* 280px offset for sidebars + dynamic centering space (minimum 40px gap) */
+        margin-left: calc(280px + max(40px, (100vw - 280px - 280px - 1200px) / 2)) !important;
+        margin-right: calc(280px + max(40px, (100vw - 280px - 280px - 1200px) / 2)) !important;
     }
 
     .toc {
