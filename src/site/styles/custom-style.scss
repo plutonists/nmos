@@ -971,26 +971,34 @@ main.content img:not(.site-logo):hover {
         left: 0 !important;
     }
 
-    /* Right Sidebar: Pin to the right edge */
+   /* Right Sidebar: Pin to the right edge and make it VISIBLE */
     .sidebar {
         position: fixed !important;
         right: 0 !important;
         left: auto !important;
-        top: 75px !important;
+        top: 65px !important; /* Flush with the top navbar */
         width: 280px !important;
         max-width: 280px !important;
-        height: calc(100vh - 75px) !important;
+        height: calc(100vh - 65px) !important;
         margin: 0 !important;
         padding: 20px !important;
+        
+        /* The Fix: Give it a distinct background and border so it acts as a permanent panel */
+        background-color: var(--background-secondary) !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.05) !important;
         border-top: none !important;
-        background: var(--background-primary) !important;
+        
+        display: flex !important;
+        z-index: 100 !important;
+        overflow-y: auto !important;
     }
 
     .sidebar-container {
         display: flex !important;
         flex-direction: column !important;
         gap: 25px !important;
-        height: 100% !important;
+        height: auto !important; /* Allow it to scroll naturally */
+        width: 100% !important;
         padding-right: 5px !important;
     }
 
