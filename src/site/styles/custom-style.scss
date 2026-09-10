@@ -1123,3 +1123,19 @@ main.content img:not(.site-logo):hover {
     background-color: rgba(255, 255, 255, 0.2) !important;
     border-radius: 4px !important;
 }
+
+/* =========================================
+   ROOT FOLDER FIXES (HIDE ICONS & FIX SPACING)
+========================================= */
+
+/* 1. Hide the arrows/icons on the top-level sections (NOTES, MEDIA, OTHER STUFF) */
+.filetree-sidebar .level-0 > .foldername-wrapper i,
+.filetree-sidebar .level-0 > .foldername-wrapper svg {
+    display: none !important;
+}
+
+/* 2. Fix the massive gap between "OTHER" and "STUFF" */
+.filetree-sidebar .level-0 > .foldername-wrapper {
+    justify-content: flex-start !important; /* Stops them from spreading out */
+    gap: 8px !important; /* Sets a strict, small space between the words */
+}
