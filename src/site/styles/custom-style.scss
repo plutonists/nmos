@@ -1208,24 +1208,18 @@ main.content img:not(.site-logo):hover {
 .nmos-text-green { color: #00c853; }
 .nmos-text-yellow { color: #ffc107; }
 
-/* --- THE MULTICOLOR STRIPED GLIMMER --- */
+/* --- THE MULTICOLOR STRIPED GLIMMER (SVG MASKED) --- */
 
 .logo-shine-wrapper {
     position: relative;
     display: inline-block;
-    overflow: hidden; 
+    /* Removed overflow:hidden so we don't clip the hover scale effect */
     border-radius: 0; 
 }
 
-.logo-shine-wrapper::after {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -250%; /* Start further back */
-    width: 200%; /* Make the beam wider */
-    height: 200%; /* Make it taller to cover corners when skewed */
-    
-    /* Solid stripes, no blending */
+/* We target the rect INSIDE the SVG now */
+.nmos-svg-glimmer-rect {
+    /* Solid stripes, applied as a background via CSS */
     background: linear-gradient(
         to right, 
         rgba(255, 255, 255, 0) 0%,     
@@ -1240,25 +1234,22 @@ main.content img:not(.site-logo):hover {
         rgba(255, 255, 255, 0) 100%    
     );
     
-    transform: skewX(-25deg);
-    animation: nmos-color-glimmer 10s infinite;
-    pointer-events: none;
-    z-index: 10;
-    
+    transform-origin: center center;
+    transform: translateX(-3000px) skewX(-25deg);
+    animation: nmos-svg-glimmer 10s infinite;
     opacity: 1 !important; 
-    /* REMOVED mix-blend-mode so colors render at true 100% */
 }
 
-@keyframes nmos-color-glimmer {
+@keyframes nmos-svg-glimmer {
     0% {
-        left: -250%;
+        transform: translateX(-3000px) skewX(-25deg);
     }
     15% {
         /* Sweep across */
-        left: 150%;
+        transform: translateX(1500px) skewX(-25deg);
     }
     100% {
         /* Wait off-screen */
-        left: 150%;
+        transform: translateX(1500px) skewX(-25deg);
     }
 }
