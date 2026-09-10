@@ -1,9 +1,11 @@
 ---
-{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-06T17:11:32.165+03:00","dg-note-properties":{"tags":["seed","gardenEntry"]}}
+{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-10T14:12:39.441+03:00","dg-note-properties":{"tags":["seed","gardenEntry"]}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
 <sub>❤️ A small nod of respect and admiration to the great [Free Media, Heck Yeah (FMHY)](https://fmhy.net) wiki, without it, I might've never been introduced to many resources which are now useful in my day-to-day life. This website is inspired by it, and one other person, B[^1]. </sub>
+
+<span style="color:#ff3366">Disclaimer: </span>For any copyright inquiries or DMCA takedowns, please contact me at `hello@nmos.me`.
 
 # Hellos! I'm Pluto. 👋
 ---
@@ -25,16 +27,15 @@ For the record, I'm not that great at introducing myself, so bear with me as I t
 Good question (not really)! This website is a personal stash of interests; movies, literature, software, videos, art, photos, you name it. I've been wanting to make a personal corner of mine on the internet so I can ~~<font color="#ec2e37">MARK MY TERRITORY</font>~~ have a place I can dump everything I like into. 
 <div style="height: 50px;"></div>
 <h2 style="margin: 0; color: #ec2e37 !important; text-shadow: 0 0 12px rgba(236, 46, 55, 0.4), 0 0 25px rgba(236, 46, 55, 0.15);">Notes</h2>
-The <font color="#ec2e37">N</font> part of the name! It's any thoughts of mine about *anything* I can review movies, shows, software, books, talk about my own life, things I tried, things I *didn't* try (but want to), and endless more things. I can freely express myself here. My opinions can contradict yours, of course, but if you'd like to talk about it, feel free! I'm kind of on a journey of self-growth here; maybe you and I can teach each other something. Perspectives are important, and I want to explore a lot of them. <img src="/img/user/1%20Website%20Resources/emojis/Discord_Icons/smilethumb2.png" style="height: 1.5em; vertical-align: middle; display: inline-block; margin-left: 4px;">
+The <font color="#ec2e37">N</font> part of the name! It's any thoughts of mine about *anything* I can review movies, shows, software, books, talk about my own life, things I tried, things I *didn't* try (but want to), and endless more things. I can freely express myself here. My opinions can contradict yours, of course, but if you'd like to talk about it, feel free! I'm kind of on a journey of self-growth here; maybe you and I can teach each other something. Perspectives are important, and I want to explore a lot.
 
 Frankly, it gives me pleasure knowing that someone out there might be reading my thoughts and opinions on something. My style of writing is how I'd write a letter to a friend overseas (not like I'd ever done that!), and maybe you'd like that. I hope this place can serve as a comfy place to you. ![swagsmile.png\|24](/img/user/1%20Website%20Resources/emojis/Discord_Icons/LAmojis/swagsmile.png)
 <div style="height: 50px;"></div>
 
 <h2 style="margin: 0; color: #2878ff !important; text-shadow: 0 0 12px rgba(40, 120, 255, 0.4), 0 0 25px rgba(40, 120, 255, 0.15);">Media</h2>
 The <font color="#2878ff">M</font> part of the name (surprise!). This is self-explanatory. This is *any* form of media that I like. Movies, shows, videos, art, music. This will probably be the most maintained one here because it's so very easy to just place stuff I like and walk away. I do want to avoid doing that though, and give opinions on some things if there could be a lot to say. Overall, if you want to find something new here, check back every now and then. You might catch something of interest.
+
 <div style="height: 50px;"></div>
-
-
 <h2 style="margin: 0;"><span style="color: #00c753 !important; text-shadow: 0 0 12px rgba(0, 199, 83, 0.4), 0 0 25px rgba(0, 199, 83, 0.15);">Other </span><span style="color: #ffc006 !important; text-shadow: 0 0 12px rgba(255, 192, 6, 0.4), 0 0 25px rgba(255, 192, 6, 0.15);">Stuff</span></h2> <sup>It wouldn't make sense to have "Other" and "Stuff" in two separate headers...</sup>  
 
 OK, you get the drill, the <font color="#00c753">O</font><font color="#ffc006">S</font> part of the name. This is where it becomes closely in tandem with some other wiki sites that give you pretty cool resources, like the aforementioned [FMHY](https://fmhy.net). What makes it different? Well, not much. I'm not going to sugarcoat it, this isn't going to be anywhere near as well-done as FMHY or any other specialized wiki sites, but I can safely say that whatever is listed here will be things I have tried and enjoyed as an average PC user.  I'll be giving brief descriptions of what I liked about whatever's listed, which *won't* be as detailed as <font color="#ec2e37">Notes</font>, but they should prove as a sufficient idea for you if you want to use that resource.
