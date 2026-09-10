@@ -1156,3 +1156,48 @@ main.content img:not(.site-logo):hover {
     justify-content: flex-start !important; /* Stops them from spreading out */
     gap: 8px !important; /* Sets a strict, small space between the words */
 }
+
+/* =========================================
+   LOGO SHINE ANIMATION
+========================================= */
+
+.logo-shine-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* This keeps the shine contained to the logo area */
+    border-radius: 4px; /* Adjust if your logo has rounded corners */
+}
+
+.logo-shine-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%; /* Start way off to the left */
+    width: 50%;
+    height: 100%;
+    /* Create a slanted, semi-transparent white beam */
+    background: linear-gradient(
+        to right, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg); /* Angle the beam */
+    animation: nmos-shine 6s infinite; /* 6 seconds total per loop */
+    pointer-events: none; /* Make sure it doesn't block clicks */
+    z-index: 10;
+}
+
+@keyframes nmos-shine {
+    0% {
+        left: -150%;
+    }
+    15% {
+        /* Sweep across quickly */
+        left: 200%;
+    }
+    100% {
+        /* Stay hidden for the rest of the 6 seconds */
+        left: 200%;
+    }
+}
