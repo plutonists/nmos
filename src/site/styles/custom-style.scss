@@ -1179,11 +1179,12 @@ main.content img:not(.site-logo):hover {
     gap: 12px;
     margin-bottom: 15px;
     padding: 10px 8px 0 8px;
-    transition: transform 0.2s ease;
+    /* Smooth, eased transition for hovering */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .nmos-logo-link:hover {
-    transform: scale(1.02);
+    transform: scale(1.05); /* Slightly bigger pop on hover */
 }
 
 .nmos-svg-logo {
@@ -1211,31 +1212,31 @@ main.content img:not(.site-logo):hover {
 .logo-shine-wrapper {
     position: relative;
     display: inline-block;
-    overflow: hidden; /* Keeps the beam contained inside the square logo */
-    border-radius: 4px;
+    overflow: hidden; 
+    /* Ensures the glimmer cuts off at the rounded corners of the SVG */
+    border-radius: 0px; 
 }
 
 .logo-shine-wrapper::after {
     content: "";
     position: absolute;
     top: 0;
-    left: -200%; /* Start way off-screen left */
-    width: 150%; /* Wide glimmer */
+    left: -200%; 
+    width: 150%; 
     height: 100%;
     
-    /* The 4-color striped gradient with fading transparent edges */
     background: linear-gradient(
         to right, 
-        #ff336600 0%,     /* Transparent start */
-        #ff3366 15%,      /* Solid Red start */
-        #ff3366 25%,      /* Solid Red end */
-        #2979ff 25%,      /* Solid Blue start */
-        #2979ff 50%,      /* Solid Blue end */
-        #00c853 50%,      /* Solid Green start */
-        #00c853 75%,      /* Solid Green end */
-        #ffc107 75%,      /* Solid Yellow start */
-        #ffc107 85%,      /* Solid Yellow end */
-        #ffc10700 100%    /* Transparent end */
+        #ff336600 0%,     
+        #ff3366 15%,      
+        #ff3366 25%,      
+        #2979ff 25%,      
+        #2979ff 50%,      
+        #00c853 50%,      
+        #00c853 75%,      
+        #ffc107 75%,      
+        #ffc107 85%,      
+        #ffc10700 100%    
     );
     
     transform: skewX(-25deg);
@@ -1243,9 +1244,9 @@ main.content img:not(.site-logo):hover {
     pointer-events: none;
     z-index: 10;
     
-    /* Make it act like a bright light overlaying the logo */
-    opacity: 0.85; 
-    mix-blend-mode: screen; 
+    /* 100% Opacity and 'lighten' mode for maximum visibility without washing out */
+    opacity: 1; 
+    mix-blend-mode: lighten; 
 }
 
 @keyframes nmos-color-glimmer {
@@ -1253,11 +1254,9 @@ main.content img:not(.site-logo):hover {
         left: -200%;
     }
     15% {
-        /* Sweep across in 1.5 seconds */
         left: 200%;
     }
     100% {
-        /* Wait silently off-screen for the remaining 8.5 seconds */
         left: 200%;
     }
 }
