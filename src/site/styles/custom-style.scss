@@ -1179,12 +1179,13 @@ main.content img:not(.site-logo):hover {
     gap: 12px;
     margin-bottom: 15px;
     padding: 10px 8px 0 8px;
-    /* Smooth, eased transition for hovering */
-    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* Apply transition to all changing properties, making it super smooth */
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important; 
+    transform-origin: center center;
 }
 
-.nmos-logo-link:hover {
-    transform: scale(1.05); /* Slightly bigger pop on hover */
+.filetree-sidebar .nmos-logo-link:hover {
+    transform: scale(1.06) !important;
 }
 
 .nmos-svg-logo {
@@ -1213,30 +1214,30 @@ main.content img:not(.site-logo):hover {
     position: relative;
     display: inline-block;
     overflow: hidden; 
-    /* Ensures the glimmer cuts off at the rounded corners of the SVG */
-    border-radius: 0px; 
+    border-radius: 0; 
 }
 
 .logo-shine-wrapper::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: -200%; 
-    width: 150%; 
-    height: 100%;
+    top: -50%;
+    left: -250%; /* Start further back */
+    width: 200%; /* Make the beam wider */
+    height: 200%; /* Make it taller to cover corners when skewed */
     
+    /* Solid stripes, no blending */
     background: linear-gradient(
         to right, 
-        #ff336600 0%,     
-        #ff3366 15%,      
-        #ff3366 25%,      
-        #2979ff 25%,      
+        rgba(255, 255, 255, 0) 0%,     
+        #ff3366 10%,      
+        #ff3366 30%,      
+        #2979ff 30%,      
         #2979ff 50%,      
         #00c853 50%,      
-        #00c853 75%,      
-        #ffc107 75%,      
-        #ffc107 85%,      
-        #ffc10700 100%    
+        #00c853 70%,      
+        #ffc107 70%,      
+        #ffc107 90%,      
+        rgba(255, 255, 255, 0) 100%    
     );
     
     transform: skewX(-25deg);
@@ -1244,19 +1245,20 @@ main.content img:not(.site-logo):hover {
     pointer-events: none;
     z-index: 10;
     
-    /* 100% Opacity and 'lighten' mode for maximum visibility without washing out */
-    opacity: 1; 
-    mix-blend-mode: lighten; 
+    opacity: 1 !important; 
+    /* REMOVED mix-blend-mode so colors render at true 100% */
 }
 
 @keyframes nmos-color-glimmer {
     0% {
-        left: -200%;
+        left: -250%;
     }
     15% {
-        left: 200%;
+        /* Sweep across */
+        left: 150%;
     }
     100% {
-        left: 200%;
+        /* Wait off-screen */
+        left: 150%;
     }
 }
