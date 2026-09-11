@@ -14,8 +14,8 @@
   <id>{{ meta.siteBaseUrl }}</id>
   {%- for note in (collections.note | notHidden | notPasswordProtected) | reverse -%}
   {%- if note.url != "/" -%}
-  <entry>
-    <title>{%- if note.title -%}{{ note.title }}{%- else -%}{{ note.fileSlug }}{%- endif -%}</title>
+ <entry>
+    <title>{%- if note.data.title -%}{{ note.data.title | striptags }}{%- elif note.title -%}{{ note.title | striptags }}{%- else -%}{{ note.fileSlug }}{%- endif -%}</title>
     <updated>{%- if note.data.updated -%}{{ note.data.updated | dateToZulu }}{%- else -%}{{ note.date | dateToRfc3339 }}{%- endif -%}</updated>
     <id>{{ meta.siteBaseUrl }}{{ note.url | url }}</id>
     <content type="html">{{- note.templateContent | hideDataview | taggify | link | resolveMdLinks(note.inputPath) | htmlToAbsoluteUrls(meta.siteBaseUrl) | xmlSafe -}}</content>
