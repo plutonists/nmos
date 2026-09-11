@@ -38,7 +38,7 @@ function noteTitle(note) {
 		(note.metadata.title ||
 			(note.metadata["dg-note-properties"] &&
 				note.metadata["dg-note-properties"].title));
-	if (fromMeta) return String(fromMeta);
+	if (fromMeta) return String(fromMeta).replace(/<\/?[^>]+(>|$)/g, "");
 	return note.path.split("/").pop().replace(/\.md$/i, "");
 }
 
