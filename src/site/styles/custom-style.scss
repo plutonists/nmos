@@ -1261,3 +1261,40 @@ aside {
     box-sizing: border-box !important;
     max-width: 100% !important;
 }
+
+/* =========================================
+   INLINE CLICK-TO-COPY BADGE
+========================================= */
+
+.copy-text {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    font-family: monospace;
+    font-size: 0.9em;
+    color: var(--text-normal);
+    transition: all 0.2s ease;
+    vertical-align: middle;
+}
+
+.copy-text:hover {
+    background: rgba(53, 119, 249, 0.15);
+    border-color: #3577F9; /* NMOS Blue */
+    color: #3577F9;
+}
+
+.copy-text.copied {
+    background: rgba(23, 197, 85, 0.15) !important;
+    border-color: #17C555 !important; /* NMOS Green */
+    color: #17C555 !important;
+}
+
+.copy-text svg {
+    width: 14px;
+    height: 14px;
+}
