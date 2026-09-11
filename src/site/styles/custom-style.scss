@@ -1193,14 +1193,9 @@ main.content img:not(.site-logo):hover {
     gap: 12px;
     margin-bottom: 15px;
     padding: 10px 8px 0 8px;
-    /* Apply transition to all changing properties, making it super smooth */
-    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important; 
-    transform-origin: center center;
+    /* Removed transition and transform-origin */
 }
 
-.filetree-sidebar .nmos-logo-link:hover {
-    transform: scale(1.06) !important;
-}
 
 .nmos-svg-logo {
     width: 80px; 
