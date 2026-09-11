@@ -1,5 +1,5 @@
 ---
-{"title":"<span style=\"color:#ffc107\">Stellar,</span> <span style=\"color:#00c853\">Amazing,</span> <span style=\"color:#2979ff\">Basic,</span> <span style=\"color:#ff3366\">& Junk</span> (<span style=\"color:#ffc107\">S</span><span style=\"color:#00c853\">A</span><span style=\"color:#2979ff\">B</span><span style=\"color:#ff3366\">J</span>) Criteria","desc":"Everything about the Stellar, Amazing, Basic, & Junk Criteria can be found here. In short, I use this to rank anything.","dg-publish":true,"permalink":"/sabj-criteria/","dgPassFrontmatter":true,"created":"2026-09-10T17:31:34.142+03:00","updated":"2026-09-11T22:43:29.140+03:00","dg-note-properties":{"title":"<span style=\"color:#ffc107\">Stellar,</span> <span style=\"color:#00c853\">Amazing,</span> <span style=\"color:#2979ff\">Basic,</span> <span style=\"color:#ff3366\">& Junk</span> (<span style=\"color:#ffc107\">S</span><span style=\"color:#00c853\">A</span><span style=\"color:#2979ff\">B</span><span style=\"color:#ff3366\">J</span>) Criteria","desc":"Everything about the Stellar, Amazing, Basic, & Junk Criteria can be found here. In short, I use this to rank anything."}}
+{"title":"<span style=\"color:#ffc107\">Stellar,</span> <span style=\"color:#00c853\">Amazing,</span> <span style=\"color:#2979ff\">Basic,</span> <span style=\"color:#ff3366\">& Junk</span> (<span style=\"color:#ffc107\">S</span><span style=\"color:#00c853\">A</span><span style=\"color:#2979ff\">B</span><span style=\"color:#ff3366\">J</span>) Criteria","desc":"Everything about the Stellar, Amazing, Basic, & Junk Criteria can be found here. In short, I use this to rank anything.","dg-publish":true,"permalink":"/sabj-criteria/","dgPassFrontmatter":true,"created":"2026-09-10T17:31:34.142+03:00","updated":"2026-09-11T23:30:24.628+03:00","dg-note-properties":{"title":"<span style=\"color:#ffc107\">Stellar,</span> <span style=\"color:#00c853\">Amazing,</span> <span style=\"color:#2979ff\">Basic,</span> <span style=\"color:#ff3366\">& Junk</span> (<span style=\"color:#ffc107\">S</span><span style=\"color:#00c853\">A</span><span style=\"color:#2979ff\">B</span><span style=\"color:#ff3366\">J</span>) Criteria","desc":"Everything about the Stellar, Amazing, Basic, & Junk Criteria can be found here. In short, I use this to rank anything."}}
 ---
 
 Hellos! This is the <span style="color:#ffc107">Stellar,</span> <span style="color:#00c853">Amazing,</span> <span style="color:#2979ff">Basic,</span> <span style="color:#ff3366">& Junk</span> (SABJ) Criteria, which I'll use to rank websites, software, and other stuff!
@@ -21,6 +21,20 @@ After passing the Warden, it's up to me to weigh whether the website/software de
 
 Each website/software will be inspected and given points depending on how well it fulfilled a certain feature. I've opted to have the entire points system be 20 points rather than 100, so as to be more mindful towards giving points towards a certain something, and avoid giving a ballpark if there's so many points to be given. It's also simpler.
 
+#### How will points be distributed?
+There are <span style="color:#ffc107">maximum points</span> for every specific feature inspected for a website/software. The weight of each feature depends on what category the website/software falls under. For example, a movie streaming website should have fast, reliable servers, thus, <span style="color:#ffc107">speed</span> will be given a maximum of 8 points (40% of 20 points). All of this is largely variable. How many points each feature gets for each website will be detailed below their respective links along with reasons why. For a small synopsis, there will be small "cards" next to the links, like so:
+<span class="y">Feature 1</span><span class="w">Feature 2</span><span class="n">Feature 3</span>
+<div style="height: 20px;"></div>
+Obviously,  <span class="y">Feature 1</span> means this feature is excellent (at least 90% of the maximum score), whereas <span class="w">Feature 2</span> is mediocre (between 50% and 90%), and <span class="n">Feature 3</span> is just... no (less than 50%).
+<div style="height: 40px;"></div>
 
+#### How many points does each ranking require?
+Amazing concluding question!
+> [!info] Minimum Score for Ranking
+> - <span class="s">S</span> ⇒ Near flawless, you will go "Oh no." if it's down. <span style="color:#ffc107; font-weight:bold">17 points.</span>
+> - <span class="a">A</span> ⇒ Great website, and should give an enjoyable experience. <span style="color:#00c853; font-weight:bold">13 points.</span>
+> - <span class="b">B</span> ⇒ Gets the job done. Good substitute for the two above. <span style="color:#2979ff; font-weight:bold">Between 6 and and less than 13 points.</span>
 
+If a website has less than 6 points, I'll be deciding whether to keep it as a <span style="color:#2979ff">Basic</span> website or to throw it into the <span style="color:#ff3366">Junkyard</span>. A website that passes the Warden but fails in almost every aspect doesn't exempt it from being junk. 
 
+Anyhow, thank you for reading! <span style="color:#f76707; font-style:italic">This page is very subject to change in the future.</span>
