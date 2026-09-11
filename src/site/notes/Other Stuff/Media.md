@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-09T23:21:57.915+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
+{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-09T23:24:03.504+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
 ---
 
 ## Streaming Websites
@@ -24,10 +24,10 @@ This page will be using the <span style="color:#ff3366">F</span><span style="col
 > [!attention] Disclaimer
 > Notes, Media, & Other Stuff does not host, store, or upload any movies, TV shows on its servers. All media is provided by unaffiliated third-party streaming websites. I do not control, manage, or assume liability for the content, availability, or copyright compliance of these external sources. If there is any liability concern, inquiry, or request for DMCA takedown, please contact me at: `hello@nmos.me`
 
-<sub>May you rest in peace, Cineby.app.</sub>
+<sub>May you rest in peace, Cineby.</sub>
 
 ---
 
 - <span class="s">S</span> [Cinejoy](https://cinejoy.to/) <span class="y">UI/UX</span> <span class="y">Speed</span> <span class="y">Subtitles</span> <span class="y">Streaming Quality</span> <span class="y">Features</span> <span class="y">No Ads</span>
-- 
+	
 -
