@@ -3,11 +3,11 @@
 
 <!-- Dynamic Title: Uses Obsidian 'title' property, then file name, then fallback -->
 {% set embedTitle = title or noteTitle or "Notes, Media, & Other Stuff" %}
-<meta property="og:title" content="{{ embedTitle }}" />
+<meta property="og:title" content="{{ embedTitle | striptags }}" />
 
 <!-- Dynamic Description: Uses Obsidian 'desc' property, then fallback -->
 {% set embedDesc = desc or description or "A personal database of thoughts, notes, and everything in between." %}
-<meta property="og:description" content="{{ embedDesc }}" />
+<meta property="og:description" content="{{ embedDesc | striptags }}" />
 
 {% if banner %}
     <!-- Custom image provided in Obsidian: Use LARGE BANNER layout -->
