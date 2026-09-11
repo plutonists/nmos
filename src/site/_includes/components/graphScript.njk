@@ -104,11 +104,11 @@ function resolveColor(cssValue) {
     return 0x666666;
 }
 
-// Lightweight HTML entity decoder
-const _decodeEl = document.createElement('textarea');
+// Lightweight HTML entity decoder & tag stripper
+const _decodeEl = document.createElement('div');
 function htmlDecode(input) {
     _decodeEl.innerHTML = input;
-    return _decodeEl.value;
+    return _decodeEl.textContent || _decodeEl.innerText || "";
 }
 
 // Pre-compute degree map for node sizing
