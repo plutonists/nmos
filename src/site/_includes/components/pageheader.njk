@@ -83,3 +83,39 @@
     }));
   });
 </script>
+
+<!-- Inline Click-to-Copy Script -->
+<script defer>
+  document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.copy-text').forEach(el => {
+          // Save the original text to copy (before we inject the icon)
+          const textToCopy = el.innerText.trim();
+
+          // Wrap the original text and inject the copy icon
+          el.innerHTML = `<span>${el.innerHTML}</span><i data-lucide="copy"></i>`;
+
+          // Handle the click event
+          el.addEventListener('click', (e) => {
+              e.preventDefault(); // Prevent default link behavior if used on a link
+              
+              navigator.clipboard.writeText(textToCopy).then(() => {
+                  // Swap icon to checkmark
+                  const icon = el.querySelector('i');
+                  icon.setAttribute('data-lucide', 'check');
+                  el.classList.add('copied');
+                  if (typeof lucide !== 'undefined') lucide.createIcons({ root: el });
+
+                  // Revert after 2 seconds
+                  setTimeout(() => {
+                      icon.setAttribute('data-lucide', 'copy');
+                      el.classList.remove('copied');
+                      if (typeof lucide !== 'undefined') lucide.createIcons({ root: el });
+                  }, 2000);
+              });
+          });
+      });
+      
+      // Initialize Lucide icons for the newly added icons
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+  });
+</script>
