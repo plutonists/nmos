@@ -572,7 +572,7 @@ function renderViews(queryResult, allNotes, options) {
 				const title = (note.metadata && (note.metadata.title ||
 					(note.metadata["dg-note-properties"] && note.metadata["dg-note-properties"].title)))
 					|| note.fileSlug || note.url;
-				urlTitleMap[note.url] = title;
+				urlTitleMap[note.url] = String(title).replace(/<\/?[^>]+(>|$)/g, "");
 			}
 		}
 	}
