@@ -29,8 +29,23 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     <main class="content cm-s-obsidian print {{contentClasses}}">
       <header>
        {% if settings.dgShowInlineTitle === true %}
-          <h1 data-note-icon="{% if noteIcon %}{{noteIcon}}{% else %}{{meta.noteIconsSettings.default}}{% endif %}">{% if title %}{{ title | safe }}{% else %}{{ page.fileSlug }}{% endif %}</h1>
+  <h1 {% if not icon %}data-note-icon="{% if noteIcon %}{{noteIcon}}{% else %}{{meta.noteIconsSettings.default}}{% endif %}"{% endif %}>
+    {% if icon %}
+      {% if "lucide-" in icon %}
+        <i data-lucide="{{ icon | replace('lucide-', '') }}" style="width: 0.9em; height: 0.9em; margin-right: 8px; display: inline-block; vertical-align: -0.1em; color: var(--text-accent);"></i>
+      {% elif ".png" in icon or ".svg" in icon or ".jpg" in icon or ".gif" in icon or ".webp" in icon %}
+        {% set iconUrl = icon | replace("[[", "") | replace("]]", "") %}
+        {% if not iconUrl.startsWith("/") and not iconUrl.startsWith("http") %}
+            {% set iconUrl = "/img/user/" + iconUrl %}
         {% endif %}
+        <img src="{{ iconUrl }}" style="width: 0.9em; height: 0.9em; margin-right: 8px; display: inline-block; vertical-align: -0.1em; object-fit: contain;">
+      {% else %}
+        <span style="margin-right: 8px;">{{ icon }}</span>
+      {% endif %}
+    {% endif %}
+    {% if title %}{{ title | safe }}{% else %}{{ page.fileSlug }}{% endif %}
+  </h1>
+{% endif %}
         <div class="header-meta">
           {% if settings.dgShowTags === true and tags %}
             <div class="header-tags">
