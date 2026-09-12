@@ -90,28 +90,42 @@
       document.querySelectorAll('.copy-text').forEach(el => {
           // Save the original text to copy (before we inject the icon)
           const textToCopy = el.innerText.trim();
+          let copiedTimeout;
 
           // Wrap the original text and inject the copy icon
           el.innerHTML = `<span>${el.innerHTML}</span><i data-lucide="copy"></i>`;
+          el.setAttribute('role', 'button');
+          el.setAttribute('tabindex', '0');
 
-          // Handle the click event
-          el.addEventListener('click', (e) => {
-              e.preventDefault(); // Prevent default link behavior if used on a link
-              
+          const copyText = () => {
+              clearTimeout(copiedTimeout);
+              el.classList.remove('copied', 'copy-failed');
+
+              if (!navigator.clipboard) {
+                  el.classList.add('copy-failed');
+                  copiedTimeout = setTimeout(() => el.classList.remove('copy-failed'), 2000);
+                  return;
+              }
+
               navigator.clipboard.writeText(textToCopy).then(() => {
-                  // Swap icon to checkmark
-                  const icon = el.querySelector('i');
-                  icon.setAttribute('data-lucide', 'check');
                   el.classList.add('copied');
-                  if (typeof lucide !== 'undefined') lucide.createIcons({ root: el });
-
-                  // Revert after 2 seconds
-                  setTimeout(() => {
-                      icon.setAttribute('data-lucide', 'copy');
-                      el.classList.remove('copied');
-                      if (typeof lucide !== 'undefined') lucide.createIcons({ root: el });
-                  }, 2000);
+                  copiedTimeout = setTimeout(() => el.classList.remove('copied'), 2000);
+              }).catch(() => {
+                  el.classList.add('copy-failed');
+                  copiedTimeout = setTimeout(() => el.classList.remove('copy-failed'), 2000);
               });
+          };
+
+          // Handle mouse and keyboard activation.
+          el.addEventListener('click', (e) => {
+              e.preventDefault();
+              copyText();
+          });
+          el.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  copyText();
+              }
           });
       });
       

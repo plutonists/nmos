@@ -1289,6 +1289,12 @@ aside {
     color: #17C555 !important;
 }
 
+.copy-text.copy-failed {
+    background: rgba(248, 44, 102, 0.15) !important;
+    border-color: #F82C66 !important;
+    color: #F82C66 !important;
+}
+
 /* Floating "Copied!" Text Indicator */
 .copy-text.copied::after {
     content: "Copied!";
@@ -1306,6 +1312,25 @@ aside {
     pointer-events: none;
     white-space: nowrap;
     box-shadow: 0 4px 12px rgba(23, 197, 85, 0.3);
+    animation: copyTooltipFade 0.2s ease-out forwards;
+}
+
+.copy-text.copy-failed::after {
+    content: "Copy failed";
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #F82C66;
+    color: #161618;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    font-family: var(--font-default, sans-serif);
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(248, 44, 102, 0.3);
     animation: copyTooltipFade 0.2s ease-out forwards;
 }
 
