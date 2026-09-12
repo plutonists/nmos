@@ -1,0 +1,17 @@
+<label class="landing-preference">
+    <input type="checkbox" id="landing-intro-skip">
+    <span>Skip landing intro</span>
+</label>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const preferenceKey = 'nmos-landing-intro-disabled';
+        const toggle = document.querySelector('#landing-intro-skip');
+        if (!toggle) return;
+
+        toggle.checked = localStorage.getItem(preferenceKey) === 'true';
+        toggle.addEventListener('change', () => {
+            localStorage.setItem(preferenceKey, String(toggle.checked));
+        });
+    });
+</script>

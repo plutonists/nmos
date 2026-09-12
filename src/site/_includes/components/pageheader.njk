@@ -53,6 +53,16 @@
 
 {% favicons './.cache/favicon.normalized.svg', appleIconBgColor='#123' %}
 
+<script>
+  (() => {
+    const landingIntroSeen = sessionStorage.getItem('nmos-landing-intro-seen') === 'true';
+    const landingIntroDisabled = localStorage.getItem('nmos-landing-intro-disabled') === 'true';
+    if (landingIntroSeen || landingIntroDisabled) {
+      document.documentElement.classList.add('landing-intro-skip-paint');
+    }
+  })();
+</script>
+
 {% if meta.styleSettingsCss %}
     <style>
         {{ meta.styleSettingsCss | safe }}
