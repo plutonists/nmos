@@ -1458,3 +1458,67 @@ aside {
     line-height: 1.6;
     border-left: 2px solid rgba(53, 119, 249, 0.3);
 }
+/* =========================================
+   SUBTLE COLLAPSIBLES (<details class="subtle">)
+========================================= */
+
+.markdown-rendered details.subtle,
+.markdown-source-view details.subtle,
+.markdown-preview-view details.subtle {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0.25em 0 0.5em 0; /* Very tight margins */
+    padding: 0;
+}
+
+/* Remove the open-state borders and glows */
+.markdown-rendered details.subtle[open],
+.markdown-source-view details.subtle[open],
+.markdown-preview-view details.subtle[open] {
+    border: none;
+    box-shadow: none;
+}
+
+/* Make the summary text small, muted, and inline-sized */
+.markdown-rendered details.subtle > summary,
+.markdown-source-view details.subtle > summary,
+.markdown-preview-view details.subtle > summary {
+    font-weight: 500;
+    font-size: 0.8em; /* Smaller text */
+    color: var(--text-muted, #888);
+    display: inline-flex;
+    width: fit-content; /* Don't stretch across the screen */
+    transition: color 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Very faint hover effect */
+.markdown-rendered details.subtle > summary:hover,
+.markdown-source-view details.subtle > summary:hover,
+.markdown-preview-view details.subtle > summary:hover {
+    color: var(--text-normal, #ccc);
+    text-shadow: none; /* No neon glow */
+}
+
+/* Make the arrow slightly smaller for the subtle version */
+.markdown-rendered details.subtle > summary::before,
+.markdown-source-view details.subtle > summary::before,
+.markdown-preview-view details.subtle > summary::before {
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid currentColor;
+    margin-right: 8px;
+}
+
+/* Subtle indented content */
+.markdown-rendered details.subtle > *:not(summary),
+.markdown-source-view details.subtle > *:not(summary),
+.markdown-preview-view details.subtle > *:not(summary) {
+    margin-top: 0.5em;
+    padding-left: 12px;
+    font-size: 0.9em;
+    color: #999;
+    border-left: 2px solid rgba(255, 255, 255, 0.1); /* Very faint grey line */
+}
