@@ -1274,18 +1274,44 @@ aside {
     color: var(--text-normal);
     transition: all 0.2s ease;
     vertical-align: middle;
+    position: relative; /* Added to support the tooltip */
 }
 
 .copy-text:hover {
-    background: rgba(53, 119, 249, 0.15);
-    border-color: #3577F9; /* NMOS Blue */
-    color: #3577F9;
+    background: rgba(248, 44, 102, 0.15); /* NMOS Red */
+    border-color: #F82C66; /* NMOS Red */
+    color: #F82C66; /* NMOS Red */
 }
 
 .copy-text.copied {
     background: rgba(23, 197, 85, 0.15) !important;
     border-color: #17C555 !important; /* NMOS Green */
     color: #17C555 !important;
+}
+
+/* Floating "Copied!" Text Indicator */
+.copy-text.copied::after {
+    content: "Copied!";
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #17C555;
+    color: #161618;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+    font-family: var(--font-default, sans-serif);
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(23, 197, 85, 0.3);
+    animation: copyTooltipFade 0.2s ease-out forwards;
+}
+
+@keyframes copyTooltipFade {
+    from { opacity: 0; transform: translate(-50%, 5px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
 }
 
 .copy-text svg {
@@ -1366,4 +1392,69 @@ aside {
 .filetree-sidebar .notelink.pinned-note:not(.active-note):hover a {
     color: #FFBA01 !important;
     text-shadow: 0 0 8px rgba(255, 186, 1, 0.4) !important;
+}
+
+/* =========================================
+   NATIVE HTML COLLAPSIBLES (<details>)
+========================================= */
+
+.markdown-rendered details {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    margin: 1.5em 0;
+    padding: 0.75em 1.25em;
+    transition: all 0.2s ease;
+}
+
+.markdown-rendered details[open] {
+    border-color: rgba(53, 119, 249, 0.4); /* NMOS Blue Glow */
+    box-shadow: inset 0 0 15px rgba(53, 119, 249, 0.05), 0 0 15px rgba(53, 119, 249, 0.1);
+}
+
+.markdown-rendered summary {
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    color: var(--text-normal);
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+    font-size: 1.05rem;
+}
+
+.markdown-rendered summary:hover {
+    color: #3577F9; /* NMOS Blue */
+    text-shadow: 0 0 8px rgba(53, 119, 249, 0.4);
+}
+
+/* Hide the ugly default browser arrow */
+.markdown-rendered summary::marker,
+.markdown-rendered summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Custom Animated NMOS Arrow */
+.markdown-rendered summary::before {
+    content: "";
+    display: inline-block;
+    width: 0; 
+    height: 0; 
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid currentColor;
+    margin-right: 12px;
+    transition: transform 0.2s ease;
+}
+
+.markdown-rendered details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+.markdown-rendered details > *:not(summary) {
+    margin-top: 1em;
+    padding-left: 18px;
+    color: #CCC;
+    line-height: 1.6;
+    border-left: 2px solid rgba(53, 119, 249, 0.3);
 }
