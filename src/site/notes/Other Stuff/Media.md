@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-12T13:01:10.430+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
+{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-12T13:02:55.279+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
 ---
 
 ## Streaming Websites
@@ -14,10 +14,9 @@ You should be using an adblocker when visiting these websites, I will only check
 ---
 
 - <span class="s">S</span> [Cinejoy](https://cinejoy.to/) <span class="y">UI/UX</span> <span class="y">Speed</span> <span class="y">Subtitles</span> <span class="y">Streaming Quality</span> <span class="y">Features</span> <span class="y">No Ads</span>
-<details class="subtle">
-  <summary>Points Distribution</summary>
-  Hi!
-
-</details>
+    <details class="subtle">
+    <summary>Points Distribution</summary>
+     Hi!
+    </details>
 
 
