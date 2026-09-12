@@ -33,7 +33,13 @@ permalink: "notes/{{ page.fileSlug | slugify }}/"
     {% if icon %}
       {% if "lucide-" in icon %}
         <i data-lucide="{{ icon | replace('lucide-', '') }}" style="width: 0.9em; height: 0.9em; margin-right: 8px; display: inline-block; vertical-align: -0.1em; color: var(--text-accent);"></i>
-      {% elif ".png" in icon or ".svg" in icon or ".jpg" in icon or ".gif" in icon or ".webp" in icon %}
+      {% elif ".svg" in icon %}
+        {% set iconUrl = icon | replace("[[", "") | replace("]]", "") %}
+        {% if not iconUrl.startsWith("/") and not iconUrl.startsWith("http") %}
+            {% set iconUrl = "/img/user/" + iconUrl %}
+        {% endif %}
+        <span class="nmos-svg-icon-header" style="-webkit-mask-image: url('{{ iconUrl }}'); mask-image: url('{{ iconUrl }}');"></span>
+      {% elif ".png" in icon or ".jpg" in icon or ".gif" in icon or ".webp" in icon %}
         {% set iconUrl = icon | replace("[[", "") | replace("]]", "") %}
         {% if not iconUrl.startsWith("/") and not iconUrl.startsWith("http") %}
             {% set iconUrl = "/img/user/" + iconUrl %}
