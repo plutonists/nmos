@@ -2,7 +2,7 @@
     {%if fileOrFolder.isNote or fileOrFolder.isFolder%}
         <div x-show="isOpen" style="display:none" class="{{'filelist' if step>0}}">
             {%if fileOrFolder.isNote and not fileOrFolder.hide %}
-                <div @click.stop class="notelink {{ 'active-note' if fileOrFolder.permalink === permalink}}">
+                <div @click.stop class="notelink {{ 'active-note' if fileOrFolder.permalink === permalink}} {{ 'pinned-note' if fileOrFolder.pinned }}">
                    <a {% if not fileOrFolder.icon %}data-note-icon="{{fileOrFolder.noteIcon}}"{% endif %} style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">
     {% if fileOrFolder.icon %}
         {% if "lucide-" in fileOrFolder.icon %}
