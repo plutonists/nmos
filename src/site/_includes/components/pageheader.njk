@@ -109,7 +109,12 @@
 
               navigator.clipboard.writeText(textToCopy).then(() => {
                   el.classList.add('copied');
-                  copiedTimeout = setTimeout(() => el.classList.remove('copied'), 2000);
+                  copiedTimeout = setTimeout(() => {
+                      el.classList.add('copy-hiding');
+                      copiedTimeout = setTimeout(() => {
+                          el.classList.remove('copied', 'copy-hiding');
+                      }, 250);
+                  }, 1750);
               }).catch(() => {
                   el.classList.add('copy-failed');
                   copiedTimeout = setTimeout(() => el.classList.remove('copy-failed'), 2000);

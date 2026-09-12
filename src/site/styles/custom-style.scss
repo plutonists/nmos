@@ -1312,7 +1312,11 @@ aside {
     pointer-events: none;
     white-space: nowrap;
     box-shadow: 0 4px 12px rgba(23, 197, 85, 0.3);
-    animation: copyTooltipFade 0.2s ease-out forwards;
+    animation: copyTooltipFade 0.25s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.copy-text.copied.copy-hiding::after {
+    animation: copyTooltipFadeOut 0.25s cubic-bezier(0.4, 0, 1, 1) forwards;
 }
 
 .copy-text.copy-failed::after {
@@ -1335,8 +1339,25 @@ aside {
 }
 
 @keyframes copyTooltipFade {
-    from { opacity: 0; transform: translate(-50%, 5px); }
-    to { opacity: 1; transform: translate(-50%, 0); }
+    from {
+        opacity: 0;
+        transform: translate(-50%, 5px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+}
+
+@keyframes copyTooltipFadeOut {
+    from {
+        opacity: 1;
+        transform: translate(-50%, 0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, 3px) scale(0.98);
+    }
 }
 
 .copy-text svg {
