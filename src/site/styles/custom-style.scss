@@ -1333,33 +1333,37 @@ aside {
     mask-position: center;
 }
 /* =========================================
-   PINNED / FEATURED NOTES IN SIDEBAR
+   PINNED / FEATURED NOTES IN SIDEBAR (CLEAN)
 ========================================= */
 
-/* The subtle pulsing animation for the left border */
-@keyframes nmos-pinned-pulse {
-    0%, 100% { border-left-color: rgba(255, 186, 1, 0.2); }
-    50% { border-left-color: rgba(255, 186, 1, 0.9); box-shadow: -2px 0 8px rgba(255, 186, 1, 0.2); }
-}
-
-/* Apply gradient, border, and animation ONLY if the note isn't currently active */
+/* Subtle static highlight (No pulsing!) */
 .filetree-sidebar .notelink.pinned-note:not(.active-note) {
-    background: linear-gradient(90deg, rgba(255, 186, 1, 0.08) 0%, transparent 100%) !important;
-    border-left: 2px solid rgba(255, 186, 1, 0.5) !important;
-    animation: nmos-pinned-pulse 3s infinite ease-in-out;
+    background: linear-gradient(90deg, rgba(255, 186, 1, 0.06) 0%, transparent 100%) !important;
+    border-left: 2px solid #FFBA01 !important; /* Solid NMOS Yellow border */
+    box-shadow: -2px 0 10px rgba(255, 186, 1, 0.1); /* Very soft static ambient glow */
 }
 
-/* Make the text brighter so it stands out from the gray text */
+/* Brighter text so it stands out from normal gray links */
 .filetree-sidebar .notelink.pinned-note:not(.active-note) a {
     color: #EAEAEA !important; 
     font-weight: 700 !important;
-    text-shadow: 0 0 5px rgba(255, 186, 1, 0.2) !important;
 }
 
-/* Make the custom icon or emoji NMOS Yellow and fully opaque */
+/* Keep the icon bright yellow to draw the eye */
 .filetree-sidebar .notelink.pinned-note:not(.active-note) svg,
 .filetree-sidebar .notelink.pinned-note:not(.active-note) i,
 .filetree-sidebar .notelink.pinned-note:not(.active-note) .nmos-svg-icon {
     color: #FFBA01 !important; 
     opacity: 1 !important;
+}
+
+/* Enhance the hover effect so it feels special to interact with */
+.filetree-sidebar .notelink.pinned-note:not(.active-note):hover {
+    background: linear-gradient(90deg, rgba(255, 186, 1, 0.12) 0%, transparent 100%) !important;
+    border-left: 3px solid #FFBA01 !important;
+}
+
+.filetree-sidebar .notelink.pinned-note:not(.active-note):hover a {
+    color: #FFBA01 !important;
+    text-shadow: 0 0 8px rgba(255, 186, 1, 0.4) !important;
 }
