@@ -3,11 +3,17 @@
         <div x-show="isOpen" style="display:none" class="{{'filelist' if step>0}}">
             {%if fileOrFolder.isNote and not fileOrFolder.hide %}
                 <div @click.stop class="notelink {{ 'active-note' if fileOrFolder.permalink === permalink}}">
-                    <a {% if not fileOrFolder.icon %}data-note-icon="{{fileOrFolder.noteIcon}}"{% endif %} style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">
+                   <a {% if not fileOrFolder.icon %}data-note-icon="{{fileOrFolder.noteIcon}}"{% endif %} style="text-decoration: none;" class="filename" href="{{fileOrFolder.permalink}}">
     {% if fileOrFolder.icon %}
         {% if "lucide-" in fileOrFolder.icon %}
             <i data-lucide="{{ fileOrFolder.icon | replace('lucide-', '') }}" style="width: 16px; height: 16px; margin-right: 4px; display: inline-block; vertical-align: -3px; color: var(--text-accent);"></i>
-        {% elif ".png" in fileOrFolder.icon or ".svg" in fileOrFolder.icon or ".jpg" in fileOrFolder.icon or ".gif" in fileOrFolder.icon or ".webp" in fileOrFolder.icon %}
+        {% elif ".svg" in fileOrFolder.icon %}
+            {% set iconUrl = fileOrFolder.icon | replace("[[", "") | replace("]]", "") %}
+            {% if not iconUrl.startsWith("/") and not iconUrl.startsWith("http") %}
+                {% set iconUrl = "/img/user/" + iconUrl %}
+            {% endif %}
+            <span class="nmos-svg-icon" style="-webkit-mask-image: url('{{ iconUrl }}'); mask-image: url('{{ iconUrl }}');"></span>
+        {% elif ".png" in fileOrFolder.icon or ".jpg" in fileOrFolder.icon or ".gif" in fileOrFolder.icon or ".webp" in fileOrFolder.icon %}
             {% set iconUrl = fileOrFolder.icon | replace("[[", "") | replace("]]", "") %}
             {% if not iconUrl.startsWith("/") and not iconUrl.startsWith("http") %}
                 {% set iconUrl = "/img/user/" + iconUrl %}
