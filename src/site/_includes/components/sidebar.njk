@@ -11,6 +11,7 @@
                   {%if settings.dgShowToc === true%}
                         {%set tocHtml= (content and (content | hideDataview | link | toc)) %}
                         {%if tocHtml %}
+                              {% include "components/landingPreference.njk" %}
                               <div class="toc">
                                     <div class="toc-title-container">
                                           <div class="toc-title">

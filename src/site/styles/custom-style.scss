@@ -15,6 +15,155 @@
 }
 
 /* =========================================
+   HOMEPAGE LANDING INTRO
+========================================= */
+
+.landing-intro {
+    position: fixed;
+    inset: 0;
+    z-index: 1000000;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: #161618;
+    cursor: pointer;
+}
+
+.landing-intro-skip-paint .landing-intro {
+    display: none;
+}
+
+.landing-preference {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    margin: 0;
+    padding: 9px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 8px;
+    background: rgba(22, 22, 24, 0.92);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    font-weight: 600;
+    user-select: none;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.landing-preference input {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    accent-color: #17C555;
+    cursor: pointer;
+}
+
+.landing-preference:hover {
+    border-color: rgba(23, 197, 85, 0.7);
+    background: rgba(23, 197, 85, 0.12);
+    color: #fff;
+}
+
+.landing-preference:focus-within {
+    outline: 2px solid rgba(53, 119, 249, 0.8);
+    outline-offset: 3px;
+}
+
+.landing-intro-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 32px;
+    text-align: center;
+    animation: landingIntroContentIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.landing-intro-logo {
+    width: clamp(150px, 24vw, 250px);
+    height: auto;
+    filter: drop-shadow(0 0 24px rgba(53, 119, 249, 0.12));
+}
+
+.landing-intro-name {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35em;
+    max-width: min(90vw, 720px);
+    margin: 0;
+    font-size: clamp(1.35rem, 3.4vw, 2.7rem);
+    line-height: 1.15;
+    letter-spacing: 0.015em;
+}
+
+.landing-intro-wipe {
+    position: absolute;
+    z-index: 2;
+    inset: -100% -75%;
+    background: linear-gradient(
+        90deg,
+        #ffc107 0%,
+        #ffc107 25%,
+        #00c853 25%,
+        #00c853 50%,
+        #2979ff 50%,
+        #2979ff 75%,
+        #ff3366 75%,
+        #ff3366 100%
+    );
+    transform: translateX(-100%) skewX(-25deg);
+    pointer-events: none;
+}
+
+.landing-intro-exiting .landing-intro-wipe {
+    animation: landingIntroWipe 0.95s linear forwards;
+}
+
+.landing-intro-wipe-covered {
+    background: transparent;
+}
+
+.landing-intro-wipe-covered .landing-intro-content {
+    visibility: hidden;
+    opacity: 0;
+}
+
+@keyframes landingIntroContentIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes landingIntroWipe {
+    from { transform: translateX(-100%) skewX(-25deg); }
+    to { transform: translateX(100%) skewX(-25deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-intro-content {
+        animation: none;
+    }
+
+    .landing-intro-exiting .landing-intro-wipe {
+        animation-duration: 0.01ms;
+    }
+}
+
+/* =========================================
    1. MOBILE NAVBAR (FULL WIDTH OVERRIDE)
 ========================================= */
 

@@ -1,0 +1,52 @@
+<section class="landing-intro" aria-label="Welcome to Notes, Media, & Other Stuff">
+    <div class="landing-intro-content">
+        <img class="landing-intro-logo" src="/img/landing-logo.svg" alt="">
+        <h1 class="landing-intro-name" aria-label="Notes, Media, & Other Stuff">
+            <span class="nmos-red">Notes,</span>
+            <span class="nmos-blue">Media,</span>
+            <span class="nmos-green">&amp; Other</span>
+            <span class="nmos-yellow">Stuff</span>
+        </h1>
+    </div>
+    <div class="landing-intro-wipe" aria-hidden="true"></div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const intro = document.querySelector('.landing-intro');
+        if (!intro) return;
+
+        const landingPreferenceKey = 'nmos-landing-intro-disabled';
+        if (localStorage.getItem(landingPreferenceKey) === 'true') {
+            intro.remove();
+            return;
+        }
+
+        const landingSessionKey = 'nmos-landing-intro-seen';
+        if (sessionStorage.getItem(landingSessionKey) === 'true') {
+            intro.remove();
+            return;
+        }
+        sessionStorage.setItem(landingSessionKey, 'true');
+
+        let isExiting = false;
+        const exitDuration = 950;
+        const wipeCoversScreenAt = 475;
+
+        const exit = () => {
+            if (isExiting) return;
+            isExiting = true;
+            intro.classList.add('landing-intro-exiting');
+            window.setTimeout(() => {
+                intro.classList.add('landing-intro-wipe-covered');
+            }, wipeCoversScreenAt);
+            window.setTimeout(() => intro.remove(), exitDuration);
+        };
+
+        intro.addEventListener('click', exit);
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') exit();
+        }, { once: true });
+        window.setTimeout(exit, 2600);
+    });
+</script>
