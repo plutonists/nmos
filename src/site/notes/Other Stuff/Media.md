@@ -5,13 +5,13 @@
  ## Streaming Websites
 These are all streaming websites I've tested. All of the streaming websites will be tested on: 
 
-| CATEGORIES/       | Speed | SUBTITLES |     |
-| ----------------- | ----- | --------- | --- |
-| UI/UX             |       |           |     |
-| Speed             |       |           |     |
-| Streaming Quality |       |           |     |
-| Subtitles         |       |           |     |
-| Features          |       |           |     |
+| CATEGORIES/       | Speed | SUBTITLES |
+| ----------------- | ----- | --------- |
+| UI/UX             |       |           |
+| Speed             |       |           |
+| Streaming Quality |       |           |
+| Subtitles         |       |           |
+| Features          |       |           |
 
 
 > [!attention] Disclaimer
@@ -31,5 +31,4 @@ These are all streaming websites I've tested. All of the streaming websites will
     
 
   </details>
-
 
