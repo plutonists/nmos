@@ -563,8 +563,13 @@ header h1:hover, header h1:hover span {
     padding: 10px 14px;
     color: #d0d0d0;
     line-height: 1.45;
+    background: transparent !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+.markdown-rendered tbody td:first-child {
+    color: #f0f0f0;
+    font-weight: 700;
 }
 .markdown-rendered th:last-child,
 .markdown-rendered td:last-child {
@@ -573,9 +578,17 @@ header h1:hover, header h1:hover span {
 .markdown-rendered tr:last-child td {
     border-bottom: 0;
 }
-.markdown-rendered tr:hover td {
-    background: rgba(255, 186, 1, 0.06);
-    color: #fff;
+@media (hover: hover) {
+    .markdown-rendered tbody tr {
+        transition: background-color 160ms ease;
+    }
+    .markdown-rendered tbody tr:hover {
+        background: rgba(53, 119, 249, 0.1) !important;
+    }
+    .markdown-rendered tbody tr:hover > td {
+        background: rgba(53, 119, 249, 0.1) !important;
+        color: inherit;
+    }
 }
 
 @media (max-width: 700px) {
