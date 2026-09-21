@@ -1,17 +1,15 @@
 ---
-{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-13T00:36:34.036+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
+{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-16T03:27:40.264+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
 ---
 
  ## Streaming Websites
 These are all streaming websites I've tested. All of the streaming websites will be tested on: 
 
-| CATEGORIES/       | Speed | SUBTITLES |
-| ----------------- | ----- | --------- |
-| UI/UX             |       |           |
-| Speed             |       |           |
-| Streaming Quality |       |           |
-| Subtitles         |       |           |
-| Features          |       |           |
+|          |            UI/UX            | SPEED                       | STREAMING QUALITY | SUBTITLES | FEATURES | OVERALL |
+| :------: | :-------------------------: | --------------------------- | ----------------- | --------- | -------- | ------- |
+|  Points  | 5 points (25% of 20 points) | 8 points (40% of 20 points) | 4                 |           |          |         |
+| The Good |                             |                             |                   |           |          |         |
+| The Bad  |                             |                             |                   |           |          |         |
 
 
 > [!attention] Disclaimer
@@ -31,4 +29,5 @@ These are all streaming websites I've tested. All of the streaming websites will
     
 
   </details>
+
 
