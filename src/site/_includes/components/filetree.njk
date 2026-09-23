@@ -28,7 +28,7 @@
 </a>
                 </div>
             {% elif fileOrFolder.isFolder%}
-                            <div class="folder inner-folder level-{{step}}" data-folder-name="{{ fileOrFolderName | lower }}" x-data="{isOpen: false}" @click.stop="isOpen=!isOpen">
+                            <div class="folder inner-folder level-{{step}}" data-folder-name="{{ fileOrFolderName | lower }}" x-data="{isOpen: $persist(false).using(sessionStorage).as('tree_{{ currentPath | slugify }}')}" @click.stop="isOpen=!isOpen">
                         <div class="foldername-wrapper align-icon">
                     <i x-show="isOpen" style="display: none;"  data-lucide="chevron-down"></i>
                     <i x-show="!isOpen"  data-lucide="chevron-right"></i>
