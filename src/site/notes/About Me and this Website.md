@@ -1,5 +1,5 @@
 ---
-{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-25T18:30:21.920+03:00","dg-note-properties":{"tags":["seed","gardenEntry"]}}
+{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]","permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-25T18:56:17.539+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]"}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
