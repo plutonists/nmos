@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-25T12:01:30.998+03:00","dg-note-properties":{"desc":"Media websites ranked! Yup.","title":"Media"}}
+{"lastSync":"Sun Sep 27 2026 01:33:38 GMT+0300 (Eastern European Summer Time)","dg-publish":true,"desc":"Media websites ranked! Yup.","title":"Media","permalink":"/other-stuff/media/","dgPassFrontmatter":true,"created":"2026-09-09T18:34:01.785+03:00","updated":"2026-09-27T01:33:38.891+03:00","dg-note-properties":{"lastSync":"Sun Sep 27 2026 01:33:38 GMT+0300 (Eastern European Summer Time)","desc":"Media websites ranked! Yup.","title":"Media"}}
 ---
 
  ## Streaming Websites

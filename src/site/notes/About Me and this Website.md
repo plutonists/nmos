@@ -1,5 +1,5 @@
 ---
-{"dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]","pinned":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-25T18:57:07.072+03:00","dg-note-properties":{"tags":["seed","gardenEntry"],"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]","pinned":true}}
+{"lastSync":"Sun Sep 27 2026 01:34:01 GMT+0300 (Eastern European Summer Time)","dg-title":null,"dg-publish":true,"tags":["seed","gardenEntry"],"dg-home":true,"dg-toc":true,"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]","pinned":true,"permalink":"/about-me-and-this-website/","dgPassFrontmatter":true,"created":"2026-08-19T05:51:52.587+03:00","updated":"2026-09-27T01:34:01.078+03:00","dg-note-properties":{"lastSync":"Sun Sep 27 2026 01:34:01 GMT+0300 (Eastern European Summer Time)","tags":["seed","gardenEntry"],"icon":"[[1 Website Resources/emojis/Other_Icons/BootstrapIcons/iconinfo-circle-fill.svg]]","pinned":true}}
 ---
 
 ![logoword.png](/img/user/1%20Website%20Resources/logoword.png)
