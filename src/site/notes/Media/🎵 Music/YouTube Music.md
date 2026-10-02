@@ -1,0 +1,6 @@
+---
+{"lastSync":"Sat Oct 03 2026 01:03:23 GMT+0300 (Eastern European Summer Time)","dg-title":"YouTube","dg-publish":true,"dg-image":null,"icon":"[[1 Website Resources/emojis/Other_Icons/simple-icons/icon-youtubemusic.svg]]","desc":"Cool YouTube Music!","permalink":"/media/music/you-tube-music/","dgPassFrontmatter":true,"created":"2026-09-21T03:04:45.478+03:00","updated":"2026-10-03T01:04:38.660+03:00","dg-note-properties":{"lastSync":"Sat Oct 03 2026 01:03:23 GMT+0300 (Eastern European Summer Time)","icon":"[[1 Website Resources/emojis/Other_Icons/simple-icons/icon-youtubemusic.svg]]","desc":"Cool YouTube Music!"}}
+---
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yq0_ApTwNH4?si=7-vSQtju8ileIa8N&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/PWXao2AVDF8?si=StH1HDUzAUabH7qo&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
